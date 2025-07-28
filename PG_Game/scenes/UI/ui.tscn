@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://7e6u2fm5s2q1"]
+
+[ext_resource type="PackedScene" uid="uid://lrife1eowt44" path="res://scenes/UI/redTowerPanel.tscn" id="1_vn7bi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy3pf"]
+bg_color = Color(0.683895, 0.591192, 0.348888, 1)
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 2317.0
+offset_top = -3.0
+offset_right = 2625.0
+offset_bottom = 369.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fy3pf")
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 53.0
+offset_right = 259.0
+offset_bottom = 321.0
+
+[node name="Panel" parent="Panel/FlowContainer" instance=ExtResource("1_vn7bi")]
+layout_mode = 2
+
+[node name="Panel2" parent="Panel/FlowContainer" instance=ExtResource("1_vn7bi")]
+layout_mode = 2
+
+[node name="Panel3" parent="Panel/FlowContainer" instance=ExtResource("1_vn7bi")]
+layout_mode = 2
