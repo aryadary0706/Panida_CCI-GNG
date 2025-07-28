@@ -8,10 +8,10 @@ bg_color = Color(0.683895, 0.591192, 0.348888, 1)
 [node name="UI" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 2317.0
-offset_top = -3.0
-offset_right = 2625.0
-offset_bottom = 369.0
+offset_left = 2316.0
+offset_top = 1351.0
+offset_right = 2624.0
+offset_bottom = 1723.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fy3pf")
 
 [node name="FlowContainer" type="FlowContainer" parent="Panel"]
