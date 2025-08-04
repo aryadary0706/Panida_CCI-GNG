@@ -47,6 +47,7 @@ texture_region_size = Vector2i(64, 64)
 16:1/0 = 0
 17:1/0 = 0
 18:1/0 = 0
+18:1/0/custom_data_0 = true
 19:1/0 = 0
 20:1/0 = 0
 21:1/0 = 0
@@ -372,6 +373,8 @@ tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+custom_data_layer_0/name = "buildable"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_0ifk5")
 
 [node name="TileMapLayer" type="TileMapLayer"]

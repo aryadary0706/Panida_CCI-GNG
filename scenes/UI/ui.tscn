@@ -6,6 +6,8 @@
 bg_color = Color(0.683895, 0.591192, 0.348888, 1)
 
 [node name="UI" type="CanvasLayer"]
+metadata/_edit_vertical_guides_ = [2316.0]
+metadata/_edit_horizontal_guides_ = [1351.0]
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 2316.0
