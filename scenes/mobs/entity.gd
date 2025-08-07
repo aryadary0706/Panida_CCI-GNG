@@ -8,7 +8,12 @@ var Health = 10
 func _process(delta: float) -> void:
 	get_parent().progress += speed * delta
 	if get_parent().progress_ratio == 1:
-		queue_free()
+		death()
+		Game.health -= 5
 
 	if Health <= 0 :
-		get_parent().get_parent().queue_free()
+		death()
+		Game.money += 5
+
+func death():
+	get_parent().get_parent().queue_free()

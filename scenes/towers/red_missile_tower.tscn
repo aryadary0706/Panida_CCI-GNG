@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cyvxcb2vvdwe3" path="res://assets/towerDefense_tile297.png" id="5_fssab"]
 [ext_resource type="Texture2D" uid="uid://cphe22jcw8urh" path="res://assets/towerDefense_tile296.png" id="6_u2xm8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7eju2"]
-size = Vector2(117, 89)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o8yj5"]
+radius = 47.5
+height = 141.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnuyo"]
 radius = 345.0
@@ -71,7 +72,8 @@ script = ExtResource("1_gaure")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)
-shape = SubResource("RectangleShape2D_7eju2")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o8yj5")
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(66, 0)
@@ -100,7 +102,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_fkyy5")
 [node name="Upgrade" type="Node" parent="."]
 
 [node name="Upgrade" type="Panel" parent="Upgrade"]
-visible = false
 offset_left = -572.0
 offset_top = 81.0
 offset_right = 4.0
@@ -192,7 +193,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gme8k")
 script = ExtResource("4_67vox")
 
 [node name="Timer" type="Timer" parent="Upgrade/ProgressBar"]
-wait_time = 3.0
+wait_time = 0.5
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
