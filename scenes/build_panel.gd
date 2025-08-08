@@ -35,4 +35,4 @@ func _unhandled_input(event):
 				used_tiles.append(cell_pos)
 
 				Game.money -= 10
-				main.is_placing_tower = false
+				main.finish_placing_tower()

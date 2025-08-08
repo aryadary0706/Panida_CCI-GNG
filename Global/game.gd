@@ -1,6 +1,6 @@
 extends Node
 
-var money := 1000
+var money := 100
 var health := 100
 var game_over := false
 

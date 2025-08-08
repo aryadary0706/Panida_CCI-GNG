@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl8bxdljeqgj3"]
 
-[ext_resource type="PackedScene" uid="uid://iisa8pdbu5rp" path="res://scenes/mobs/entity.tscn" id="1_0pqys"]
+[ext_resource type="PackedScene" uid="uid://iisa8pdbu5rp" path="res://scenes/mobs/entity.tscn" id="1_ik21i"]
 
 [sub_resource type="Curve2D" id="Curve2D_5qbm2"]
 _data = {
@@ -11,9 +11,9 @@ point_count = 58
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_5qbm2")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
+[node name="Entity1" type="PathFollow2D" parent="."]
 position = Vector2(239, 212)
 rotation = 0.0438743
 loop = false
 
-[node name="entity" parent="PathFollow2D" instance=ExtResource("1_0pqys")]
+[node name="entity" parent="Entity1" instance=ExtResource("1_ik21i")]
