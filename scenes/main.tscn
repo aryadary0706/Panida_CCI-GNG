@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://de8l5gepw5v37"]
+[gd_scene load_steps=7 format=4 uid="uid://vknb7atfs6v8"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_r4yrm"]
-[ext_resource type="PackedScene" uid="uid://bve3ygw7bg4vp" path="res://tiles/tile_map_layer.tscn" id="1_ysywf"]
-[ext_resource type="Script" path="res://scenes/path_spawn.gd" id="2_ydn06"]
-[ext_resource type="PackedScene" uid="uid://cg1goepnrettx" path="res://scenes/highlight_tile/highlight_tile.tscn" id="4_a3ngp"]
-[ext_resource type="PackedScene" uid="uid://7e6u2fm5s2q1" path="res://scenes/UI/ui.tscn" id="4_yuskw"]
-[ext_resource type="Script" path="res://scenes/build_panel.gd" id="6_pun1o"]
+[ext_resource type="Script" uid="uid://dadedt8clmh8f" path="res://scenes/main.gd" id="1_r4yrm"]
+[ext_resource type="PackedScene" path="res://tiles/tile_map_layer.tscn" id="1_ysywf"]
+[ext_resource type="Script" uid="uid://bpxw57x6px6hu" path="res://scenes/path_spawn.gd" id="2_ydn06"]
+[ext_resource type="PackedScene" path="res://scenes/highlight_tile/highlight_tile.tscn" id="4_a3ngp"]
+[ext_resource type="PackedScene" path="res://scenes/UI/ui.tscn" id="4_yuskw"]
+[ext_resource type="Script" uid="uid://chn1wox0mjpex" path="res://scenes/build_panel.gd" id="6_pun1o"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_r4yrm")

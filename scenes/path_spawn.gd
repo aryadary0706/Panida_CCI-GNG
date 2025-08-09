@@ -23,7 +23,7 @@ func start_wave(wave_data_input: Array) -> void:
 	spawn_timer.start()
 	wave_duration_timer.start()
 
-func _on_spawn_t_imer_timeout() -> void:
+func _on_spawn_timer_timeout() -> void:
 	if is_wave_active and current_index < wave_data.size():
 		spawn_enemy(wave_data[current_index])
 		current_index += 1

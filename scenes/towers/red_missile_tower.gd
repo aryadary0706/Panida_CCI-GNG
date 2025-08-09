@@ -31,28 +31,33 @@ func Shoot():
 	tempBullet.global_position = $Aim.global_position
 
 func _on_tower_body_entered(body: Node2D) -> void:
-	if "entity" in body.name:
-		var tempArray = []
-		currTargets = get_node("Tower").get_overlapping_bodies()
+	if body.has_method("start_attack"):
+		body.start_attack(self)
 	
-		for i in currTargets:
-			if "entity" in i.name:
-				tempArray.append(i)
-
-		var currTarget = null
-		for i in tempArray:
-			if currTarget == null:
-				currTarget = i.get_node("../")
-			else:
-				if i.get_parent().get_progress() > currTarget.get_progress():
-					currTarget = i.get_node("../")
-		
-		curr = currTarget
-		pathName = currTarget.get_parent().name
+	#if "entity" in body.name:
+		#var tempArray = []
+		#currTargets = get_node("Tower").get_overlapping_bodies()
+	#
+		#for i in currTargets:
+			#if "entity" in i.name:
+				#tempArray.append(i)
+#
+		#var currTarget = null
+		#for i in tempArray:
+			#if currTarget == null:
+				#currTarget = i.get_node("../")
+			#else:
+				#if i.get_parent().get_progress() > currTarget.get_progress():
+					#currTarget = i.get_node("../")
+		#
+		#curr = currTarget
+		#pathName = currTarget.get_parent().name
 
 
 func _on_tower_body_exited(body: Node2D) -> void:
-	currTargets = get_node("Tower").get_overlapping_bodies()
+	if body.has_method("stop_attack"):
+		body.stop_attack()
+	#currTargets = get_node("Tower").get_overlapping_bodies()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_mask == 1:

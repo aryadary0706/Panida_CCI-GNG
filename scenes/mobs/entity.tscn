@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://iisa8pdbu5rp"]
 
-[ext_resource type="Script" path="res://scenes/mobs/entity.gd" id="1_3kbhn"]
+[ext_resource type="Script" uid="uid://ddtn674yyeo00" path="res://scenes/mobs/entity.gd" id="1_3kbhn"]
 [ext_resource type="Texture2D" uid="uid://c1je3jawluc64" path="res://assets/towerDefense_tile246.png" id="1_36s4e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diid0"]

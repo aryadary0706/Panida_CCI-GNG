@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://doecdr1rk3fe7"]
 
-[ext_resource type="Script" path="res://scenes/towers/red_missile_tower.gd" id="1_gaure"]
+[ext_resource type="Script" uid="uid://chhqaxh1tkhqn" path="res://scenes/towers/red_missile_tower.gd" id="1_gaure"]
 [ext_resource type="Texture2D" uid="uid://b3s6ybgr3injr" path="res://assets/towerDefense_tile250.png" id="2_4nkus"]
-[ext_resource type="Script" path="res://scenes/towers/collision_shape_2d.gd" id="3_xvqjc"]
+[ext_resource type="Script" uid="uid://glnxqb54cknv" path="res://scenes/towers/collision_shape_2d.gd" id="3_xvqjc"]
 [ext_resource type="Texture2D" uid="uid://c2ymecpj0mmkq" path="res://assets/towerDefense_tile110.png" id="4_3pu1g"]
-[ext_resource type="Script" path="res://scenes/towers/progress_bar.gd" id="4_67vox"]
+[ext_resource type="Script" uid="uid://cihlmefhp6a13" path="res://scenes/towers/progress_bar.gd" id="4_67vox"]
 [ext_resource type="Texture2D" uid="uid://cyvxcb2vvdwe3" path="res://assets/towerDefense_tile297.png" id="5_fssab"]
 [ext_resource type="Texture2D" uid="uid://cphe22jcw8urh" path="res://assets/towerDefense_tile296.png" id="6_u2xm8"]
 
