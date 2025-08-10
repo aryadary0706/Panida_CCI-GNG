@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://7e6u2fm5s2q1"]
 
 [ext_resource type="PackedScene" uid="uid://lrife1eowt44" path="res://scenes/UI/redTowerPanel.tscn" id="1_vn7bi"]
-[ext_resource type="Script" path="res://scenes/UI/health.gd" id="2_l458q"]
-[ext_resource type="Script" path="res://scenes/UI/gold.gd" id="3_10vsn"]
-[ext_resource type="Script" path="res://scenes/UI/start_wave.gd" id="4_lqbl5"]
+[ext_resource type="Script" uid="uid://cwn203fq2lrdu" path="res://scenes/UI/health.gd" id="2_l458q"]
+[ext_resource type="Script" uid="uid://diqryiisj6oby" path="res://scenes/UI/gold.gd" id="3_10vsn"]
+[ext_resource type="Script" uid="uid://dr8hy0l3o67gl" path="res://scenes/UI/start_wave.gd" id="4_lqbl5"]
 [ext_resource type="Texture2D" uid="uid://cphe22jcw8urh" path="res://assets/towerDefense_tile296.png" id="5_f0elv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy3pf"]

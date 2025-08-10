@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 
-var Health = 5
+var Health = 20
 
 var target_stand: Node = null
 var mengunjungi_stand := false
@@ -11,6 +11,8 @@ var durasi_makan := 2.0
 
 var last_progress := 0.0
 var path_follower: PathFollow2D = null
+
+var isVegan := false
 
 func _ready():
 	path_follower = get_parent()

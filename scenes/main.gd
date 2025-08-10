@@ -29,3 +29,7 @@ func select_tower(scene: PackedScene, button_node: Panel):
 	button_node.add_theme_stylebox_override("panel", button_node.border_active)
 
 	current_selected_button = button_node
+
+
+func _on_spawn_timer_timeout() -> void:
+	pass # Replace with function body.

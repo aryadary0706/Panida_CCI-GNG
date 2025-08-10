@@ -92,6 +92,7 @@ script = ExtResource("3_xvqjc")
 [node name="BulletContainer" type="Node" parent="."]
 
 [node name="Area" type="Panel" parent="."]
+visible = false
 modulate = Color(0, 0.788235, 0.764706, 0.254902)
 offset_left = -345.0
 offset_top = -345.0

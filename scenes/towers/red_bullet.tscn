@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt2f2eqitc0w7"]
 
 [ext_resource type="Texture2D" uid="uid://dj4lbrod5tgmx" path="res://assets/towerDefense_tile251.png" id="1_fbem8"]
-[ext_resource type="Script" path="res://scenes/towers/red_bullet.gd" id="1_ugddb"]
+[ext_resource type="Script" uid="uid://cqilvi0wv7c7f" path="res://scenes/towers/red_bullet.gd" id="1_ugddb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gw3jb"]
 
