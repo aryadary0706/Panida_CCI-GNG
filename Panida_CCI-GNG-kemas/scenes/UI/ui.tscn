@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://7e6u2fm5s2q1"]
+
+[ext_resource type="PackedScene" uid="uid://lrife1eowt44" path="res://scenes/UI/redTowerPanel.tscn" id="1_vn7bi"]
+[ext_resource type="Script" path="res://scenes/UI/health.gd" id="2_l458q"]
+[ext_resource type="Script" path="res://scenes/UI/gold.gd" id="3_10vsn"]
+[ext_resource type="Script" path="res://scenes/UI/start_wave.gd" id="4_lqbl5"]
+[ext_resource type="Texture2D" uid="uid://cphe22jcw8urh" path="res://assets/towerDefense_tile296.png" id="5_f0elv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fy3pf"]
+bg_color = Color(0.784054, 0.487513, 0.359695, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1owt3"]
+bg_color = Color(0.94114, 0.182535, 0.206292, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.964742, 0.964742, 0.964742, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="UI" type="CanvasLayer"]
+metadata/_edit_vertical_guides_ = [2316.0]
+metadata/_edit_horizontal_guides_ = [1351.0]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 2123.0
+offset_top = 1032.0
+offset_right = 2431.0
+offset_bottom = 1404.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fy3pf")
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 25.0
+offset_right = 276.0
+offset_bottom = 346.0
+
+[node name="Panel" parent="Panel/FlowContainer" instance=ExtResource("1_vn7bi")]
+layout_mode = 2
+
+[node name="Panel2" parent="Panel/FlowContainer" instance=ExtResource("1_vn7bi")]
+layout_mode = 2
+
+[node name="Health" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "Health :"
+script = ExtResource("2_l458q")
+
+[node name="Gold" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 83.0
+offset_right = 306.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 60
+text = "money :"
+script = ExtResource("3_10vsn")
+
+[node name="startWave" type="Panel" parent="."]
+custom_minimum_size = Vector2(50, 50)
+offset_left = 2214.0
+offset_top = 36.0
+offset_right = 2381.0
+offset_bottom = 203.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1owt3")
+script = ExtResource("4_lqbl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="startWave"]
+position = Vector2(84, 84)
+scale = Vector2(1.98438, 2.15625)
+texture = ExtResource("5_f0elv")
+
+[node name="Timer" type="Timer" parent="startWave"]
