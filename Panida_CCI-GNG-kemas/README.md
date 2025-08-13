@@ -1,1 +1,0 @@
-# Panida_CCI-GNG
