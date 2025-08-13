@@ -19,7 +19,7 @@ func start_wave(wave_data_input: Array) -> void:
 	spawn_timer.start()
 
 func _on_spawn_timer_timeout() -> void:
-	if is_wave_active and spawn_count < 15:
+	if is_wave_active and spawn_count < 3:
 		var random_index = randi_range(0, wave_data.size() - 1)
 		spawn_enemy(wave_data[random_index])
 		spawn_count += 1
