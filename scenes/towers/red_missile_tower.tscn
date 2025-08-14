@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://doecdr1rk3fe7"]
 
-[ext_resource type="Script" path="res://scenes/towers/red_missile_tower.gd" id="1_gaure"]
+[ext_resource type="Script" path="res://scenes/towers/beta_Stand.gd" id="1_bncpc"]
 [ext_resource type="Texture2D" uid="uid://b3s6ybgr3injr" path="res://assets/towerDefense_tile250.png" id="2_4nkus"]
 [ext_resource type="Script" path="res://scenes/towers/collision_shape_2d.gd" id="3_xvqjc"]
 [ext_resource type="Texture2D" uid="uid://c2ymecpj0mmkq" path="res://assets/towerDefense_tile110.png" id="4_3pu1g"]
@@ -68,7 +68,7 @@ bg_color = Color(0.309804, 0.65098, 0.847059, 0.992157)
 
 [node name="RedMissileTower" type="StaticBody2D"]
 input_pickable = true
-script = ExtResource("1_gaure")
+script = ExtResource("1_bncpc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)

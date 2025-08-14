@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://iisa8pdbu5rp"]
+[gd_scene load_steps=6 format=3 uid="uid://dvhvpxarhivie"]
 
-[ext_resource type="Script" path="res://scenes/mobs/entity.gd" id="1_3kbhn"]
-[ext_resource type="Texture2D" uid="uid://c1je3jawluc64" path="res://assets/towerDefense_tile246.png" id="1_36s4e"]
+[ext_resource type="Script" path="res://scenes/mobs/craver_beruang.gd" id="1_p3dyp"]
+[ext_resource type="Texture2D" uid="uid://c1je3jawluc64" path="res://assets/towerDefense_tile246.png" id="2_8wvxm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diid0"]
 bg_color = Color(1, 0.272673, 0.0764765, 1)
@@ -12,7 +12,7 @@ bg_color = Color(0.309804, 0.65098, 0.847059, 0.992157)
 [sub_resource type="CircleShape2D" id="CircleShape2D_jyi3d"]
 
 [node name="entity" type="CharacterBody2D"]
-script = ExtResource("1_3kbhn")
+script = ExtResource("1_p3dyp")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -55.0
@@ -24,7 +24,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_gme8k")
 
 [node name="TowerDefenseTile246" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_36s4e")
+texture = ExtResource("2_8wvxm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jyi3d")
