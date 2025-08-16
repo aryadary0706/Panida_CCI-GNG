@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcy0fega3won5"]
 
-[ext_resource type="PackedScene" uid="uid://ciymudsan4fo6" path="res://scenes/mobs/craverBabi.tscn" id="1_c5c21"]
+[ext_resource type="PackedScene" uid="uid://ciymudsan4fo6" path="res://scenes/mobs/craverNormal_Tier1.tscn" id="1_c5c21"]
 
 [sub_resource type="Curve2D" id="Curve2D_5qbm2"]
 _data = {
