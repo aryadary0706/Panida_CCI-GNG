@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciymudsan4fo6"]
+[gd_scene load_steps=6 format=3 uid="uid://bpembihowjgsb"]
 
 [ext_resource type="Script" path="res://scenes/mobs/craver_babi.gd" id="1_jkd3j"]
 [ext_resource type="Texture2D" uid="uid://c1je3jawluc64" path="res://assets/towerDefense_tile246.png" id="2_mjbiw"]

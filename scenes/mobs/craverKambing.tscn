@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0ri2p6kef6do"]
+[gd_scene load_steps=6 format=3 uid="uid://bky1bpgrwchx5"]
 
 [ext_resource type="Script" path="res://scenes/mobs/craver_kambing.gd" id="1_pgaec"]
 [ext_resource type="Texture2D" uid="uid://c1je3jawluc64" path="res://assets/towerDefense_tile246.png" id="2_mqety"]

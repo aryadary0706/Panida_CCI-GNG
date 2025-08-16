@@ -12,8 +12,9 @@
 radius = 47.5
 height = 145.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wnuyo"]
-radius = 345.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_32f0y"]
+radius = 48.0
+height = 444.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkyy5"]
 bg_color = Color(1, 0.156863, 0, 1)
@@ -86,7 +87,8 @@ texture = ExtResource("2_4nkus")
 [node name="Tower" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
-shape = SubResource("CircleShape2D_wnuyo")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_32f0y")
 script = ExtResource("3_xvqjc")
 
 [node name="BulletContainer" type="Node" parent="."]

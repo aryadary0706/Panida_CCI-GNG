@@ -1,8 +1,8 @@
 extends Node
 
-var money := 100
-var health := 100
-var game_over := false
+var money : int = 100
+var health : int = 100
+var game_over : int = false
 
 func _process(delta):
 	if not game_over and health <= 0:

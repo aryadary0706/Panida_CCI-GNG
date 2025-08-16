@@ -1,0 +1,192 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1f8s8xspitk6"]
+
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_5k7v4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfh37"]
+bg_color = Color(0.164706, 0.184314, 0.196078, 0.870588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pwjc"]
+bg_color = Color(0.764105, 0.798827, 0.81787, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 2
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5rgx"]
+bg_color = Color(0.493545, 0.493546, 0.493546, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 2
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsque"]
+bg_color = Color(0.966723, 0.974029, 0.967109, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 2
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3sml"]
+bg_color = Color(0.973535, 0.973535, 0.973535, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8lw6j"]
+color = Color(0.969137, 0.969137, 0.969137, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_k07xw"]
+color = Color(0.731277, 7.45064e-05, 0.59503, 1)
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_bgors"]
+color = Color(0.731277, 7.45064e-05, 0.59503, 1)
+thickness = 10
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5k7v4")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfh37")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 159.0
+offset_right = 244.0
+offset_bottom = 269.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "Food Festival"
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -501.0
+offset_top = -289.0
+offset_right = 501.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Start" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = SubResource("StyleBoxFlat_0pwjc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5rgx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsque")
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = SubResource("StyleBoxFlat_0pwjc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5rgx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsque")
+text = "Option"
+
+[node name="Exit" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 65
+theme_override_styles/hover = SubResource("StyleBoxFlat_0pwjc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5rgx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dsque")
+text = "Exit Game"
+
+[node name="Option" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -645.5
+offset_top = -416.0
+offset_right = 645.5
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Option"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Options Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="Option"]
+layout_mode = 0
+offset_left = 36.5
+offset_top = 22.0
+offset_right = 158.5
+offset_bottom = 98.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_h3sml")
+text = "Back"
+
+[node name="HSlider" type="HSlider" parent="Option"]
+layout_mode = 0
+offset_left = 163.5
+offset_top = 265.0
+offset_right = 1177.5
+offset_bottom = 402.0
+theme_override_styles/slider = SubResource("StyleBoxLine_8lw6j")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_k07xw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_bgors")
+value = 50.0
+
+[connection signal="pressed" from="MainButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Option/Back" to="." method="_on_back_option_pressed"]
