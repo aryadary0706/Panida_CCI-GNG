@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7w8eyqrn35hr"]
+
+[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_es643"]
+[ext_resource type="Texture2D" uid="uid://dh2iy4n52hgu8" path="res://Sprites/test/Taverns.png" id="2_lls5e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5abm"]
+radius = 30.3333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h8tn"]
+size = Vector2(48, 48)
+
+[node name="ShopBasic" type="Node2D"]
+script = ExtResource("1_es643")
+craverType = null
+maxCraver = null
+moneyMade = null
+
+[node name="ShopRange" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="Collision" type="CollisionShape2D" parent="ShopRange"]
+shape = SubResource("CircleShape2D_q5abm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_lls5e")
+hframes = 3
+vframes = 4
+frame = 1
+
+[node name="Button" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+button_mask = 7
+
+[node name="ShopBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopBody"]
+shape = SubResource("RectangleShape2D_1h8tn")
+debug_color = Color(0.25974, 0.000441744, 0.381302, 0.42)
+
+[connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
+[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]

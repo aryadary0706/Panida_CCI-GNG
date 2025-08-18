@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://di2t447fxve1v"]
+
+[ext_resource type="Texture2D" uid="uid://cacdq0qx7sh2" path="res://Sprites/test/Treasure+.png" id="1_au7fy"]
+
+[node name="Money" type="Node2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_au7fy")
+hframes = 16
+vframes = 16
+frame = 129
