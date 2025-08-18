@@ -5,6 +5,7 @@ const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 
 @export_enum("Vegan", "Normal", "All") var craverType = "Normal"
 @export var maxCraver = 3
+@export var priceToBuy = 400
 @export var moneyMade = 100
 @export var eatDistance = 32.0
 @export var placableTileIDs: Array[int] = []
@@ -83,7 +84,7 @@ func _process(delta: float) -> void:
 					craver.queue_free()
 
 func try_register_craver(craver) -> bool:
-	if craverInside + craver.occupancy <= maxCraver and (craverType == craver.craverType or craverType == "All"):
+	if craverInside + craver.occupancy <= maxCraver and craverType == craver.craverType:
 		if craver not in cravers:
 			cravers.append(craver)
 			craverInside += craver.occupancy
@@ -137,14 +138,26 @@ func _on_button_button_up() -> void:
 	isDragging = false
 	if isOverlapping or !canPlace:
 		queue_free()
-	else:
+	elif !hasPlaced:
 		hasPlaced = true
+		if Global.Money >= priceToBuy:
+			Global.Money -= priceToBuy
+		else:
+			queue_free()
+	else:
+		pass
+		
 
 func _on_shop_range_body_entered(body: Node2D) -> void:
-	if body.assignedShop == null:
-		body.getShop(self)
-		if hasPlaced:
-			try_register_craver(body)
+	if not body.is_in_group("Vegan") and not body.is_in_group("Normal"):  # Pastikan body adalah craver
+		return
+		
+	if hasPlaced and body.assignedShop == null:
+		# Coba daftarkan dulu, baru beri tahu craver jika berhasil
+		if try_register_craver(body):
+			body.assignedShop = self
+			body.isGoingToShop = true
+			body.target = global_position
 
 
 func _on_shop_range_body_exited(body: Node2D) -> void:

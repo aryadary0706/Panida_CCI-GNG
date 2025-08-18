@@ -46,11 +46,15 @@ func _physics_process(delta: float) -> void:
 		
 
 func getShop(shopDetected):
-	if shopDetected.craverType == craverType && (shopDetected.craverInside + occupancy <= shopDetected.maxCraver) && !hasAssignedShop && shopDetected.hasPlaced:
-		hasAssignedShop = true
-		isGoingToShop = true
-		target = shopDetected.global_position
-		
+	# Hanya respon jika belum memiliki shop dan shop valid
+	if assignedShop == null and shopDetected.hasPlaced and shopDetected.craverType == craverType:
+		# Biarkan shop yang handle registrasi
+		isGoingToShop = false  # Reset dulu, nanti di-set oleh shop jika berhasil
+		return true
+	return false
+
+
+
 func update_animation() -> void:
 	if direction == Vector2.ZERO:
 		anim.stop()

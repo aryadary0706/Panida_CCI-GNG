@@ -12,6 +12,7 @@ size = Vector2(19.9998, 59.6667)
 [node name="ShopNormal" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_es643")
+moneyMade = 50
 placableTileIDs = Array[int]([1])
 
 [node name="ShopBody" type="Area2D" parent="."]

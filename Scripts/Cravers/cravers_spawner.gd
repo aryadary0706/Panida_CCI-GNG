@@ -5,12 +5,14 @@ extends Node2D
 @onready var enemy_container: Node2D = $"../Enemy"
 @onready var wave_data: Node = $WaveData
 
+signal game_ended
+
 
 const ENEMY_SCENES := {
 	"normal": preload("res://Objects/Cravers/cravers_normal.tscn"),
 	"vegan": preload("res://Objects/Cravers/cravers_vegan.tscn"),
 	"glutton": preload("res://Objects/Cravers/cravers_glutton.tscn"),
-	"kangguru": preload("res://Objects/Cravers/cravers_kangguru.tscn")
+	"kangguru": preload("res://Objects/Cravers/cravers_kangguru_mom.tscn")
 }
 
 # --- STATE ---
@@ -33,6 +35,7 @@ func start_build_phase():
 func start_wave() -> void:
 	var wave = wave_data.get_wave_data(current_wave)
 	if wave.is_empty():
+		emit_signal("game_ended")
 		print("Game telah selesai")
 		return
 	
