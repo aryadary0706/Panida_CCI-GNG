@@ -1,5 +1,5 @@
 extends Node
-#Wave data 1
+#Wave data 3
 var wave_data = [
 	# Wave 1
 	{

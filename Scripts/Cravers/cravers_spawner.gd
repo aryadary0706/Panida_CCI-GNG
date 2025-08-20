@@ -48,7 +48,7 @@ func start_wave() -> void:
 		for i in range(troops["count"]):
 			current_wave_data.append(troops["type"])
 		total_enemies += troops["count"]
-	
+	current_wave_data.shuffle()
 	max_enemy = total_enemies
 	current_wave += 1
 	spawn_timer.start()

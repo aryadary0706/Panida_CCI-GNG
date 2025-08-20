@@ -13,6 +13,7 @@ size = Vector2(20.6664, 60.3334)
 scale = Vector2(2, 2)
 script = ExtResource("1_fnegr")
 craverType = "Vegan"
+priceToBuy = 95
 moneyMade = 50
 placableTileIDs = Array[int]([1])
 

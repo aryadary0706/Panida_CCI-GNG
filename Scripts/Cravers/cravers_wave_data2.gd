@@ -1,5 +1,5 @@
 extends Node
-#Wave data 1
+#Wave data 2
 var wave_data = [
 	# Wave 1
 	{
@@ -17,6 +17,7 @@ var wave_data = [
 			{ "type": "vegan", "count": 4 }
 		]
 	},
+	#Sampai sini karena blum ada craver lain
 	# Wave 3
 	{
 		"max_spawn": 10,

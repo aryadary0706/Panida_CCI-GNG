@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://mxhomjev36b1"]
+[gd_scene load_steps=34 format=3 uid="uid://25y1mhh48qo4"]
 
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_basic.gd" id="1_1k74u"]
 [ext_resource type="Texture2D" uid="uid://b4ry4i3t27ox7" path="res://Sprites/bear/back/Timeline 1_0000.png" id="2_0286u"]
