@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop_normal.tscn" id="6_q4n5l"]
 [ext_resource type="PackedScene" uid="uid://v7lgdi8qerug" path="res://Objects/Shops/spawner_shop_vegan.tscn" id="7_nguxv"]
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_y3xqw"]
-[ext_resource type="PackedScene" uid="uid://b88fui4lu7ko7" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_4jnon"]
+[ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_4jnon"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)

@@ -7,7 +7,7 @@
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
-size = Vector2(20.6664, 60.3334)
+size = Vector2(20.3333, 60.5)
 
 [node name="ShopVegan" type="Node2D"]
 scale = Vector2(2, 2)
@@ -34,6 +34,7 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_ocuq0")
 
 [node name="Collision2" type="CollisionShape2D" parent="ShopRange"]
+position = Vector2(-0.0832981, -0.166546)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 

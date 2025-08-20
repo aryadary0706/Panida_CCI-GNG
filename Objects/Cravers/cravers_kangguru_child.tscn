@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvoe4l663pan8"]
+[gd_scene load_steps=18 format=3 uid="uid://cikavafa0vwn3"]
 
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_basic.gd" id="1_f0lcx"]
 [ext_resource type="Texture2D" uid="uid://cmfh6h38n4jtk" path="res://Sprites/kangguru/anak/back/Timeline 1_0011.png" id="2_xvked"]

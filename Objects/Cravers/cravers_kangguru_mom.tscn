@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b88fui4lu7ko7"]
+[gd_scene load_steps=21 format=3 uid="uid://25y1mhh48qo4"]
 
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_skilled.gd" id="1_0gxad"]
 [ext_resource type="Texture2D" uid="uid://18twev60x35r" path="res://Sprites/kangguru/ibu/back/mama kangaroo_0014.png" id="2_7wlvx"]
