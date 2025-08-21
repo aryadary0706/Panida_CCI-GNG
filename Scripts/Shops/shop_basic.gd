@@ -172,8 +172,9 @@ func _on_shop_body_area_entered(area: Area2D) -> void:
 	var other_shop = area.get_parent()  # Ambil parent Area2D (harusnya Shop)
 	if other_shop.is_in_group("Shops") && other_shop != self:
 		isOverlapping = true
-		other_shop.modulate = Color(1, 0.5, 0.5, 0.5)
-		print("overlap? ", isOverlapping)
+		if !other_shop.hasPlaced:
+			other_shop.modulate = Color(1, 0.5, 0.5, 0.5)
+			print("overlap? ", isOverlapping)
 
 
 func _on_shop_body_area_exited(area: Area2D) -> void:
