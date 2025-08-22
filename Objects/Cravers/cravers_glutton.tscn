@@ -153,6 +153,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_1k74u")
 eatingDuration = 7.0
 occupancy = 2
+maxVisit = 2
 healthLoss = 18
 moveSpeed = 80
 
@@ -170,3 +171,4 @@ debug_path_custom_color = Color(1, 0.243137, 1, 1)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lrdtu")
+one_way_collision = true

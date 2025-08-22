@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://h2poepvrk8aq"]
+[gd_scene load_steps=43 format=4 uid="uid://h2poepvrk8aq"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_7w7nw"]
 [ext_resource type="Texture2D" uid="uid://q4dgvvt5l6mu" path="res://Sprites/vectoraith_tileset_farming_sim_essentials/32x32/Tilesets (Modular)/vectoraith_tileset_farmingsims_terrain_summer_expanded_32x32.png" id="2_k1fya"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://v7lgdi8qerug" path="res://Objects/Shops/spawner_shop_vegan.tscn" id="7_m65hv"]
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_np8xw"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_n5tqs"]
-[ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_etu8b"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_vjuns"]
+[ext_resource type="Script" path="res://Scripts/Cravers/cravers_kangguru.gd" id="11_a85g5"]
+[ext_resource type="PackedScene" path="res://Scripts/UI/game_over.tscn" id="11_etu8b"]
+[ext_resource type="PackedScene" path="res://Scenes/win_condition.tscn" id="12_vjuns"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)
@@ -1864,6 +1865,7 @@ offset_bottom = 32.0
 
 [node name="CraversKangguruMom" parent="." instance=ExtResource("9_n5tqs")]
 position = Vector2(-28, 318)
+script = ExtResource("11_a85g5")
 
 [node name="game_over" parent="." instance=ExtResource("11_etu8b")]
 

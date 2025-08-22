@@ -22,6 +22,7 @@ var snap = 64
 
 func _ready() -> void:
 	add_to_group("Shops")
+	z_index = 1000
 
 func checkPlacableTile() -> bool:
 	if !tilemap_layer or !shopArea:
@@ -70,10 +71,9 @@ func _process(delta: float) -> void:
 			continue
 			
 		if craver.global_position.distance_to(global_position) <= eatDistance:
-			if not craver.has_meta("is_eating"):
+			if not craver.has_meta("is_eating") or craver.get_meta("is_eating") == false:
 				craver.set_meta("is_eating", true)
 				craver.set_meta("eat_timer", craver.eatingDuration)
-				craver.visible = false  # Sembunyikan saat makan
 			else:
 				var timer = craver.get_meta("eat_timer") - delta
 				craver.set_meta("eat_timer", timer)
@@ -81,10 +81,11 @@ func _process(delta: float) -> void:
 				if timer <= 0:
 					finish_eating(craver)
 					unregister_craver(craver)
-					craver.queue_free()
+					craver.set_meta("is_eating", false)
+					craver.isGoingToShop = false
 
 func try_register_craver(craver) -> bool:
-	if craverInside + craver.occupancy <= maxCraver and craverType == craver.craverType:
+	if craverInside + craver.occupancy <= maxCraver and craverType == craver.craverType and craver.maxVisit > 0:
 		if craver not in cravers:
 			cravers.append(craver)
 			craverInside += craver.occupancy
@@ -103,6 +104,7 @@ func unregister_craver(craver) -> void:
 		craverInside -= craver.occupancy
 		cravers.erase(craver)
 		craver.assignedShop = null
+		craver.maxVisit -= 1
 		spawn_coin_popup()
 
 
@@ -117,11 +119,12 @@ func spawn_coin_popup() -> void:
 	
 	# posisi random dalam area
 	var offset = Vector2(
-		randf_range(-size.x / 2, size.x / 2),
-		randf_range(-size.y * 2, -size.y)
+		randf_range(0, 2 * size.x),
+		randf_range(-size.y, size.y)
 	)
 
 	var coin = moneyPopup.instantiate()
+	coin.z_index = 1002
 	get_tree().current_scene.add_child(coin)
 	coin.global_position = global_position + offset  
 
@@ -149,19 +152,18 @@ func _on_button_button_up() -> void:
 		
 
 func _on_shop_range_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("Vegan") and not body.is_in_group("Normal"):  # Pastikan body adalah craver
+	if !body.is_in_group(craverType):  # Pastikan body adalah craver
 		return
 		
 	if hasPlaced and body.assignedShop == null:
-		# Coba daftarkan dulu, baru beri tahu craver jika berhasil
 		if try_register_craver(body):
+			body.getShop(self)
 			body.assignedShop = self
 			body.isGoingToShop = true
 			body.target = global_position
 
 
 func _on_shop_range_body_exited(body: Node2D) -> void:
-	body.getShop(self)
 	if hasPlaced:
 		body.assignedShop = null
 		

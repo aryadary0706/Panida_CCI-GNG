@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmoqhek45ookr"]
+[gd_scene load_steps=5 format=3 uid="uid://b2v47lcvx2hse"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_fnegr"]
 [ext_resource type="Texture2D" uid="uid://1ynwn8etughg" path="res://Sprites/test/LimeWorkshops.png" id="2_h31qk"]
@@ -7,13 +7,13 @@
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
-size = Vector2(20.3333, 60.5)
+size = Vector2(19.9998, 59.6667)
 
 [node name="ShopVegan" type="Node2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_fnegr")
 craverType = "Vegan"
-priceToBuy = 95
+priceToBuy = 80
 moneyMade = 50
 placableTileIDs = Array[int]([1])
 
@@ -34,7 +34,6 @@ scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_ocuq0")
 
 [node name="Collision2" type="CollisionShape2D" parent="ShopRange"]
-position = Vector2(-0.0832981, -0.166546)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 

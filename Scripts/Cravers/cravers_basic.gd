@@ -4,6 +4,7 @@ class_name Craver
 @export_enum("Vegan", "Normal") var craverType = "Normal"
 @export var eatingDuration: float = 3.5
 @export var occupancy = 1
+@export var maxVisit = 1
 @export var healthLoss = 10
 @export var moveSpeed = 100
 @onready var navAgent = $Navigation
@@ -12,6 +13,7 @@ class_name Craver
 
 var shopDetected: Node2D
 var assignedShop: Shop = null
+var visitedShops: Array[Shop] = []
 var target: Vector2
 var direction: Vector2
 var endPos: Vector2
@@ -29,11 +31,20 @@ func _ready() -> void:
 		target = Vector2(endPos.x + randOfX, endPos.y + randOfY)
 		navAgent.target_position = target
 
+
+func _process(delta: float) -> void:
+	if maxVisit <= 0:
+		queue_free()
+	if !isGoingToShop:
+		z_index = global_position.y
+	elif isGoingToShop:
+		z_index = 1
+	
 func _physics_process(delta: float) -> void:
 	if isGoingToShop:
 		direction = (target - global_position).normalized()
 	else:
-		navAgent.target_position = target
+		navAgent.target_position = endPos
 		if !navAgent.is_navigation_finished():
 			direction = (navAgent.get_next_path_position() - global_position).normalized()
 	
@@ -46,10 +57,9 @@ func _physics_process(delta: float) -> void:
 		
 
 func getShop(shopDetected):
-	# Hanya respon jika belum memiliki shop dan shop valid
-	if assignedShop == null and shopDetected.hasPlaced and shopDetected.craverType == craverType:
-		# Biarkan shop yang handle registrasi
-		isGoingToShop = false  # Reset dulu, nanti di-set oleh shop jika berhasil
+	if assignedShop == null and shopDetected.hasPlaced and shopDetected.craverType == craverType and !visitedShops.has(shopDetected):
+		visitedShops.append(shopDetected)
+		isGoingToShop = false
 		return true
 	return false
 
@@ -60,7 +70,6 @@ func update_animation() -> void:
 		anim.stop()
 		return
 
-	# pilih animasi sesuai arah dominan
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
 			anim.play("right")
@@ -68,6 +77,6 @@ func update_animation() -> void:
 			anim.play("left")
 	else:
 		if direction.y > 0:
-			anim.play("front") # ke bawah
+			anim.play("front")
 		else:
-			anim.play("back")  # ke atas
+			anim.play("back")
