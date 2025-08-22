@@ -149,7 +149,7 @@ animations = [{
 size = Vector2(3, 3)
 
 [node name="CraversNormal" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_gilto")
 eatingDuration = 4.0
 

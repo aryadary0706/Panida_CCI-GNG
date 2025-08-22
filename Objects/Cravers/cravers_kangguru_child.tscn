@@ -85,7 +85,7 @@ animations = [{
 size = Vector2(3, 3)
 
 [node name="CraversKangguruChild" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_f0lcx")
 eatingDuration = 3.0
 healthLoss = 8

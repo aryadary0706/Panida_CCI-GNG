@@ -145,7 +145,7 @@ animations = [{
 size = Vector2(3, 3)
 
 [node name="CraversVegan" type="CharacterBody2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_est1a")
 craverType = "Vegan"
 eatingDuration = 4.0
