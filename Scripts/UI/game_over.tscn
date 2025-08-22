@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4juj3eefbujs"]
+
+[ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_polbf"]
+[ext_resource type="Script" path="res://Scripts/UI/game_over_ui.gd" id="2_hu50j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0uy1"]
+shader = ExtResource("1_polbf")
+shader_parameter/opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gth6v"]
+shader = ExtResource("1_polbf")
+shader_parameter/opacity = 0.4
+
+[node name="game_over" type="CanvasLayer"]
+
+[node name="GameOverUI" type="Control" parent="."]
+process_mode = 3
+material = SubResource("ShaderMaterial_k0uy1")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hu50j")
+
+[node name="ColorRect" type="ColorRect" parent="GameOverUI"]
+material = SubResource("ShaderMaterial_gth6v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.105882)
+
+[node name="Label" type="Label" parent="GameOverUI"]
+layout_mode = 1
+offset_left = 1046.0
+offset_top = 210.0
+offset_right = 1589.0
+offset_bottom = 347.0
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.0
+offset_top = 35.0
+offset_right = 651.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 250
+
+[node name="restart" type="Button" parent="GameOverUI/HBoxContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 80
+text = "Play Again"
+
+[node name="quit" type="Button" parent="GameOverUI/HBoxContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Exit Level"
+
+[connection signal="pressed" from="GameOverUI/HBoxContainer/restart" to="GameOverUI" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverUI/HBoxContainer/quit" to="GameOverUI" method="_on_quit_pressed"]

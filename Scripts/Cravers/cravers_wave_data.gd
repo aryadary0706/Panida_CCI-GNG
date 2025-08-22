@@ -79,7 +79,14 @@ var wave_data = [
 	},
 ]
 
+
 func get_wave_data(index: int) -> Dictionary:
 	if index >= 0 and index < wave_data.size():
 		return wave_data[index]
 	return {}
+
+func get_wave_data_size() -> int:
+	var jumlah_cravers = 0
+	for i in range(wave_data.size()):
+		jumlah_cravers += wave_data[i]["max_spawn"]
+	return jumlah_cravers

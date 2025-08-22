@@ -5,8 +5,9 @@ extends Node2D
 @onready var enemy_container: Node2D = $"../Enemy"
 @onready var wave_data: Node = $WaveData
 
-signal game_ended
-
+@export var build_phase_wait_time: float = 10.0
+@export var spawn_timer_wait_time: float = 0.5
+#signal game_ended
 
 const ENEMY_SCENES := {
 	"normal": preload("res://Objects/Cravers/cravers_normal.tscn"),
@@ -21,14 +22,25 @@ var max_enemy : int
 var is_wave_active: bool = false
 var is_wave_over: bool = false
 var current_wave_data: Array
+var game_started: bool = false
 var current_wave = 0
 var max_wave = 0
+var current_max_spawn : int
 
 func _ready():
 	randomize()
+	build_phase_timer.wait_time = build_phase_wait_time
+	spawn_timer.wait_time = spawn_timer_wait_time
+	max_enemy = wave_data.get_wave_data_size()
 	start_build_phase()
 
+func _process(delta: float) -> void:
+	if current_wave != 0:
+		check_victory()
+
 func start_build_phase():
+	is_wave_over = true
+	is_wave_active = false
 	print("Fase Build dimulai. berlangsung selama ", build_phase_timer.wait_time, " s")
 	build_phase_timer.start()
 
@@ -40,29 +52,29 @@ func start_wave() -> void:
 		return
 	
 	spawn_count = 0
+	current_max_spawn = 0
 	is_wave_active = true
+	is_wave_over = false
 	current_wave_data.clear()
-	var total_enemies = 0
 	
 	for troops in wave["enemies"]:
 		for i in range(troops["count"]):
 			current_wave_data.append(troops["type"])
-		total_enemies += troops["count"]
+		current_max_spawn += troops["count"]
 	current_wave_data.shuffle()
-	max_enemy = total_enemies
 	current_wave += 1
 	spawn_timer.start()
-	print("Wave %d dimulai dengan %d musuh!" % [current_wave, max_enemy])
+	print("Wave %d dimulai dengan %d musuh!" % [current_wave, current_max_spawn])
 
 
 # --- CALLBACKS ---
 func _on_spawn_timer_timeout() -> void:
 	if is_wave_active:
-		if spawn_count < max_enemy:
+		if spawn_count < current_max_spawn:
 			var enemy_type = current_wave_data[spawn_count]
 			spawn_enemy(enemy_type)
 			spawn_count += 1
-			print("Spawn %s (%d/%d)" % [enemy_type, spawn_count, max_enemy])
+			print("Spawn %s (%d/%d)" % [enemy_type, spawn_count, current_max_spawn])
 		else:
 			is_wave_active = false
 			spawn_timer.stop()
@@ -84,3 +96,7 @@ func spawn_enemy(enemy_type: String) -> void:
 		print("Musuh '", enemy_type, "' berhasil di-spawn.")
 	else:
 		push_warning("Tipe musuh tidak ditemukan!")
+
+func check_victory():
+	if not is_wave_active and enemy_container.get_child_count() == 0 and current_wave >= max_wave:
+		$"../WinCondition".get_node("Win").show()
