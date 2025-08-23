@@ -15,6 +15,7 @@ script = ExtResource("1_fnegr")
 craverType = "Vegan"
 priceToBuy = 80
 moneyMade = 50
+delay_time = 3.0
 placableTileIDs = Array[int]([1])
 
 [node name="ShopBody" type="Area2D" parent="."]
@@ -54,9 +55,12 @@ offset_bottom = 8.0
 button_mask = 7
 metadata/_edit_use_anchors_ = true
 
+[node name="DelayTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
 [connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
