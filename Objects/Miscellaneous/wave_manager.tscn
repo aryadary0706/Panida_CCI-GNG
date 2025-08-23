@@ -4,6 +4,8 @@
 
 [node name="WaveManager" type="Node2D"]
 script = ExtResource("1_retrh")
+build_phase_wait_time = 14.0
+spawn_timer_wait_time = 0.3
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.75

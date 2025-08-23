@@ -1,80 +1,92 @@
 extends Node
 #Wave data 1
+#Musuh yang ada: NT1, VT1, GLT, KGR
 var wave_data = [
 	# Wave 1
 	{
 		"max_spawn": 10,
 		"enemies": [
-			{ "type": "normal", "count": 6 },
-			{ "type": "vegan", "count": 4 }
+			{ "type": "NT1", "count": 7 },
+			{ "type": "VT1", "count": 3 }
 		]
 	},
 	# Wave 2
 	{
 		"max_spawn": 10,
 		"enemies": [
-			{ "type": "normal", "count": 6 },
-			{ "type": "vegan", "count": 4 }
+			{ "type": "NT1", "count": 5 },
+			{ "type": "VT1", "count": 5 }
 		]
 	},
 	# Wave 3
 	{
 		"max_spawn": 10,
 		"enemies": [
-			{ "type": "normal", "count": 5 },
-			{ "type": "vegan", "count": 5 }
+			{ "type": "NT1", "count": 5 },
+			{ "type": "VT1", "count": 4 },
+			{ "type": "GLT", "count" : 1}
 		]
 	},
+	# Wave 4
 	{
 		"max_spawn": 15,
 		"enemies": [
-			{ "type": "normal", "count": 10 },
-			{ "type": "vegan", "count": 5 }
+			{ "type": "NT1", "count": 8 },
+			{ "type": "VT1", "count": 7 }
 		]
 	},
+	# Wave 5
 	{
 		"max_spawn": 15,
 		"enemies": [
-			{ "type": "normal", "count": 10 },
-			{ "type": "vegan", "count": 5 }
+			{ "type": "NT1", "count": 3 },
+			{ "type": "VT1", "count": 12 },
 		]
 	},
+	# Wave 6
 	{
 		"max_spawn": 15,
 		"enemies": [
-			{ "type": "normal", "count": 8 },
-			{ "type": "vegan", "count": 5 },
-			{ "type": "glutton", "count": 2 },
+			{ "type": "NT1", "count": 8 },
+			{ "type": "VT1", "count": 7 }
 		]
 	},
+	# Wave 7
 	{
 		"max_spawn": 15,
 		"enemies": [
-			{ "type": "normal", "count": 8 },
-			{ "type": "vegan", "count": 5 },
-			{ "type": "glutton", "count": 2 },
+			{ "type": "NT1", "count": 6 },
+			{ "type": "GLT", "count": 3 },
+			{ "type": "VT1", "count": 6 },
+			
 		]
 	},
+	# Wave 8
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "normal", "count": 14 },
-			{ "type": "vegan", "count": 6 },
+			{ "type": "NT1", "count": 9 },
+			{ "type": "VT1", "count": 9 },
+			{ "type": "GLT", "count": 2 },
 		]
 	},
+	# Wave 9
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "normal", "count": 10 },
-			{ "type": "vegan", "count": 10 },
+			{ "type": "NT1", "count": 8 },
+			{ "type": "VT1", "count": 8 },
+			{ "type": "GLT", "count": 4 },
 		]
 	},
+	# Wave 10
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "normal", "count": 10 },
-			{ "type": "vegan", "count": 8 },
-			{ "type": "glutton", "count": 2 },
+			{ "type": "NT1", "count": 9 },
+			{ "type": "VT1", "count": 9 },
+			{ "type": "GLT", "count": 1 },
+			{ "type": "KGR", "count": 1 },
 		]
 	},
 ]

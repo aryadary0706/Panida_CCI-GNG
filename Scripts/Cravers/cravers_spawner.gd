@@ -10,10 +10,14 @@ extends Node2D
 #signal game_ended
 
 const ENEMY_SCENES := {
-	"normal": preload("res://Objects/Cravers/cravers_normal.tscn"),
-	"vegan": preload("res://Objects/Cravers/cravers_vegan.tscn"),
-	"glutton": preload("res://Objects/Cravers/cravers_glutton.tscn"),
-	"kangguru": preload("res://Objects/Cravers/cravers_kangguru_mom.tscn")
+	"NT1": preload("res://Objects/Cravers/cravers_normal.tscn"),
+	"VT1": preload("res://Objects/Cravers/cravers_vegan.tscn"),
+	"GLT": preload("res://Objects/Cravers/cravers_glutton.tscn"),
+	"KGR": preload("res://Objects/Cravers/cravers_kangguru_mom.tscn"),
+	"NT2": preload("res://Objects/Cravers/cravers_normalT2.tscn"),
+	"NRU": preload("res://Objects/Cravers/cravers_normal_runner.tscn"),
+	"VT2": preload("res://Objects/Cravers/cravers_veganT2.tscn"),
+	"VRU": preload("res://Objects/Cravers/cravers_vegan_runner.tscn")
 }
 
 # --- STATE ---
