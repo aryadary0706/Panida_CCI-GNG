@@ -43,7 +43,7 @@ func _draw():
 	
 	var fnt := get_theme_default_font()
 	if fnt:
-		var font_size = 24
+		var font_size = 60
 		var text_size = fnt.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
 		var pos = Vector2(
 			(w - text_size.x) * 0.5,
@@ -58,4 +58,4 @@ func _size_changed():
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	get_tree().quit()

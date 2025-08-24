@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_vll6b"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_gv56d"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_lmmmt"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_3havt"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_3havt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)

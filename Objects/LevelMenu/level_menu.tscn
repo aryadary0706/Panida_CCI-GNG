@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtc3cs1bnm8w2"]
+
+[ext_resource type="PackedScene" uid="uid://dhqohi5o505yp" path="res://Objects/LevelMenu/buttonlvl_1.tscn" id="1_qahjb"]
+[ext_resource type="PackedScene" uid="uid://cclw1qxh5oknq" path="res://Objects/LevelMenu/buttonlvl_2.tscn" id="2_77fkg"]
+[ext_resource type="PackedScene" uid="uid://cw3qf30hpdifx" path="res://Objects/LevelMenu/buttonlvl_3.tscn" id="3_gqkrx"]
+[ext_resource type="Script" path="res://Scripts/LevelMenu/back_button.gd" id="4_rivnm"]
+
+[node name="Level Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttonlvl_1" parent="." instance=ExtResource("1_qahjb")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 438.0
+offset_right = 807.0
+offset_bottom = 817.0
+
+[node name="Buttonlvl_2" parent="." instance=ExtResource("2_77fkg")]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 438.0
+offset_right = 1594.0
+offset_bottom = 817.0
+
+[node name="Buttonlvl_3" parent="." instance=ExtResource("3_gqkrx")]
+layout_mode = 0
+offset_left = 1754.0
+offset_top = 438.0
+offset_right = 2385.0
+offset_bottom = 817.0
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 62.0
+offset_right = 258.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 80
+text = "Back"
+script = ExtResource("4_rivnm")
+
+[connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]
