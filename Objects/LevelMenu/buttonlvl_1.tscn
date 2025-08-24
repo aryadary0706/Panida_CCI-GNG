@@ -17,6 +17,7 @@ offset_top = 139.0
 offset_right = 591.0
 offset_bottom = 347.0
 focus_mode = 0
+text = "asdasd"
 script = ExtResource("1_qjulp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -37,6 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fr0bx")
 
 [node name="Label" type="Label" parent="."]

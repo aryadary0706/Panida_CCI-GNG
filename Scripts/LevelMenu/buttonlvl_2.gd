@@ -8,5 +8,5 @@ func _ready():
 		disabled = true
 
 func _on_pressed() -> void:
-	if not disabled:
-		get_tree().change_scene_to_file(level_scene)
+	#if not disabled:
+	get_tree().change_scene_to_file(level_scene)
