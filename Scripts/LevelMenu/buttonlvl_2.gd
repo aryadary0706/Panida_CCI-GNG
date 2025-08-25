@@ -9,4 +9,6 @@ func _ready():
 
 func _on_pressed() -> void:
 	#if not disabled:
+	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	MusicPlayer.stop_music()
 	get_tree().change_scene_to_file(level_scene)

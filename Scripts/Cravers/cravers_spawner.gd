@@ -97,10 +97,12 @@ func spawn_enemy(enemy_type: String) -> void:
 		var enemy_scene = ENEMY_SCENES[enemy_type]
 		var enemy_instance = enemy_scene.instantiate()
 		enemy_container.add_child(enemy_instance)
+		SfxPlayer.play_music(preload("res://audio/CraverSpawn.ogg"))
 		print("Musuh '", enemy_type, "' berhasil di-spawn.")
 	else:
 		push_warning("Tipe musuh tidak ditemukan!")
 
 func check_victory():
 	if not is_wave_active and enemy_container.get_child_count() == 0 and current_wave >= max_wave:
+		SfxPlayer.play_music(preload("res://audio/LevelComplete.ogg"))
 		$"../WinCondition".get_node("Win").show()

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctwaenq7iw1pb"]
+[gd_scene load_steps=6 format=3 uid="uid://ctwaenq7iw1pb"]
 
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
 [ext_resource type="Script" path="res://scenes/pole.gd" id="1_nen0b"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/option_button.gd" id="3_my7hd"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_46yfs")
 
 [node name="SignPost" type="Control" parent="."]
 layout_mode = 1

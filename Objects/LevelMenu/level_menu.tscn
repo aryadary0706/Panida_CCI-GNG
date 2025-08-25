@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtc3cs1bnm8w2"]
+[gd_scene load_steps=6 format=3 uid="uid://dtc3cs1bnm8w2"]
 
+[ext_resource type="Script" path="res://Scripts/LevelMenu/level_menu.gd" id="1_6t4q6"]
 [ext_resource type="PackedScene" uid="uid://dhqohi5o505yp" path="res://Objects/LevelMenu/buttonlvl_1.tscn" id="1_qahjb"]
 [ext_resource type="PackedScene" uid="uid://cclw1qxh5oknq" path="res://Objects/LevelMenu/buttonlvl_2.tscn" id="2_77fkg"]
 [ext_resource type="PackedScene" uid="uid://cw3qf30hpdifx" path="res://Objects/LevelMenu/buttonlvl_3.tscn" id="3_gqkrx"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6t4q6")
 
 [node name="Buttonlvl_1" parent="." instance=ExtResource("1_qahjb")]
 layout_mode = 0

@@ -7,6 +7,7 @@ func _ready() -> void:
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
+		SfxPlayer.play_music(preload("res://audio/CraverLolos.ogg"))
 		body.queue_free()
 		Global.Health -= body.healthLoss
 		print("You have ", Global.Health, " health left")
@@ -39,6 +40,7 @@ func game_over() -> void:
 	#canvas_layer.add_child(color_rect)
 	#get_tree().root.add_child(canvas_layer)
 	$"../game_over".get_node("GameOverUI").show()
+	SfxPlayer.play_music(preload("res://audio/LevelFailed.ogg"))
 	
 
 	print("GAME OVER")

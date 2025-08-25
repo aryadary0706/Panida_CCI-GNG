@@ -143,6 +143,8 @@ func finish_eating(craver) -> void:
 	
 
 func spawn_coin_popup() -> void:
+	SfxPlayer.play_music(preload("res://audio/coin.ogg"))
+	
 	var rect_shape: RectangleShape2D = shopArea.shape
 	var size: Vector2 = rect_shape.extents * 2.0
 	
