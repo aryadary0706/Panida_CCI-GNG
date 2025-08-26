@@ -2,7 +2,20 @@ extends Node2D
 
 @export var shopScene: PackedScene
 var spawnedShop: Shop = null
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var priceLabel: RichTextLabel = $PriceLabel
 
+
+func _ready() -> void:
+	z_index = 1008
+	if shopScene != null:
+		var tempShop = shopScene.instantiate()
+		var tempSprite = tempShop.get_node("Sprite2D")
+		sprite.texture = tempSprite.texture
+		priceLabel.text = "[fill]" + str(tempShop.priceToBuy) + "[/fill]"
+		priceLabel.bbcode_enabled = true
+		tempShop.queue_free()
+	
 func get_shop_price(scene: PackedScene) -> int:
 	var temp_shop = scene.instantiate() as Shop
 	var price = temp_shop.priceToBuy

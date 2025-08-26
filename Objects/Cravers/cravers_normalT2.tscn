@@ -150,12 +150,13 @@ size = Vector2(3, 3)
 
 [node name="CraversNormal" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_abvch")
 eatingDuration = 5.5
 occupancy = 2
 maxVisit = 2
 healthLoss = 13
-moveSpeed = 220
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, -4)

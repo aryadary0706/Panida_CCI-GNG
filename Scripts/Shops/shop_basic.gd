@@ -1,6 +1,8 @@
 extends Node2D
-class_name Shop
 
+
+class_name Shop
+signal shop_placed
 const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 
 @export_enum("Vegan", "Normal", "All") var craverType = "Normal"
@@ -13,6 +15,7 @@ const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 @onready var tilemap_layer: TileMapLayer = get_tree().current_scene.find_child("PathAndObstacle", true, false)
 @onready var shopArea: CollisionShape2D = $ShopBody/Collision
 @onready var delay_timer: Timer = $DelayTimer  
+@onready var sprite: Sprite2D = $Sprite2D
 var cravers: Array = []
 var craverInside = 0
 var isDragging = false
@@ -30,7 +33,7 @@ func _ready() -> void:
 
 
 func start_delay() -> void:
-	if not isWaitingDelay:
+	if not isWaitingDelay && !hasPlaced:
 		# cek uang lebih dulu
 		if Global.Money >= priceToBuy:
 			Global.Money -= priceToBuy
@@ -41,7 +44,7 @@ func start_delay() -> void:
 
 		isWaitingDelay = true
 		delay_timer.start()
-		modulate = Color(1, 1, 0.5, 0.7)  # kuning artinya masih dibangun
+		sprite.modulate = Color(1, 1, 0.5, 0.7)  # kuning artinya masih dibangun
 		print("Shop delay started...")
 
 
@@ -49,8 +52,12 @@ func start_delay() -> void:
 func _on_delay_timer_timeout() -> void:
 	isWaitingDelay = false
 	hasPlaced = true
-	modulate = Color(1, 1, 1, 1) # balik ke normal (aktif)
+	sprite.modulate = Color(1, 1, 1, 1) # balik ke normal (aktif)
 	print("Shop placed successfully after delay.")
+	get_node("DelayTimer").queue_free()
+	SfxPlayer.play_music(preload("res://audio/PlaceBuilding.ogg"))
+	emit_signal("shop_placed")
+	
 
 
 func checkPlacableTile() -> bool:
@@ -86,11 +93,11 @@ func _process(delta: float) -> void:
 	
 	if !isDragging and !isOverlapping and canPlace:
 		if not isWaitingDelay and not hasPlaced:
-			modulate = Color(1, 1, 1, 1) 
+			sprite.modulate = Color(1, 1, 1, 1) 
 	elif isDragging and canPlace and !isOverlapping:
-		modulate = Color(0.5, 1, 0.5, 0.5)
+		sprite.modulate = Color(0.5, 1, 0.5, 0.5)
 	elif !canPlace:
-		modulate = Color(1, 0.5, 0.5, 0.5)
+		sprite.modulate = Color(1, 0.5, 0.5, 0.5)
 
 
 	# loop cravers tetap
@@ -172,7 +179,7 @@ func _on_button_button_up() -> void:
 	if isOverlapping or !canPlace:
 		queue_free()
 	elif !hasPlaced and !isWaitingDelay:
-		start_delay()   # <== sekarang mulai delay alih-alih langsung placed
+		start_delay()
 	else:
 		pass
 		
@@ -195,11 +202,12 @@ func _on_shop_range_body_exited(body: Node2D) -> void:
 		
 
 func _on_shop_body_area_entered(area: Area2D) -> void:
-	var other_shop = area.get_parent()
-	if other_shop.is_in_group("Shops") && other_shop != self:
+	var otherShop = area.get_parent()
+	var otherShopSprite = otherShop.get_node("Sprite2D")
+	if area.name == "ShopBody" && otherShop != self:
 		isOverlapping = true
-		if !other_shop.hasPlaced:
-			other_shop.modulate = Color(1, 0.5, 0.5, 0.5)
+		if !otherShop.hasPlaced:
+			otherShopSprite.modulate = Color(1, 0.5, 0.5, 0.5)
 			print("overlap? ", isOverlapping)
 
 

@@ -8,6 +8,8 @@ radius = 7.01783
 
 [node name="CraversBasic" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_352bh")
 
 [node name="Collision" type="CollisionShape2D" parent="."]

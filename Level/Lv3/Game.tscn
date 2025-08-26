@@ -1,17 +1,16 @@
-[gd_scene load_steps=42 format=4 uid="uid://civy7i8ouehfq"]
+[gd_scene load_steps=41 format=4 uid="uid://civy7i8ouehfq"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_nk3w1"]
 [ext_resource type="Texture2D" uid="uid://q4dgvvt5l6mu" path="res://Sprites/vectoraith_tileset_farming_sim_essentials/32x32/Tilesets (Modular)/vectoraith_tileset_farmingsims_terrain_summer_expanded_32x32.png" id="2_egb5j"]
 [ext_resource type="Texture2D" uid="uid://cojosiiidgikd" path="res://Sprites/vectoraith_tileset_farming_sim_essentials/32x32/Tilesets (Modular)/vectoraith_tileset_farmingsims_terrain_spring_expanded_32x32.png" id="3_0yjhp"]
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_e7bpj"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_4ymok"]
-[ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop_normal.tscn" id="6_5aqyv"]
+[ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="6_5aqyv"]
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data3.gd" id="6_v73gq"]
-[ext_resource type="PackedScene" uid="uid://v7lgdi8qerug" path="res://Objects/Shops/spawner_shop_vegan.tscn" id="7_p5y46"]
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_vll6b"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_gv56d"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_lmmmt"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_3havt"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_3havt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)
@@ -1852,9 +1851,19 @@ position = Vector2(1730, -19)
 position = Vector2(2336, 64)
 scale = Vector2(4, 4)
 
-[node name="SpawnerShopVegan" parent="." instance=ExtResource("7_p5y46")]
+[node name="SpawnerShopVegan" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(2432, 64)
 scale = Vector2(4, 4)
+script = null
 
 [node name="UiMoney" parent="." instance=ExtResource("8_vll6b")]
 offset_left = 1984.0

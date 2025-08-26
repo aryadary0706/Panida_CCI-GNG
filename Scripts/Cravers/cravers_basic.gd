@@ -6,7 +6,7 @@ class_name Craver
 @export var occupancy = 1
 @export var maxVisit = 1
 @export var healthLoss = 10
-@export var moveSpeed = 100
+@export var moveSpeed = 100.0
 @onready var navAgent = $Navigation
 @onready var anim = $Sprite2D
 
@@ -22,7 +22,7 @@ var hasAssignedShop = false
 var isGoingToShop: bool = false
 
 func _ready() -> void:
-	add_to_group(craverType)
+	add_to_group(craverType)	
 	var end_goal = get_tree().root.get_node("Game/EndGoal")
 	if end_goal:
 		var randOfX = randf_range(-15, 15)
