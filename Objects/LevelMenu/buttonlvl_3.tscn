@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw3qf30hpdifx"]
+[gd_scene load_steps=5 format=3 uid="uid://cw3qf30hpdifx"]
 
 [ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl_3.gd" id="1_ve53x"]
-[ext_resource type="Texture2D" uid="uid://dc7s0qnm2u2l3" path="res://bg_picture/PreviewLvL3.png" id="2_w86e5"]
+[ext_resource type="Texture2D" uid="uid://dc7s0qnm2u2l3" path="res://assets/bg_picture/PreviewLvL3.png" id="2_w86e5"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_mu2wd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr0bx"]
 draw_center = false
@@ -47,14 +48,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -117.0
-offset_top = -96.0
-offset_right = 117.0
+offset_left = -127.0
+offset_top = -59.0
+offset_right = 128.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 70
+theme_override_fonts/font = ExtResource("3_mu2wd")
+theme_override_font_sizes/font_size = 60
 text = "Level 3"
 horizontal_alignment = 1
 
