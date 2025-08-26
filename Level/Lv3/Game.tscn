@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://civy7i8ouehfq"]
+[gd_scene load_steps=42 format=4 uid="uid://civy7i8ouehfq"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_nk3w1"]
 [ext_resource type="Texture2D" uid="uid://q4dgvvt5l6mu" path="res://Sprites/vectoraith_tileset_farming_sim_essentials/32x32/Tilesets (Modular)/vectoraith_tileset_farmingsims_terrain_summer_expanded_32x32.png" id="2_egb5j"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_vll6b"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_gv56d"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_lmmmt"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_3havt"]
+[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://scenes/pause_menu.tscn" id="11_undqs"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_3havt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)
@@ -1861,5 +1862,9 @@ offset_bottom = 32.0
 position = Vector2(1730, -19)
 
 [node name="game_over" parent="." instance=ExtResource("11_lmmmt")]
+
+[node name="Pause" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="Pause" instance=ExtResource("11_undqs")]
 
 [node name="WinCondition" parent="." instance=ExtResource("12_3havt")]

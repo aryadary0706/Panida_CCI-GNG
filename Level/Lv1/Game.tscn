@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_7w7nw"]
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_wl8p7"]
-[ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="4_ynmec"]
+[ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://scenes/path_and_obstacle.tscn" id="4_ynmec"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_igrqf"]
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data.gd" id="6_5b340"]
 [ext_resource type="PackedScene" uid="uid://bq5pgww5j5xu2" path="res://Objects/Shops/spawner_shop.tscn" id="6_do4o0"]
@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_etu8b"]
 [ext_resource type="PackedScene" uid="uid://b2v47lcvx2hse" path="res://Objects/Shops/shop_vegan.tscn" id="11_qsbsy"]
 [ext_resource type="PackedScene" uid="uid://d36ola0jjvg0j" path="res://Objects/Shops/shop_seblak.tscn" id="12_o20s4"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_vjuns"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_vjuns"]
 [ext_resource type="PackedScene" uid="uid://3f0fp1m0issr" path="res://Objects/Shops/shop_gado2.tscn" id="13_q2fxn"]
 [ext_resource type="PackedScene" uid="uid://b8l70kqk05cpo" path="res://Objects/Shops/shop_ice_cream.tscn" id="14_ogmqd"]
-[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="15_nclsd"]
+[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://scenes/pause_menu.tscn" id="15_nclsd"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_7w7nw")
