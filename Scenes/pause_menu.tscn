@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/pause_menu.gd" id="1_7i6nf"]
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="2_ul6ee"]
 [ext_resource type="Texture2D" uid="uid://cifxaaiigcp0y" path="res://Sprites/DEMO-vector-rpg-overworld-tileset/tree_2.png" id="3_jmvqu"]
-[ext_resource type="Theme" uid="uid://dhdvh1arbn8jv" path="res://blue_button.tres" id="4_v6hul"]
+[ext_resource type="Theme" uid="uid://wgf74l7ga33b" path="res://blue_button.tres" id="4_v6hul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_inwgf"]
 shader = ExtResource("2_ul6ee")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d36ola0jjvg0j"]
+[gd_scene load_steps=8 format=3 uid="uid://232bpxhfwr6a"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_5e756"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_rwheo"]

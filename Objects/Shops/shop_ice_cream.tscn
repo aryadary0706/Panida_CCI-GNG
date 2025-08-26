@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8l70kqk05cpo"]
+[gd_scene load_steps=8 format=3 uid="uid://cxsxosmgxw1vh"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_rpe4b"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_ice_cream.gd" id="2_wbeee"]

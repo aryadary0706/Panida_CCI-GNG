@@ -1,6 +1,4 @@
 extends Node2D
-
-
 class_name Shop
 signal shop_placed
 const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
@@ -31,10 +29,8 @@ func _ready() -> void:
 	z_index = 1000
 	delay_timer.wait_time = delay_time
 
-
 func start_delay() -> void:
 	if not isWaitingDelay && !hasPlaced:
-		# cek uang lebih dulu
 		if Global.Money >= priceToBuy:
 			Global.Money -= priceToBuy
 		else:
@@ -44,21 +40,17 @@ func start_delay() -> void:
 
 		isWaitingDelay = true
 		delay_timer.start()
-		sprite.modulate = Color(1, 1, 0.5, 0.7)  # kuning artinya masih dibangun
+		sprite.modulate = Color(1, 1, 0.5, 0.7)
 		print("Shop delay started...")
 
-
-# callback setelah timer selesai
 func _on_delay_timer_timeout() -> void:
 	isWaitingDelay = false
 	hasPlaced = true
-	sprite.modulate = Color(1, 1, 1, 1) # balik ke normal (aktif)
+	sprite.modulate = Color(1, 1, 1, 1)
 	print("Shop placed successfully after delay.")
 	get_node("DelayTimer").queue_free()
 	SfxPlayer.play_music(preload("res://audio/PlaceBuilding.ogg"))
 	emit_signal("shop_placed")
-	
-
 
 func checkPlacableTile() -> bool:
 	if !tilemap_layer or !shopArea:
@@ -67,7 +59,7 @@ func checkPlacableTile() -> bool:
 	var rect_shape: RectangleShape2D = shopArea.shape
 	var extents: Vector2 = rect_shape.extents
 	var offsets = [
-		Vector2(0, 0), # pusat
+		Vector2(0, 0),
 		Vector2(-extents.x, -extents.y),
 		Vector2(extents.x, -extents.y),
 		Vector2(-extents.x, extents.y),
@@ -84,7 +76,6 @@ func checkPlacableTile() -> bool:
 	
 	return true
 
-
 func _process(delta: float) -> void:
 	if isDragging and not hasPlaced:
 		position = get_global_mouse_position().snapped(Vector2(snap, snap))
@@ -99,8 +90,7 @@ func _process(delta: float) -> void:
 	elif !canPlace:
 		sprite.modulate = Color(1, 0.5, 0.5, 0.5)
 
-
-	# loop cravers tetap
+	# Proses cravers yang sedang makan
 	for i in range(cravers.size() - 1, -1, -1):
 		var craver = cravers[i]
 		
@@ -122,32 +112,28 @@ func _process(delta: float) -> void:
 					craver.set_meta("is_eating", false)
 					craver.isGoingToShop = false
 
-
+# Fungsi ini sekarang hanya mengecek kapasitas, tidak memilih craver
 func try_register_craver(craver) -> bool:
-	if craverInside + craver.occupancy <= maxCraver and craverType == craver.craverType and craver.maxVisit > 0:
+	if craverInside + craver.occupancy <= maxCraver:
 		if craver not in cravers:
 			cravers.append(craver)
 			craverInside += craver.occupancy
-			craver.assignedShop = self
 			return true
 	return false
-
 
 func unregister_craver(craver) -> void:
 	if not is_instance_valid(craver):
 		return
 	
-	if craver in cravers and craver.assignedShop == self:
+	if craver in cravers:
 		craverInside -= craver.occupancy
 		cravers.erase(craver)
-		craver.assignedShop = null
 		craver.maxVisit -= 1
 		spawn_coin_popup()
 
-
 func finish_eating(craver) -> void:
 	Global.Money += moneyMade * craver.occupancy
-	
+	craver.on_finished_eating()
 
 func spawn_coin_popup() -> void:
 	SfxPlayer.play_music(preload("res://audio/coin.ogg"))
@@ -168,8 +154,7 @@ func spawn_coin_popup() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(coin, "position", coin.position + Vector2(0, -50), 0.8)
 	tween.parallel().tween_property(coin, "modulate:a", 0.0, 0.8)
-	tween.tween_callback(Callable(coin, "queue_free"))
-
+	tween.tween_callback(coin.queue_free)
 
 func _on_button_button_down() -> void:
 	isDragging = true
@@ -180,36 +165,25 @@ func _on_button_button_up() -> void:
 		queue_free()
 	elif !hasPlaced and !isWaitingDelay:
 		start_delay()
-	else:
-		pass
-		
+
 
 func _on_shop_range_body_entered(body: Node2D) -> void:
-	if !body.is_in_group(craverType):
-		return
-		
-	if hasPlaced and body.assignedShop == null:
-		if try_register_craver(body):
-			body.getShop(self)
-			body.assignedShop = self
-			body.isGoingToShop = true
-			body.target = global_position
-
+	if body is Craver:
+		body.add_available_shop(self)
 
 func _on_shop_range_body_exited(body: Node2D) -> void:
-	if hasPlaced:
-		body.assignedShop = null
-		
+	pass
 
 func _on_shop_body_area_entered(area: Area2D) -> void:
 	var otherShop = area.get_parent()
+	if otherShop is not Shop:
+		return
+
 	var otherShopSprite = otherShop.get_node("Sprite2D")
-	if area.name == "ShopBody" && otherShop != self:
+	if area.name == "ShopBody" && area != self:
 		isOverlapping = true
 		if !otherShop.hasPlaced:
 			otherShopSprite.modulate = Color(1, 0.5, 0.5, 0.5)
-			print("overlap? ", isOverlapping)
-
 
 func _on_shop_body_area_exited(area: Area2D) -> void:
 	isOverlapping = false

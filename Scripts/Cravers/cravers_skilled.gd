@@ -7,9 +7,6 @@ const ChildScene: PackedScene = preload("res://Objects/Cravers/cravers_kangguru_
 @export var spawn_offset: float = 16.0
 var _children_spawned := false
 
-func getShop(shopDetected):
-	return super.getShop(shopDetected)
-
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	if not _children_spawned and assignedShop != null:
