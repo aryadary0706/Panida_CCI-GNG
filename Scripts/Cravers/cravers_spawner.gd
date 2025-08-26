@@ -4,6 +4,9 @@ extends Node2D
 @onready var build_phase_timer: Timer = $BuildPhaseTimer
 @onready var enemy_container: Node2D = $"../Enemy"
 @onready var wave_data: Node = $WaveData
+@onready var win_condition: CanvasLayer = $"../WinCondition"
+
+
 
 @export var build_phase_wait_time: float = 10.0
 @export var spawn_timer_wait_time: float = 0.5
@@ -30,17 +33,18 @@ var game_started: bool = false
 var current_wave = 0
 var max_wave = 0
 var current_max_spawn : int
+var current_enemy = 0
 
 func _ready():
 	randomize()
 	build_phase_timer.wait_time = build_phase_wait_time
 	spawn_timer.wait_time = spawn_timer_wait_time
-	max_enemy = wave_data.get_wave_data_size()
+	max_enemy = wave_data.get_max_craver_spawn()
+	max_wave = wave_data.get_wave_data_size()
 	start_build_phase()
 
 func _process(delta: float) -> void:
-	if current_wave != 0:
-		check_victory()
+	check_victory()
 
 func start_build_phase():
 	is_wave_over = true
@@ -97,6 +101,7 @@ func spawn_enemy(enemy_type: String) -> void:
 		var enemy_scene = ENEMY_SCENES[enemy_type]
 		var enemy_instance = enemy_scene.instantiate()
 		enemy_container.add_child(enemy_instance)
+		current_enemy += 1
 		SfxPlayer.play_music(preload("res://audio/CraverSpawn.ogg"))
 		print("Musuh '", enemy_type, "' berhasil di-spawn.")
 	else:
@@ -104,5 +109,4 @@ func spawn_enemy(enemy_type: String) -> void:
 
 func check_victory():
 	if not is_wave_active and enemy_container.get_child_count() == 0 and current_wave >= max_wave:
-		SfxPlayer.play_music(preload("res://audio/LevelComplete.ogg"))
-		$"../WinCondition".get_node("Win").show()
+		get_parent().get_node("WinCondition/Win").play_scene()

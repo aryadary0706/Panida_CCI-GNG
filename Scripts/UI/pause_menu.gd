@@ -16,9 +16,11 @@ func _unhandled_input(event):
 func pause_game():
 	show()
 	get_tree().paused = true
+	SfxPlayer.play_music(preload("res://audio/click.ogg"))
 
 func resume_game():
 	get_tree().paused = false
+	SfxPlayer.play_music(preload("res://audio/click.ogg"))
 	hide()
 
 # --- Tombol ---

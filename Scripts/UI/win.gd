@@ -6,4 +6,9 @@ func _ready() -> void:
 	hide()
 
 func _on_back_pressed() -> void:
-	get_tree().quit()
+	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	get_tree().change_scene_to_file("res://Objects/LevelMenu/level_menu.tscn")
+
+func play_scene():
+	show()
+	MusicPlayer.play_music(preload("res://audio/LevelComplete.ogg"))

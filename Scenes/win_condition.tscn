@@ -1,14 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dria7dvewpyuj"]
+[gd_scene load_steps=6 format=3 uid="uid://dria7dvewpyuj"]
 
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_ryelr"]
 [ext_resource type="Script" path="res://Scripts/UI/win.gd" id="1_ujh2o"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_5feap"]
+[ext_resource type="Theme" uid="uid://dhdvh1arbn8jv" path="res://blue_button.tres" id="3_j0ncs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1t0q3"]
 shader = ExtResource("1_ryelr")
 shader_parameter/opacity = 0.45
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blrt0"]
-bg_color = Color(0.881937, 0.881937, 0.881937, 1)
 
 [node name="WinCondition" type="CanvasLayer"]
 
@@ -38,14 +37,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -154.0
-offset_top = -293.0
-offset_right = 121.0
-offset_bottom = -203.0
+offset_left = -573.0
+offset_top = -337.0
+offset_right = 560.0
+offset_bottom = -247.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 65
-text = "You Win!"
+theme_override_fonts/font = ExtResource("3_5feap")
+theme_override_font_sizes/font_size = 80
+text = "You Finished this Level!"
 
 [node name="back" type="Button" parent="Win"]
 custom_minimum_size = Vector2(500, 150)
@@ -61,9 +61,7 @@ offset_right = 248.0
 offset_bottom = -561.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 65
-theme_override_styles/normal = SubResource("StyleBoxFlat_blrt0")
+theme = ExtResource("3_j0ncs")
 text = "Back To Menu"
 
 [connection signal="pressed" from="Win/back" to="Win" method="_on_back_pressed"]

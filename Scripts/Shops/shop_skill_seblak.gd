@@ -51,6 +51,7 @@ func _apply_slow_effect(body: Craver) -> void:
 	if body.has_method("is_slow_cooldown_active") and body.is_slow_cooldown_active():
 		return
 	
+	SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg")) #Gua tambahin efek es disini hehe
 	var originalSpeed = body.moveSpeed
 	body.moveSpeed *= (1.0 - slowPercentage)
 	body.modulate = Color(0.5, 0.7, 1.5, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csh4tcvniyggh"]
+[gd_scene load_steps=8 format=3 uid="uid://3f0fp1m0issr"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_iqpep"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_gado2.gd" id="2_bofb6"]

@@ -49,6 +49,7 @@ func _try_trigger_stun() -> void:
 
 
 func _stun_cravers(targets: Array) -> void:
+	SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg")) #Gua tambahin efek es disini hehe
 	for c in targets:
 		if not is_instance_valid(c): 
 			continue

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcnhjljcu261d"]
+[gd_scene load_steps=5 format=3 uid="uid://bq5pgww5j5xu2"]
 
 [ext_resource type="Texture2D" uid="uid://dh2iy4n52hgu8" path="res://Sprites/test/Taverns.png" id="1_07auv"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_spawner.gd" id="1_x2lfn"]

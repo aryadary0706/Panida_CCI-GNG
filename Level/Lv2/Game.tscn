@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_55hrk"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_7kh6d"]
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data2.gd" id="6_pm05m"]
-[ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="6_q4n5l"]
+[ext_resource type="PackedScene" uid="uid://bq5pgww5j5xu2" path="res://Objects/Shops/spawner_shop.tscn" id="6_q4n5l"]
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_y3xqw"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_4jnon"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_38qb3"]
@@ -1850,20 +1850,6 @@ position = Vector2(323, -27)
 [node name="SpawnerShopNormal" parent="." instance=ExtResource("6_q4n5l")]
 position = Vector2(2336, 64)
 scale = Vector2(4, 4)
-
-[node name="SpawnerShopVegan" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(2432, 64)
-scale = Vector2(4, 4)
-script = null
 
 [node name="UiMoney" parent="." instance=ExtResource("8_y3xqw")]
 offset_left = 1984.0

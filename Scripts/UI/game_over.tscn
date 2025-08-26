@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4juj3eefbujs"]
+[gd_scene load_steps=7 format=3 uid="uid://c4juj3eefbujs"]
 
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_polbf"]
 [ext_resource type="Script" path="res://Scripts/UI/game_over_ui.gd" id="2_hu50j"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_sxw4n"]
+[ext_resource type="Theme" uid="uid://dhdvh1arbn8jv" path="res://blue_button.tres" id="4_g83hp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0uy1"]
 shader = ExtResource("1_polbf")
@@ -36,12 +38,20 @@ color = Color(0, 0, 0, 0.105882)
 
 [node name="Label" type="Label" parent="GameOverUI"]
 layout_mode = 1
-offset_left = 1046.0
-offset_top = 210.0
-offset_right = 1589.0
-offset_bottom = 347.0
-theme_override_font_sizes/font_size = 100
-text = "Game Over"
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.0
+offset_top = 265.0
+offset_right = 441.0
+offset_bottom = 397.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7301, 0.0103236, 0.267601, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("3_sxw4n")
+theme_override_font_sizes/font_size = 135
+text = "Game Over!"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameOverUI"]
 layout_mode = 1
@@ -50,25 +60,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -599.0
-offset_top = 35.0
-offset_right = 651.0
-offset_bottom = 335.0
+offset_left = -470.0
+offset_top = 34.0
+offset_right = 538.0
+offset_bottom = 334.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 250
+theme_override_constants/separation = 200
 
 [node name="restart" type="Button" parent="GameOverUI/HBoxContainer"]
-custom_minimum_size = Vector2(500, 300)
+texture_filter = 1
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 80
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_g83hp")
 text = "Play Again"
 
 [node name="quit" type="Button" parent="GameOverUI/HBoxContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_g83hp")
 text = "Exit Level"
 
 [connection signal="pressed" from="GameOverUI/HBoxContainer/restart" to="GameOverUI" method="_on_restart_pressed"]
