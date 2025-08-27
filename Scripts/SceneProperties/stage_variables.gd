@@ -5,7 +5,7 @@ extends Node2D
 
 func _ready() -> void:
 	Global.Money = initialMoney
-	decorationLayer.z_index = 1005
+	#decorationLayer.z_index = 1005
 	
 
 func _on_level_completed():
