@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c7o25yey7hb5d" path="res://assets/MainMenuAsset/exit/exit bright.png" id="13_pn01k"]
 
 [node name="Main Menu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
