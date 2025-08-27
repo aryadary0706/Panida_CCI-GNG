@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://mxhomjev36b1"]
+[gd_scene load_steps=35 format=3 uid="uid://mxhomjev36b1"]
 
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_basic.gd" id="1_1k74u"]
-[ext_resource type="Shader" path="res://Shaders/cravers.gdshader" id="1_6nrxh"]
 [ext_resource type="Texture2D" uid="uid://b4ry4i3t27ox7" path="res://Sprites/bear/back/Timeline 1_0000.png" id="2_0286u"]
 [ext_resource type="Texture2D" uid="uid://dqhiudsah4ss4" path="res://Sprites/bear/back/Timeline 1_0001.png" id="3_bu6tc"]
 [ext_resource type="Texture2D" uid="uid://wu4mp6n854mv" path="res://Sprites/bear/back/Timeline 1_0002.png" id="4_613h1"]
@@ -34,9 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://pibk4iwav1ua" path="res://Sprites/bear/right/Timeline 1_0013.png" id="31_s61j8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5j8qb"]
-shader = ExtResource("1_6nrxh")
-shader_parameter/outline_color = Color(1, 0, 0, 1)
-shader_parameter/outline_width = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i3wvc"]
 animations = [{

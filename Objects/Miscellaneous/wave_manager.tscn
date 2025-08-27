@@ -8,7 +8,7 @@ build_phase_wait_time = 3.0
 spawn_timer_wait_time = 0.3
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 3.0
 autostart = true
 
 [node name="BuildPhaseTimer" type="Timer" parent="."]

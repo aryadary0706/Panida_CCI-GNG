@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://2og5d3l5amxs" path="res://assets/AssetInGame/flag.png" id="4_iggqd"]
 [ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="5_prc08"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3c2i"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_p540b")
+region_rect = Rect2(568, 195, 35, 41)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nplw6"]
 texture = ExtResource("1_p540b")
 region_rect = Rect2(742, 37, 18, 20)
@@ -22,42 +30,155 @@ texture_margin_right = 5.0
 texture_margin_bottom = 2.0
 region_rect = Rect2(359, 20, 18, 8)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3c2i"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-texture = ExtResource("1_p540b")
-region_rect = Rect2(568, 195, 35, 41)
-
 [node name="InGameUI" type="Control"]
+custom_minimum_size = Vector2(2560, 1280)
+layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="popup" type="MarginContainer" parent="."]
+[node name="ContainerTopRight" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -240.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = 180.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContainerTopRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="WaveInfo" type="VBoxContainer" parent="ContainerTopRight/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Wave" type="HBoxContainer" parent="ContainerTopRight/MarginContainer/WaveInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_iggqd")
+expand_mode = 3
+
+[node name="Rounds Ongoing" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="Slash" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Round MAx" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "40"
+
+[node name="Timer" type="HBoxContainer" parent="ContainerTopRight/MarginContainer/WaveInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopRight/MarginContainer/WaveInfo/Timer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_prc08")
+expand_mode = 3
+
+[node name="Time" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Timer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "180"
+
+[node name="ContainerTopLeft" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 230.0
+offset_bottom = 180.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContainerTopLeft"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="HealthMoneyInfo" type="VBoxContainer" parent="ContainerTopLeft/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Healthbox" type="HBoxContainer" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Healthbox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_dxvfn")
+expand_mode = 3
+
+[node name="Health" type="Label" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Healthbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="Moneybox" type="HBoxContainer" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Moneybox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_0htlx")
+expand_mode = 3
+
+[node name="Money" type="Label" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Moneybox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="ShopSpawners" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -290.0
+offset_right = -30.0
+offset_bottom = 290.0
+grow_horizontal = 0
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="popup"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme_override_constants/separation = 30
-
-[node name="basemenu" type="MarginContainer" parent="popup/HBoxContainer"]
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NinePatchRect" type="NinePatchRect" parent="popup/HBoxContainer/basemenu"]
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopSpawners"]
 custom_minimum_size = Vector2(260, 580)
 layout_mode = 2
 texture = ExtResource("1_p540b")
@@ -67,7 +188,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="ShopSpawners/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,54 +200,14 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Dimsum" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
-theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
-
-[node name="Crepes" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
-theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
-
-[node name="MarginContainer" type="MarginContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 30
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 91
-
-[node name="Label" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
-text = "100"
-
-[node name="Label2" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
-text = "100"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="gorengan" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Dimsum" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -135,7 +216,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="jamur crispy" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Crepes" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -144,29 +225,29 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="MarginContainer2" type="MarginContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 91
 
-[node name="Label" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
+[node name="Label" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="Label2" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="seblak" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="gorengan" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -175,7 +256,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="mi ayam" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="jamur crispy" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -184,29 +265,29 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="MarginContainer3" type="MarginContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 91
 
-[node name="lebel" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
+[node name="Label" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="lebel2" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="iceCream" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="seblak" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -215,7 +296,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="Gado2" type="Button" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="mi ayam" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -224,152 +305,60 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="MarginContainer4" type="MarginContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 theme_override_constants/separation = 91
 
-[node name="Label" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer2"]
+[node name="lebel" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="Label2" type="Label" parent="popup/HBoxContainer/basemenu/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer2"]
+[node name="lebel2" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="Control" type="Control" parent="popup/HBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-
-[node name="Health And Currency" type="MarginContainer" parent="MarginContainer"]
+[node name="iceCream" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Health And Currency"]
-custom_minimum_size = Vector2(200, 150)
+[node name="Gado2" type="Button" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Health And Currency/PanelContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_left = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4"]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 91
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("2_dxvfn")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ShopSpawners/NinePatchRect/MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("3_0htlx")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
 text = "100"
-
-[node name="Rounds And Timer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Rounds And Timer"]
-custom_minimum_size = Vector2(200, 150)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Rounds And Timer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("4_iggqd")
-expand_mode = 3
-
-[node name="Rounds Ongoing" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "10"
-
-[node name="Slash" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "/"
-
-[node name="Round MAx" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "40"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-texture = ExtResource("5_prc08")
-expand_mode = 3
-
-[node name="TimeRemaining(Seconds)" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "180"

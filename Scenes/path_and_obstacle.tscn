@@ -2892,5 +2892,4 @@ sources/1 = SubResource("TileSetAtlasSource_s8yyr")
 sources/6 = SubResource("TileSetAtlasSource_wkixy")
 
 [node name="PathAndObstacle" type="TileMapLayer"]
-self_modulate = Color(0.764706, 0.921569, 0.933333, 0.929412)
 tile_set = SubResource("TileSet_aumko")

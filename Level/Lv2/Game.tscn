@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_55hrk"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_7kh6d"]
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data2.gd" id="6_pm05m"]
-[ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="6_q4n5l"]
 [ext_resource type="PackedScene" uid="uid://c2r2q3maudcli" path="res://Objects/UI/UIMoney.tscn" id="8_y3xqw"]
 [ext_resource type="PackedScene" uid="uid://25y1mhh48qo4" path="res://Objects/Cravers/cravers_kangguru_mom.tscn" id="9_4jnon"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="11_38qb3"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_8e21f"]
-[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://scenes/pause_menu.tscn" id="12_8fqjr"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_8e21f"]
+[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="12_8fqjr"]
+[ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="12_mpixe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tqd3t"]
 vertices = PackedVector2Array(16, 16, 8, 16, 16, 8)
@@ -1848,10 +1848,6 @@ script = ExtResource("6_pm05m")
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(323, -27)
 
-[node name="SpawnerShopNormal" parent="." instance=ExtResource("6_q4n5l")]
-position = Vector2(2336, 64)
-scale = Vector2(4, 4)
-
 [node name="UiMoney" parent="." instance=ExtResource("8_y3xqw")]
 offset_left = 1984.0
 offset_top = 32.0
@@ -1860,6 +1856,10 @@ offset_bottom = 32.0
 
 [node name="CraversKangguruMom" parent="." instance=ExtResource("9_4jnon")]
 position = Vector2(323, -26)
+
+[node name="InGameUI" parent="." instance=ExtResource("12_mpixe")]
+offset_right = 2560.0
+offset_bottom = 1280.0
 
 [node name="game_over" parent="." instance=ExtResource("11_38qb3")]
 
