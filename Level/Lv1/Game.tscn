@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cbk08y3qkrx21"]
+[gd_scene load_steps=15 format=4 uid="uid://cbk08y3qkrx21"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_vab1m"]
 [ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="2_lnocw"]
@@ -7,14 +7,17 @@
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data.gd" id="5_k4m7j"]
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="7_cu2xl"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="10_sw5mb"]
-[ext_resource type="PackedScene" uid="uid://b2v47lcvx2hse" path="res://Objects/Shops/shop_vegan.tscn" id="11_eso88"]
+[ext_resource type="PackedScene" uid="uid://b2v47lcvx2hse" path="res://Objects/Shops/shop_gorengan.tscn" id="11_eso88"]
 [ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="11_uyhk6"]
 [ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_e7elg"]
+[ext_resource type="PackedScene" uid="uid://cxsxosmgxw1vh" path="res://Objects/Shops/shop_ice_cream.tscn" id="12_it1lp"]
 [ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="13_17rci"]
+[ext_resource type="PackedScene" uid="uid://232bpxhfwr6a" path="res://Objects/Shops/shop_seblak.tscn" id="13_sxy38"]
+[ext_resource type="PackedScene" uid="uid://csh4tcvniyggh" path="res://Objects/Shops/shop_gado2.tscn" id="14_xmywm"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vab1m")
-initialMoney = 650
+initialMoney = 100000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -41,12 +44,15 @@ offset_right = 2560.0
 offset_bottom = 1280.0
 
 [node name="game_over" parent="." instance=ExtResource("10_sw5mb")]
+visible = false
 
 [node name="Pause" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pause_menu" parent="Pause" instance=ExtResource("11_uyhk6")]
 
 [node name="WinCondition" parent="." instance=ExtResource("12_e7elg")]
+visible = false
 
 [node name="SpawnerShop" parent="." instance=ExtResource("7_cu2xl")]
 position = Vector2(414, 105)
@@ -54,3 +60,15 @@ position = Vector2(414, 105)
 [node name="SpawnerShop2" parent="." instance=ExtResource("7_cu2xl")]
 position = Vector2(598, 104)
 shopScene = ExtResource("11_eso88")
+
+[node name="SpawnerShop3" parent="." instance=ExtResource("7_cu2xl")]
+position = Vector2(779, 104)
+shopScene = ExtResource("12_it1lp")
+
+[node name="SpawnerShop4" parent="." instance=ExtResource("7_cu2xl")]
+position = Vector2(960, 104)
+shopScene = ExtResource("13_sxy38")
+
+[node name="SpawnerShop5" parent="." instance=ExtResource("7_cu2xl")]
+position = Vector2(1137, 104)
+shopScene = ExtResource("14_xmywm")

@@ -1,73 +1,77 @@
 extends Area2D
 
 @export var effectTime: float = 3.0
-@export var slowPercentage: float = 0.9
+@export var slowPercentage: float = 0.7   # 0.7 = 70% slow
 @export var cooldown: float = 5.0
+@onready var areaColor = $AreaColor
 
-var affectedCravers: Dictionary = {}
-var craversInArea: Array = []
+var craversInArea: Array[Craver] = []
+var affectedCravers: Array[Craver] = []
+var slowOnCooldown: bool = false
 
 func _ready():
-	# Connect signals
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	areaColor.visible = false
 
-func _process(delta: float) -> void:
-	# Update timers for all affected cravers
-	for craver in affectedCravers.keys():
-		if is_instance_valid(craver):
-			affectedCravers[craver].time_remaining -= delta
-			if affectedCravers[craver].time_remaining <= 0:
-				_remove_slow_effect(craver)
-		else:
-			affectedCravers.erase(craver)
-	
-	# Apply slow effect to all cravers currently in area
-	for body in craversInArea:
-		if is_instance_valid(body) and body is Craver:
-			# Jika craver belum ada di affectedCravers, apply effect
-			if body not in affectedCravers:
-				_apply_slow_effect(body)
-			# Jika sudah ada, reset timer selama masih di area
-			elif body in affectedCravers:
-				affectedCravers[body].time_remaining = effectTime
+func _on_body_entered(body: Node) -> void:
+	if not self.get_parent().hasPlaced:
+		return
+	if body is Craver and body not in craversInArea:
+		craversInArea.append(body)
+		_try_trigger_slow()
 
-func _on_body_entered(body):
-	if !self.get_parent().hasPlaced:
+func _on_body_exited(body: Node) -> void:
+	if body is Craver:
+		craversInArea.erase(body)
+
+func _try_trigger_slow() -> void:
+	if slowOnCooldown:
 		return
 	
-	if body is Craver:
-		if body not in craversInArea:
-			craversInArea.append(body)
-
-func _on_body_exited(body):
-	if body is Craver:
-		if body in craversInArea:
-			craversInArea.erase(body)
-		# Timer effect akan terus berjalan sampai habis setelah keluar area
-
-func _apply_slow_effect(body: Craver) -> void:
-	# Check if craver is on cooldown
-	if body.has_method("is_slow_cooldown_active") and body.is_slow_cooldown_active():
+	if craversInArea.is_empty():
 		return
 	
-	#SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg")) #Gua tambahin efek es disini hehe
-	var originalSpeed = body.moveSpeed
-	body.moveSpeed *= (1.0 - slowPercentage)
-	body.modulate = Color(0.5, 0.7, 1.5, 1)
-	
-	# Store both original speed and remaining time
-	affectedCravers[body] = {
-		"original_speed": originalSpeed,
-		"time_remaining": effectTime
-	}
-	
-	# Add a cooldown flag to the craver to prevent immediate re-application
-	if body.has_method("set_slow_cooldown"):
-		body.set_slow_cooldown(cooldown)
+	# Mulai efek slow
+	_apply_slow(craversInArea)
+	areaColor.visible = true
 
-func _remove_slow_effect(body: Craver) -> void:
-	if is_instance_valid(body) and body in affectedCravers:
-		body.moveSpeed = affectedCravers[body].original_speed
-		affectedCravers.erase(body)
-		body.modulate = Color(1, 1, 1, 1)
+	# Jalankan timer effect
+	await get_tree().create_timer(effectTime).timeout
+
+	# Restore semua craver yang kena slow
+	for c in affectedCravers.duplicate():
+		_restore_slow(c)
+
+	areaColor.visible = false
+
+	# Masuk cooldown
+	slowOnCooldown = true
+	await get_tree().create_timer(cooldown).timeout
+	slowOnCooldown = false
+
+	# Setelah cooldown, kalau masih ada craver → trigger lagi
+	if not craversInArea.is_empty():
+		_try_trigger_slow()
+
+func _apply_slow(targets: Array) -> void:
+	SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg"))
+	for c in targets:
+		if not is_instance_valid(c): 
+			continue
+		if c in affectedCravers: 
+			continue
+		
+		var originalSpeed = c.moveSpeed
+		c.moveSpeed *= (1.0 - slowPercentage)
+		c.modulate = Color(1.5, 0.5, 0.5, 1)
+		affectedCravers.append({"craver": c, "original_speed": originalSpeed})
+
+func _restore_slow(entry) -> void:
+	if not entry.has("craver"):
+		return
+	var c: Craver = entry.craver
+	if is_instance_valid(c):
+		c.moveSpeed = entry.original_speed
+		c.modulate = Color(1,1,1,1)
+	affectedCravers.erase(entry)

@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Craver
 
 @export_enum("Vegan", "Normal") var craverType = "Normal"
+@export var tier = 1
 @export var eatingDuration: float = 3.5
 @export var occupancy = 1
 @export var maxVisit = 1
@@ -37,6 +38,8 @@ func _process(delta: float) -> void:
 		z_index = global_position.y
 	elif isGoingToShop:
 		z_index = 1
+		
+	update_animation()
 	
 func _physics_process(delta: float) -> void:
 	if isGoingToShop and assignedShop != null:
@@ -51,7 +54,6 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity = velocity.lerp(direction * moveSpeed, acceleration * delta)
 		move_and_slide()
-		update_animation()
 
 # Fungsi untuk menambah shop ke available list (dipanggil oleh Shop)
 func add_available_shop(shop: Shop):
@@ -82,9 +84,11 @@ func assign_shop():
 	availableShops.erase(assignedShop)
 	
 func eating():
-	anim.stop()
+	direction = Vector2.ZERO
+	velocity = Vector2.ZERO
 	visitedShops.append(assignedShop)
 	await get_tree().create_timer(eatingDuration).timeout
+	visible = true
 	if assignedShop:
 		assignedShop.craverInside -= occupancy
 		Global.Money += assignedShop.moneyMade

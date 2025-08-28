@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2v47lcvx2hse"]
+[gd_scene load_steps=5 format=3 uid="uid://cbpdcqcm4o8x6"]
 
-[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_fnegr"]
-[ext_resource type="Texture2D" uid="uid://cb47pg65dd12e" path="res://Sprites/Lime/LimeMarket.png" id="2_mt6wl"]
+[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_josr3"]
+[ext_resource type="Texture2D" uid="uid://cb47pg65dd12e" path="res://Sprites/Lime/LimeMarket.png" id="2_sfgvd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsalt"]
 size = Vector2(15, 15.5)
@@ -11,7 +11,7 @@ size = Vector2(8.33333, 59.6667)
 
 [node name="ShopVegan" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_fnegr")
+script = ExtResource("1_josr3")
 craverType = "Vegan"
 priceToBuy = 210
 moneyMade = 50
@@ -40,27 +40,43 @@ shape = SubResource("RectangleShape2D_ocuq0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_mt6wl")
+texture = ExtResource("2_sfgvd")
 hframes = 3
 vframes = 4
 frame = 4
 
-[node name="Button" type="Button" parent="Sprite2D"]
+[node name="DelayTimer" type="Timer" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 button_mask = 7
 metadata/_edit_use_anchors_ = true
-
-[node name="DelayTimer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
 [connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
-[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
+[connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]

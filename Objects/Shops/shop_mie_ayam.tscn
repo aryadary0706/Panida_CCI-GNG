@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://232bpxhfwr6a"]
+[gd_scene load_steps=8 format=3 uid="uid://cp6klwvyojoso"]
 
-[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_5e756"]
-[ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_rwheo"]
-[ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="3_m8kqr"]
-[ext_resource type="Texture2D" uid="uid://b8dl1ggr12v5u" path="res://Sprites/Red/RedMarket.png" id="3_x41vr"]
+[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_n3oxp"]
+[ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_6qbc2"]
+[ext_resource type="Texture2D" uid="uid://b8dl1ggr12v5u" path="res://Sprites/Red/RedMarket.png" id="3_kgld0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsalt"]
 size = Vector2(15, 15.5)
@@ -16,20 +15,9 @@ size = Vector2(9.66666, 59.6667)
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0osb"]
 radius = 28.8507
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lfhk"]
-shader = ExtResource("3_m8kqr")
-
-[sub_resource type="Gradient" id="Gradient_pymhg"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m2m4l"]
-gradient = SubResource("Gradient_pymhg")
-fill_from = Vector2(0, 1)
-metadata/_snap_enabled = true
-metadata/_snap_count = 9
-
 [node name="ShopSeblak" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_5e756")
+script = ExtResource("1_n3oxp")
 priceToBuy = 530
 moneyMade = 70
 placableTileIDs = Array[int]([1])
@@ -54,34 +42,28 @@ shape = SubResource("RectangleShape2D_ocuq0")
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(4, 4)
-texture = ExtResource("3_x41vr")
-hframes = 3
-vframes = 4
-frame = 4
-
-[node name="DelayTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="ShopSkill" type="Area2D" parent="."]
 material = SubResource("CanvasItemMaterial_7s4tx")
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("2_rwheo")
+script = ExtResource("2_6qbc2")
 slowPercentage = 0.1
 
 [node name="Collision" type="CollisionShape2D" parent="ShopSkill"]
 shape = SubResource("CircleShape2D_u0osb")
 debug_color = Color(0.565282, 0.55251, 0.223068, 0.42)
 
-[node name="AreaColor" type="Sprite2D" parent="ShopSkill"]
-self_modulate = Color(0.941176, 0.0588235, 0, 0.156863)
-material = SubResource("ShaderMaterial_1lfhk")
-scale = Vector2(0.90625, 0.90625)
-texture = SubResource("GradientTexture2D_m2m4l")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("3_kgld0")
+hframes = 3
+vframes = 4
+frame = 4
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -113,7 +95,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
-[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="body_entered" from="ShopSkill" to="ShopSkill" method="_on_body_entered"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]

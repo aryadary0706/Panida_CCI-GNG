@@ -133,7 +133,9 @@ func _on_shop_body_body_entered(body: Node2D) -> void:
 	if body is Craver && hasPlaced:
 		craverInside += body.occupancy
 		occupancyIndicator.update_indicator()
+		body.visible = false
 		body.eating()
+		
 
 
 #ini bagian untuk collision antar shop biar ga numpuk

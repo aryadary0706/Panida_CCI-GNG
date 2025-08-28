@@ -2,12 +2,16 @@ extends Area2D
 
 @export var effectTime: float = 1.5
 @export var cooldown: float = 5.0
+@onready var areaColor = $AreaColor
 
 var craversInArea: Array[Craver] = []
 var stunnedCravers: Array[Craver] = []
 var alrStunned: Array[Craver] = []
 var stunOnCooldown: bool = false
 
+
+func _ready() -> void:
+	areaColor.visible = false
 
 func _on_body_entered(body: Node) -> void:
 	if not self.get_parent().hasPlaced:
@@ -44,7 +48,9 @@ func _try_trigger_stun() -> void:
 	
 	# Aktifkan cooldown
 	stunOnCooldown = true
+	areaColor.visible = true
 	await get_tree().create_timer(cooldown).timeout
+	areaColor.visible = false
 	stunOnCooldown = false
 
 
