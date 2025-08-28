@@ -14,6 +14,7 @@ const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 @onready var shopArea: CollisionShape2D = $ShopBody/Collision
 @onready var delay_timer: Timer = $DelayTimer  
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var occupancyIndicator = preload("res://Objects/Miscellaneous/occupancy_indicator.tscn")
 var cravers: Array = []
 var craverInside = 0
 var isDragging = false
@@ -26,6 +27,9 @@ var snap = 64
 
 func _ready() -> void:
 	add_to_group("Shops")
+	occupancyIndicator = occupancyIndicator.instantiate()
+	add_child(occupancyIndicator)
+	occupancyIndicator.setup(self)
 	z_index = 1000
 	delay_timer.wait_time = delay_time
 
@@ -77,6 +81,7 @@ func checkPlacableTile() -> bool:
 	return true
 
 func _process(delta: float) -> void:
+	#bagian placement
 	if isDragging and not hasPlaced:
 		position = get_global_mouse_position().snapped(Vector2(snap, snap))
 	
@@ -89,53 +94,9 @@ func _process(delta: float) -> void:
 		sprite.modulate = Color(0.5, 1, 0.5, 0.5)
 	elif !canPlace:
 		sprite.modulate = Color(1, 0.5, 0.5, 0.5)
-
-	# Proses cravers yang sedang makan
-	for i in range(cravers.size() - 1, -1, -1):
-		var craver = cravers[i]
 		
-		if not is_instance_valid(craver):
-			unregister_craver(craver)
-			continue
-			
-		if craver.global_position.distance_to(global_position) <= eatDistance:
-			if not craver.has_meta("is_eating") or craver.get_meta("is_eating") == false:
-				craver.set_meta("is_eating", true)
-				craver.set_meta("eat_timer", craver.eatingDuration)
-			else:
-				var timer = craver.get_meta("eat_timer") - delta
-				craver.set_meta("eat_timer", timer)
-				
-				if timer <= 0:
-					finish_eating(craver)
-					unregister_craver(craver)
-					craver.set_meta("is_eating", false)
-					craver.isGoingToShop = false
 
-# Fungsi ini sekarang hanya mengecek kapasitas, tidak memilih craver
-func try_register_craver(craver) -> bool:
-	if craverInside + craver.occupancy <= maxCraver:
-		if craver not in cravers:
-			cravers.append(craver)
-			craverInside += craver.occupancy
-			return true
-	return false
-
-func unregister_craver(craver) -> void:
-	if not is_instance_valid(craver):
-		return
-	
-	if craver in cravers:
-		craverInside -= craver.occupancy
-		cravers.erase(craver)
-		craver.maxVisit -= 1
-		spawn_coin_popup()
-
-func finish_eating(craver) -> void:
-	Global.Money += moneyMade * craver.occupancy
-	craver.on_finished_eating()
-
-func spawn_coin_popup() -> void:
+func spawn_coin_popup():
 	SfxPlayer.play_music(preload("res://audio/coin.ogg"))
 	
 	var rect_shape: RectangleShape2D = shopArea.shape
@@ -156,24 +117,26 @@ func spawn_coin_popup() -> void:
 	tween.parallel().tween_property(coin, "modulate:a", 0.0, 0.8)
 	tween.tween_callback(coin.queue_free)
 
-func _on_button_button_down() -> void:
-	isDragging = true
-
-func _on_button_button_up() -> void:
-	isDragging = false
-	if isOverlapping or !canPlace:
-		queue_free()
-	elif !hasPlaced and !isWaitingDelay:
-		start_delay()
 
 
+#ini bagian collision dengan craver
 func _on_shop_range_body_entered(body: Node2D) -> void:
 	if body is Craver:
+		occupancyIndicator.update_indicator()
 		body.add_available_shop(self)
 
 func _on_shop_range_body_exited(body: Node2D) -> void:
-	pass
+	if body is Craver:
+		occupancyIndicator.update_indicator()
 
+func _on_shop_body_body_entered(body: Node2D) -> void:
+	if body is Craver && hasPlaced:
+		craverInside += body.occupancy
+		occupancyIndicator.update_indicator()
+		body.eating()
+
+
+#ini bagian untuk collision antar shop biar ga numpuk
 func _on_shop_body_area_entered(area: Area2D) -> void:
 	var otherShop = area.get_parent()
 	if otherShop is not Shop:
@@ -187,3 +150,13 @@ func _on_shop_body_area_entered(area: Area2D) -> void:
 
 func _on_shop_body_area_exited(area: Area2D) -> void:
 	isOverlapping = false
+	
+func _on_button_button_down() -> void:
+	isDragging = true
+
+func _on_button_button_up() -> void:
+	isDragging = false
+	if isOverlapping or !canPlace:
+		queue_free()
+	elif !hasPlaced and !isWaitingDelay:
+		start_delay()

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlr1la07iy4li"]
+
+[ext_resource type="Script" path="res://Scripts/Shops/occupancy_indicator.gd" id="1_5v682"]
+[ext_resource type="Texture2D" uid="uid://ccw65oc5l00l" path="res://assets/AssetInGame/ticket.png" id="2_bvbhp"]
+
+[node name="OccupancyIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5v682")
+indicator_texture = ExtResource("2_bvbhp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2

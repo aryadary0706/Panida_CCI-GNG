@@ -58,6 +58,7 @@ wait_time = 2.0
 
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
+[connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
 [connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]

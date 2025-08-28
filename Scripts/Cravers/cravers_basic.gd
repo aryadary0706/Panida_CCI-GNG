@@ -35,13 +35,11 @@ func _process(delta: float) -> void:
 	
 	if !isGoingToShop:
 		z_index = global_position.y
-		try_assign_shop()
 	elif isGoingToShop:
 		z_index = 1
 	
 func _physics_process(delta: float) -> void:
-	if isGoingToShop and assignedShop:
-		# Pergi ke shop yang ditugaskan
+	if isGoingToShop and assignedShop != null:
 		direction = (assignedShop.global_position - global_position).normalized()
 	else:
 		# Pergi ke tujuan akhir
@@ -56,7 +54,10 @@ func _physics_process(delta: float) -> void:
 		update_animation()
 
 # Fungsi untuk menambah shop ke available list (dipanggil oleh Shop)
-func add_available_shop(shop: Shop) -> void:
+func add_available_shop(shop: Shop):
+	if maxVisit <= 0:
+		return
+	
 	if (shop.hasPlaced and 
 		shop.craverType == craverType and 
 		shop not in visitedShops and
@@ -64,44 +65,35 @@ func add_available_shop(shop: Shop) -> void:
 		shop.craverInside + occupancy <= shop.maxCraver):
 		
 		availableShops.append(shop)
-		print("for craver ", self.name, ", Shop added to available list: ", availableShops)
+		if availableShops.size() >=1:
+			assign_shop()
+		else:
+			return
 		
 		
-# Fungsi untuk memilih shop dari available list
-func try_assign_shop() -> void:
-	if assignedShop or isGoingToShop or maxVisit <= 0 or availableShops.is_empty():
-		return
-	
-	# Pilih shop terdekat dari available shops
-	availableShops.sort_custom(func(a, b): 
-		return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
+func assign_shop():
+	availableShops.sort_custom(func(a: Shop, b: Shop) -> bool:
+		return a.craverInside < b.craverInside
 	)
 	
 	assignedShop = availableShops[0]
 	isGoingToShop = true
 	target = assignedShop.global_position
-	
-	# Langsung tambahkan ke visited shops dan hapus dari available
-	visitedShops.append(assignedShop)
 	availableShops.erase(assignedShop)
 	
-	# Daftarkan diri ke shop
-	if assignedShop.try_register_craver(self):
-		print("Craver assigned to shop: ", assignedShop.name)
-	else:
-		# Jika gagal register, reset assignment
-		visitedShops.erase(assignedShop)
-		assignedShop = null
-		isGoingToShop = false
-
-# Fungsi untuk menangani setelah selesai makan (dipanggil oleh Shop)
-func on_finished_eating() -> void:
+func eating():
+	anim.stop()
+	visitedShops.append(assignedShop)
+	await get_tree().create_timer(eatingDuration).timeout
 	if assignedShop:
-		assignedShop = null
+		assignedShop.craverInside -= occupancy
+		Global.Money += assignedShop.moneyMade
+		assignedShop.spawn_coin_popup()
 		isGoingToShop = false
-		# Coba cari shop lagi jika masih ada kunjungan tersisa
-		if maxVisit > 0 and not availableShops.is_empty():
-			try_assign_shop()
+		assignedShop = null
+		maxVisit -= 1
+		availableShops.clear()
+	
 
 func update_animation() -> void:
 	if direction == Vector2.ZERO:
