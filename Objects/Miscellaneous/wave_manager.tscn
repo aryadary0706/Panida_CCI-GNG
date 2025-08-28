@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjy166e8ibfiu"]
+[gd_scene load_steps=4 format=3 uid="uid://cjy166e8ibfiu"]
 
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_spawner.gd" id="1_retrh"]
+[ext_resource type="Script" path="res://Scripts/UI/sign_display.gd" id="2_npfb3"]
+[ext_resource type="FontFile" uid="uid://c301v52sr56t5" path="res://assets/AssetInGame/Fibberish v1.0/Fibberish v1.0/fibberish.ttf" id="3_uo5i7"]
 
 [node name="WaveManager" type="Node2D"]
 script = ExtResource("1_retrh")
@@ -15,6 +17,18 @@ autostart = true
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Sign" type="Node2D" parent="."]
+script = ExtResource("2_npfb3")
+
+[node name="Label" type="Label" parent="Sign"]
+offset_left = 822.0
+offset_top = 136.0
+offset_right = 935.0
+offset_bottom = 213.0
+theme_override_fonts/font = ExtResource("3_uo5i7")
+theme_override_font_sizes/font_size = 45
+text = "Test"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="BuildPhaseTimer" to="." method="_on_build_phase_timer_timeout"]

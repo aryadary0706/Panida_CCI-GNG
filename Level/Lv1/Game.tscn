@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="2_lnocw"]
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_ayj3m"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_a3s86"]
-[ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data2.gd" id="6_kn5a1"]
+[ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data.gd" id="5_k4m7j"]
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="7_cu2xl"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="10_sw5mb"]
 [ext_resource type="PackedScene" uid="uid://b2v47lcvx2hse" path="res://Objects/Shops/shop_vegan.tscn" id="11_eso88"]
@@ -27,11 +27,11 @@ tile_map_data = PackedByteArray("AAApABUABgAHAAQAAAApABQABgAHAAMAAAApABMABgAHAAM
 position = Vector2(2631, 695)
 
 [node name="WaveManager" parent="." instance=ExtResource("5_a3s86")]
-build_phase_wait_time = 0.0
-spawn_timer_wait_time = 2.0
+build_phase_wait_time = 6.0
+spawn_timer_wait_time = 0.5
 
 [node name="WaveData" type="Node" parent="WaveManager"]
-script = ExtResource("6_kn5a1")
+script = ExtResource("5_k4m7j")
 
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(-87, 581)

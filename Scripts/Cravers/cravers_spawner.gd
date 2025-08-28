@@ -6,7 +6,9 @@ extends Node2D
 @onready var wave_data: Node = $WaveData
 @onready var win_condition: CanvasLayer = $"../WinCondition"
 
-
+#Signal untuk 
+signal wave_started
+signal wave_ended
 
 @export var build_phase_wait_time: float = 10.0
 @export var spawn_timer_wait_time: float = 0.5
@@ -24,74 +26,73 @@ const ENEMY_SCENES := {
 }
 
 # --- STATE ---
-var spawn_count: int = 0
-var max_enemy : int
+var current_wave: int = 0
+var max_wave: int
 var is_wave_active: bool = false
-var is_wave_over: bool = false
-var current_wave_data: Array
-var game_started: bool = false
-var current_wave = 0
-var max_wave = 0
-var current_max_spawn : int
-var current_enemy = 0
+var is_game_over: bool = false
+
+var spawn_queue : Array = []
+
+func _process(delta: float) -> void:
+	check_victory()
 
 func _ready():
 	randomize()
 	build_phase_timer.wait_time = build_phase_wait_time
 	spawn_timer.wait_time = spawn_timer_wait_time
-	max_enemy = wave_data.get_max_craver_spawn()
 	max_wave = wave_data.get_wave_data_size()
 	start_build_phase()
 
-func _process(delta: float) -> void:
-	check_victory()
-
 func start_build_phase():
-	is_wave_over = true
 	is_wave_active = false
 	print("Fase Build dimulai. berlangsung selama ", build_phase_timer.wait_time, " s")
 	build_phase_timer.start()
+	wave_started.emit()
 
 func start_wave() -> void:
 	var wave = wave_data.get_wave_data(current_wave)
 	if wave.is_empty():
-		emit_signal("game_ended")
+		is_game_over = true
 		print("Game telah selesai")
 		return
 	
-	spawn_count = 0
-	current_max_spawn = 0
-	is_wave_active = true
-	is_wave_over = false
-	current_wave_data.clear()
+	spawn_queue.clear()
 	
-	for troops in wave["enemies"]:
-		for i in range(troops["count"]):
-			current_wave_data.append(troops["type"])
-		current_max_spawn += troops["count"]
-	current_wave_data.shuffle()
+	# Ambil list "enemies"
+	for enemy in wave["enemies"]:
+		# Ulangi sebanyak "count"
+		for i in range(enemy["count"]):
+			spawn_queue.append(enemy["type"])
+	
+	spawn_queue.shuffle()
 	current_wave += 1
 	spawn_timer.start()
-	print("Wave %d dimulai dengan %d musuh!" % [current_wave, current_max_spawn])
+	print("Wave %d: %d musuh" % [current_wave, spawn_queue.size()])
 
 
 # --- CALLBACKS ---
 func _on_spawn_timer_timeout() -> void:
-	if is_wave_active:
-		if spawn_count < current_max_spawn:
-			var enemy_type = current_wave_data[spawn_count]
-			spawn_enemy(enemy_type)
-			spawn_count += 1
-			print("Spawn %s (%d/%d)" % [enemy_type, spawn_count, current_max_spawn])
-		else:
-			is_wave_active = false
-			spawn_timer.stop()
-			print("Semua musuh dalam wave telah di-spawn.")
-			start_build_phase()
+	if not is_wave_active:
+		return
+
+	if spawn_queue.is_empty():
+		# wave selesai
+		is_wave_active = false
+		spawn_timer.stop()
+		print("Wave %d selesai!" % current_wave)
+		start_build_phase()
+		return
+
+	# Ambil musuh dari queue
+	#current_wave += 1
+	var enemy_type = spawn_queue.pop_front()
+	spawn_enemy(enemy_type)
 
 
 func _on_build_phase_timer_timeout() -> void:
-	print("Fase Build selesai! Wave akan datang!")
+	is_wave_active = true
+	print("Build Phase selesai, wave %d dimulai!" % (current_wave + 1))
+	wave_ended.emit()
 	start_wave()
 
 #--Spawn Enemy--
@@ -101,12 +102,11 @@ func spawn_enemy(enemy_type: String) -> void:
 		var enemy_scene = ENEMY_SCENES[enemy_type]
 		var enemy_instance = enemy_scene.instantiate()
 		enemy_container.add_child(enemy_instance)
-		current_enemy += 1
 		SfxPlayer.play_music(preload("res://audio/CraverSpawn.ogg"))
 		print("Musuh '", enemy_type, "' berhasil di-spawn.")
 	else:
 		push_warning("Tipe musuh tidak ditemukan!")
 
 func check_victory():
-	if not is_wave_active and enemy_container.get_child_count() == 0 and current_wave >= max_wave:
+	if is_game_over and enemy_container.get_child_count() == 0:
 		get_parent().get_node("WinCondition/Win").play_scene()

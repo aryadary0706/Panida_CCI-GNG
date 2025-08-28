@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_ryelr"]
 [ext_resource type="Script" path="res://Scripts/UI/win.gd" id="1_ujh2o"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_5feap"]
-[ext_resource type="Theme" uid="uid://dhdvh1arbn8jv" path="res://blue_button.tres" id="3_j0ncs"]
+[ext_resource type="Theme" uid="uid://wgf74l7ga33b" path="res://blue_button.tres" id="3_j0ncs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1t0q3"]
 shader = ExtResource("1_ryelr")
