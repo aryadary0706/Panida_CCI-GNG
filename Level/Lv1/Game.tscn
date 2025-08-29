@@ -30,7 +30,7 @@ tile_map_data = PackedByteArray("AAApABUABgAHAAQAAAApABQABgAHAAMAAAApABMABgAHAAM
 position = Vector2(2631, 695)
 
 [node name="WaveManager" parent="." instance=ExtResource("5_a3s86")]
-build_phase_wait_time = 15.0
+build_phase_wait_time = 5.0
 spawn_timer_wait_time = 1.0
 
 [node name="WaveData" type="Node" parent="WaveManager"]

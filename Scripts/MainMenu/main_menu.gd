@@ -4,7 +4,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MusicPlayer.play_music(preload("res://audio/MenuGame.ogg"))
+	MusicPlayer.play_loop_music(preload("res://audio/MenuGame.ogg"))
 	sign_post.visible = true
 	options.visible = false
 
