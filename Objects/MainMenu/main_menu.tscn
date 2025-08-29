@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctwaenq7iw1pb"]
+[gd_scene load_steps=31 format=3 uid="uid://ctwaenq7iw1pb"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
@@ -14,6 +14,49 @@
 [ext_resource type="Texture2D" uid="uid://bn5f0vo2h7lec" path="res://assets/MainMenuAsset/Play/play.png" id="9_w1w0c"]
 [ext_resource type="Texture2D" uid="uid://lailulq5ak0e" path="res://assets/MainMenuAsset/exit/exit dark.png" id="12_unej6"]
 [ext_resource type="Texture2D" uid="uid://c7o25yey7hb5d" path="res://assets/MainMenuAsset/exit/exit bright.png" id="13_pn01k"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
+[ext_resource type="Texture2D" uid="uid://dwh5j812p2btf" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
+[ext_resource type="FontFile" uid="uid://c301v52sr56t5" path="res://assets/AssetInGame/Fibberish v1.0/Fibberish v1.0/fibberish.ttf" id="17_v7bun"]
+[ext_resource type="Texture2D" uid="uid://dky867fa3hukv" path="res://assets/Asset-artist/button.png" id="18_obocw"]
+[ext_resource type="Texture2D" uid="uid://c71pakpub0aai" path="res://assets/Asset-artist/clicked button.png" id="19_bkh8c"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/Music_slider.gd" id="20_apmpr"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nl4tt"]
+texture = ExtResource("15_rf8wp")
+expand_margin_left = 140.0
+expand_margin_top = 80.0
+expand_margin_right = 80.0
+expand_margin_bottom = 80.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d5iyy"]
+load_path = "res://.godot/imported/button.png-ef582a4c4234617e0b31c28f1c2e5d67.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ude8"]
+texture = SubResource("CompressedTexture2D_d5iyy")
+modulate_color = Color(0.678945, 0.678943, 0.678944, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_biwpk"]
+texture = ExtResource("18_obocw")
+modulate_color = Color(0.95158, 0.95158, 0.95158, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nx1al"]
+texture = ExtResource("19_bkh8c")
+
+[sub_resource type="Theme" id="Theme_qymup"]
+Button/fonts/font = ExtResource("17_v7bun")
+Button/styles/hover = SubResource("StyleBoxTexture_5ude8")
+Button/styles/normal = SubResource("StyleBoxTexture_biwpk")
+Button/styles/pressed = SubResource("StyleBoxTexture_nx1al")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nvbjw"]
+color = Color(0.41911, 0.226244, 1.44392e-07, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gf7yt"]
+color = Color(1, 1, 1, 1)
+thickness = 6
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -84,6 +127,94 @@ texture_pressed = ExtResource("12_unej6")
 texture_hover = ExtResource("13_pn01k")
 script = ExtResource("4_f1d45")
 
+[node name="Option" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.5
+offset_top = -404.5
+offset_right = 625.5
+offset_bottom = 404.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_f64yl")
+
+[node name="Panel" type="Panel" parent="Option"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nl4tt")
+
+[node name="back" type="Button" parent="Option"]
+layout_mode = 0
+offset_left = 417.5
+offset_top = 538.5
+offset_right = 812.5
+offset_bottom = 695.5
+theme = SubResource("Theme_qymup")
+theme_override_fonts/font = ExtResource("17_v7bun")
+theme_override_font_sizes/font_size = 40
+text = "Back to Menu"
+
+[node name="Music_slider" type="HSlider" parent="Option"]
+layout_mode = 0
+offset_left = 334.5
+offset_top = 300.5
+offset_right = 948.5
+offset_bottom = 396.5
+theme_override_styles/slider = SubResource("StyleBoxLine_nvbjw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_gf7yt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_gf7yt")
+min_value = -60.0
+max_value = 20.0
+value = -10.0
+script = ExtResource("20_apmpr")
+
+[node name="Sfx_slider" type="HSlider" parent="Option"]
+layout_mode = 0
+offset_left = 332.5
+offset_top = 432.5
+offset_right = 946.5
+offset_bottom = 528.5
+theme_override_styles/slider = SubResource("StyleBoxLine_nvbjw")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_gf7yt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_gf7yt")
+min_value = -60.0
+max_value = 20.0
+value = -10.0
+script = ExtResource("20_p88mw")
+
+[node name="Music" type="Label" parent="Option"]
+layout_mode = 0
+offset_left = 541.5
+offset_top = 266.5
+offset_right = 716.5
+offset_bottom = 315.5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="Sfx" type="Label" parent="Option"]
+layout_mode = 0
+offset_left = 569.5
+offset_top = 409.5
+offset_right = 744.5
+offset_bottom = 458.5
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "Sfx"
+
 [connection signal="pressed" from="SignPost/PlayButton" to="SignPost/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="SignPost/OptionButton" to="SignPost/OptionButton" method="_on_pressed"]
 [connection signal="pressed" from="SignPost/ExitButton" to="SignPost/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="Option/back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Option/Music_slider" to="Option/Music_slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Option/Sfx_slider" to="Option/Sfx_slider" method="_on_value_changed"]
