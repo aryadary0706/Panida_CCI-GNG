@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4juj3eefbujs"]
+
+[ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_polbf"]
+[ext_resource type="Script" path="res://Scripts/UI/game_over_ui.gd" id="2_hu50j"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_sxw4n"]
+[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="4_lxqkl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k0uy1"]
+shader = ExtResource("1_polbf")
+shader_parameter/opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gth6v"]
+shader = ExtResource("1_polbf")
+shader_parameter/opacity = 0.4
+
+[node name="GameOverUI" type="Control"]
+process_mode = 3
+material = SubResource("ShaderMaterial_k0uy1")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_hu50j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gth6v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.105882)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -447.0
+offset_top = 265.0
+offset_right = 441.0
+offset_bottom = 397.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7301, 0.0103236, 0.267601, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("3_sxw4n")
+theme_override_font_sizes/font_size = 135
+text = "Game Over!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -470.0
+offset_top = 34.0
+offset_right = 538.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+
+[node name="restart" type="Button" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_lxqkl")
+text = "Play Again"
+
+[node name="quit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_lxqkl")
+text = "Exit Level"
+
+[connection signal="pressed" from="HBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/quit" to="." method="_on_quit_pressed"]

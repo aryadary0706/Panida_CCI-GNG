@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dria7dvewpyuj"]
+
+[ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_ryelr"]
+[ext_resource type="Script" path="res://Scripts/UI/win.gd" id="1_ujh2o"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_5feap"]
+[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="4_2tkks"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1t0q3"]
+shader = ExtResource("1_ryelr")
+shader_parameter/opacity = 0.45
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ujh2o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
+material = SubResource("ShaderMaterial_1t0q3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = -337.0
+offset_right = 560.0
+offset_bottom = -247.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5feap")
+theme_override_font_sizes/font_size = 80
+text = "You Finished this Level!"
+
+[node name="back" type="Button" parent="."]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = -711.0
+offset_right = 248.0
+offset_bottom = -561.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_2tkks")
+text = "Back To Menu"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

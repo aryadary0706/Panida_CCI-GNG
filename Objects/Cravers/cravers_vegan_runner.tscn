@@ -1,0 +1,172 @@
+[gd_scene load_steps=33 format=3 uid="uid://b6yv036e8jvx3"]
+
+[ext_resource type="Script" path="res://Scripts/Cravers/cravers_basic.gd" id="1_mw1r1"]
+[ext_resource type="Texture2D" uid="uid://u4vwb5grdiog" path="res://Sprites/Cravers/kambing/back/mbek 2_0000.png" id="2_jibfb"]
+[ext_resource type="Texture2D" uid="uid://b8mnpv3foos67" path="res://Sprites/Cravers/kambing/back/mbek 2_0001.png" id="3_nt6ko"]
+[ext_resource type="Texture2D" uid="uid://bt73jya6ditt8" path="res://Sprites/Cravers/kambing/back/mbek 2_0002.png" id="4_4fla2"]
+[ext_resource type="Texture2D" uid="uid://dpusifdnhabgb" path="res://Sprites/Cravers/kambing/back/mbek 2_0003.png" id="5_a51c5"]
+[ext_resource type="Texture2D" uid="uid://ccvscfoganjnt" path="res://Sprites/Cravers/kambing/back/mbek 2_0004.png" id="6_2yqrn"]
+[ext_resource type="Texture2D" uid="uid://wjfq40ca687g" path="res://Sprites/Cravers/kambing/back/mbek 2_0005.png" id="7_ror75"]
+[ext_resource type="Texture2D" uid="uid://bq7mofk3v0cgc" path="res://Sprites/Cravers/kambing/back/mbek 2_0006.png" id="8_milql"]
+[ext_resource type="Texture2D" uid="uid://c2o2w2awysof0" path="res://Sprites/Cravers/kambing/back/mbek 2_0007.png" id="9_1py5y"]
+[ext_resource type="Texture2D" uid="uid://bn3y25mr4ggbo" path="res://Sprites/Cravers/kambing/front/mbek 2_0008.png" id="10_l03o8"]
+[ext_resource type="Texture2D" uid="uid://b61u3lk061ekc" path="res://Sprites/Cravers/kambing/front/mbek 2_0009.png" id="11_t4opg"]
+[ext_resource type="Texture2D" uid="uid://dplas2c2fio8f" path="res://Sprites/Cravers/kambing/front/mbek 2_0010.png" id="12_5seo2"]
+[ext_resource type="Texture2D" uid="uid://cpfubt1ju2pn6" path="res://Sprites/Cravers/kambing/front/mbek 2_0011.png" id="13_5tfyr"]
+[ext_resource type="Texture2D" uid="uid://drnfuu8btompt" path="res://Sprites/Cravers/kambing/front/mbek 2_0012.png" id="14_ifndd"]
+[ext_resource type="Texture2D" uid="uid://cirvpvea1wu7c" path="res://Sprites/Cravers/kambing/front/mbek 2_0013.png" id="15_oqpk2"]
+[ext_resource type="Texture2D" uid="uid://yialsolwr7nq" path="res://Sprites/Cravers/kambing/front/mbek 2_0014.png" id="16_co8nr"]
+[ext_resource type="Texture2D" uid="uid://cbqp8gob1rccj" path="res://Sprites/Cravers/kambing/front/mbek 2_0015.png" id="17_rcb5c"]
+[ext_resource type="Texture2D" uid="uid://c8ijpcyvjxvsc" path="res://Sprites/Cravers/kambing/left/Timeline 1_0000.png" id="18_r853f"]
+[ext_resource type="Texture2D" uid="uid://c0kf878otowcb" path="res://Sprites/Cravers/kambing/left/Timeline 1_0001.png" id="19_id73i"]
+[ext_resource type="Texture2D" uid="uid://fa6ticgph18q" path="res://Sprites/Cravers/kambing/left/Timeline 1_0002.png" id="20_h2wfj"]
+[ext_resource type="Texture2D" uid="uid://u84c1wgq5y12" path="res://Sprites/Cravers/kambing/left/Timeline 1_0003.png" id="21_2gn80"]
+[ext_resource type="Texture2D" uid="uid://l1rd7ytfa7wo" path="res://Sprites/Cravers/kambing/left/Timeline 1_0004.png" id="22_4say7"]
+[ext_resource type="Texture2D" uid="uid://ir17bx052505" path="res://Sprites/Cravers/kambing/left/Timeline 1_0005.png" id="23_s7s7a"]
+[ext_resource type="Texture2D" uid="uid://dqvw8eglj1ayi" path="res://Sprites/Cravers/kambing/left/Timeline 1_0006.png" id="24_h46uj"]
+[ext_resource type="Texture2D" uid="uid://svanyc12a44n" path="res://Sprites/Cravers/kambing/right/Timeline 1_0007.png" id="25_3l8so"]
+[ext_resource type="Texture2D" uid="uid://brfwiwiqlogvn" path="res://Sprites/Cravers/kambing/right/Timeline 1_0008.png" id="26_kbg6s"]
+[ext_resource type="Texture2D" uid="uid://cxrjchfyplybt" path="res://Sprites/Cravers/kambing/right/Timeline 1_0009.png" id="27_4d1y1"]
+[ext_resource type="Texture2D" uid="uid://djo4tnl8p13gd" path="res://Sprites/Cravers/kambing/right/Timeline 1_0010.png" id="28_ttyiu"]
+[ext_resource type="Texture2D" uid="uid://l1h1mk6agbiv" path="res://Sprites/Cravers/kambing/right/Timeline 1_0011.png" id="29_xp5mx"]
+[ext_resource type="Texture2D" uid="uid://dclvagmednxfg" path="res://Sprites/Cravers/kambing/right/Timeline 1_0012.png" id="30_e0foc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3wvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jibfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nt6ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4fla2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a51c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2yqrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ror75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_milql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1py5y")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_l03o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_t4opg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5seo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5tfyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ifndd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_oqpk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_co8nr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rcb5c")
+}],
+"loop": true,
+"name": &"front",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_r853f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_id73i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_h2wfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2gn80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_4say7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_s7s7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h46uj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_3l8so")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_kbg6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4d1y1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_ttyiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xp5mx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_e0foc")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5wcv"]
+size = Vector2(3, 3)
+
+[node name="CraversVegan" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_mw1r1")
+craverType = "Vegan"
+eatingDuration = 4.0
+moveSpeed = 150.0
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, -4)
+scale = Vector2(0.0703704, 0.0703704)
+sprite_frames = SubResource("SpriteFrames_i3wvc")
+animation = &"back"
+frame = 5
+frame_progress = 0.708331
+
+[node name="Navigation" type="NavigationAgent2D" parent="."]
+path_desired_distance = 15.0
+target_desired_distance = 15.0
+path_max_distance = 15.0
+debug_path_custom_color = Color(1, 0.243137, 1, 1)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m5wcv")
+one_way_collision = true

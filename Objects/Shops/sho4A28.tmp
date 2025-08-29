@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7w8eyqrn35hr"]
+
+[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_es643"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjoan"]
+
+[sub_resource type="Gradient" id="Gradient_spdm3"]
+colors = PackedColorArray(0.866667, 0, 0, 1, 1, 1, 0.0313726, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nx0yd"]
+gradient = SubResource("Gradient_spdm3")
+fill_to = Vector2(1, 0.889908)
+
+[sub_resource type="GDScript" id="GDScript_meo2q"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5abm"]
+radius = 23.1948
+
+[node name="ShopBasic" type="Node2D"]
+
+[node name="ShopBody" type="StaticBody2D" parent="."]
+script = ExtResource("1_es643")
+
+[node name="Collision" type="CollisionShape2D" parent="ShopBody"]
+shape = SubResource("RectangleShape2D_xjoan")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="ShopBody"]
+scale = Vector2(0.3125, 0.3125)
+texture = SubResource("GradientTexture2D_nx0yd")
+
+[node name="ShopRange" type="Area2D" parent="."]
+script = SubResource("GDScript_meo2q")
+
+[node name="Collision" type="CollisionShape2D" parent="ShopRange"]
+shape = SubResource("CircleShape2D_q5abm")
+
+[connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]

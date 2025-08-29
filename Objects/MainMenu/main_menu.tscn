@@ -1,0 +1,199 @@
+[gd_scene load_steps=26 format=3 uid="uid://ctwaenq7iw1pb"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
+[ext_resource type="Texture2D" uid="uid://rbgtm2ogwlhh" path="res://assets/Asset-artist/bg.png" id="2_k0vp4"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/option_button.gd" id="3_my7hd"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/exit_button.gd" id="4_f1d45"]
+[ext_resource type="Texture2D" uid="uid://bo8pkda55n2d8" path="res://assets/MainMenuAsset/Play/play dark.png" id="4_i1052"]
+[ext_resource type="Texture2D" uid="uid://yngoxrbx8056" path="res://assets/MainMenuAsset/Play/play bright.png" id="5_mq4w7"]
+[ext_resource type="Texture2D" uid="uid://c71blh4aomajt" path="res://assets/MainMenuAsset/kayu.png" id="6_mtwrc"]
+[ext_resource type="Texture2D" uid="uid://clmvf45qqcet5" path="res://assets/MainMenuAsset/exit/Exit.png" id="7_tyodq"]
+[ext_resource type="Texture2D" uid="uid://b3mrrssl3j060" path="res://assets/MainMenuAsset/Option/options.png" id="8_ce7mx"]
+[ext_resource type="Texture2D" uid="uid://j1dyt3sf6d1g" path="res://assets/MainMenuAsset/Option/options dark.png" id="8_rn6s2"]
+[ext_resource type="Texture2D" uid="uid://dteki4wn63udb" path="res://assets/MainMenuAsset/Option/options bright.png" id="9_8biuh"]
+[ext_resource type="Texture2D" uid="uid://bn5f0vo2h7lec" path="res://assets/MainMenuAsset/Play/play.png" id="9_w1w0c"]
+[ext_resource type="Texture2D" uid="uid://lailulq5ak0e" path="res://assets/MainMenuAsset/exit/exit dark.png" id="12_unej6"]
+[ext_resource type="Texture2D" uid="uid://c7o25yey7hb5d" path="res://assets/MainMenuAsset/exit/exit bright.png" id="13_pn01k"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
+[ext_resource type="Texture2D" uid="uid://cuykv8qwwlnx6" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
+[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="17_qs8rg"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/music_slider.gd" id="18_145wc"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5e8i"]
+texture = ExtResource("2_k0vp4")
+modulate_color = Color(0.877616, 0.877616, 0.877616, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukgkf"]
+texture = ExtResource("15_rf8wp")
+expand_margin_left = 140.0
+expand_margin_top = 80.0
+expand_margin_right = 80.0
+expand_margin_bottom = 120.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cukgr"]
+color = Color(1, 1, 1, 1)
+thickness = 7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qapsd"]
+color = Color(0.390937, 0.226617, 9.62615e-08, 1)
+thickness = 7
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_46yfs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_i5e8i")
+
+[node name="SignPost" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 86.0
+offset_top = -96.0
+offset_right = 316.0
+offset_bottom = 265.0
+grow_vertical = 2
+
+[node name="Kayu" type="Sprite2D" parent="SignPost"]
+position = Vector2(222, 496)
+scale = Vector2(1.9087, 2.50613)
+texture = ExtResource("6_mtwrc")
+
+[node name="PlayButton" type="TextureButton" parent="SignPost"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 105.0
+offset_right = 463.0
+offset_bottom = 360.0
+texture_normal = ExtResource("9_w1w0c")
+texture_pressed = ExtResource("4_i1052")
+texture_hover = ExtResource("5_mq4w7")
+script = ExtResource("2_6ds7t")
+
+[node name="OptionButton" type="TextureButton" parent="SignPost"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 0
+offset_left = -17.0
+offset_top = 284.0
+offset_right = 447.0
+offset_bottom = 533.0
+texture_normal = ExtResource("8_ce7mx")
+texture_pressed = ExtResource("8_rn6s2")
+texture_hover = ExtResource("9_8biuh")
+script = ExtResource("3_my7hd")
+
+[node name="ExitButton" type="TextureButton" parent="SignPost"]
+custom_minimum_size = Vector2(320, 90)
+layout_mode = 0
+offset_left = -12.0
+offset_top = 489.0
+offset_right = 452.0
+offset_bottom = 738.0
+texture_normal = ExtResource("7_tyodq")
+texture_pressed = ExtResource("12_unej6")
+texture_hover = ExtResource("13_pn01k")
+script = ExtResource("4_f1d45")
+
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -644.5
+offset_top = -434.5
+offset_right = 644.5
+offset_bottom = 434.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_f64yl")
+
+[node name="Panel" type="Panel" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ukgkf")
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 662.0
+offset_right = 911.0
+offset_bottom = 751.0
+theme = ExtResource("17_qs8rg")
+text = "Back"
+
+[node name="Music" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 295.5
+offset_top = 359.5
+offset_right = 1001.5
+offset_bottom = 437.5
+theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
+min_value = -20.0
+max_value = 10.0
+script = ExtResource("18_145wc")
+
+[node name="Sfx" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 294.5
+offset_top = 516.5
+offset_right = 1000.5
+offset_bottom = 594.5
+theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
+min_value = -20.0
+max_value = 10.0
+value = 5.0
+script = ExtResource("20_p88mw")
+
+[node name="Sfx_label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 608.5
+offset_top = 481.5
+offset_right = 726.5
+offset_bottom = 530.5
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "SFX"
+
+[node name="Music_Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 574.5
+offset_top = 321.5
+offset_right = 749.5
+offset_bottom = 370.5
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[connection signal="pressed" from="SignPost/PlayButton" to="SignPost/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="SignPost/OptionButton" to="SignPost/OptionButton" method="_on_pressed"]
+[connection signal="pressed" from="SignPost/ExitButton" to="SignPost/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/Music" to="Options/Music" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/Sfx" to="Options/Sfx" method="_on_value_changed"]

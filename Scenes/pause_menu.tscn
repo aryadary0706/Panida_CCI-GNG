@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyhxm5d5ton31"]
+
+[ext_resource type="Script" path="res://Scripts/UI/pause_menu.gd" id="1_7i6nf"]
+[ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="2_ul6ee"]
+[ext_resource type="Texture2D" uid="uid://cifxaaiigcp0y" path="res://Sprites/DEMO-vector-rpg-overworld-tileset/tree_2.png" id="3_jmvqu"]
+[ext_resource type="Theme" uid="uid://wgf74l7ga33b" path="res://blue_button.tres" id="4_v6hul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inwgf"]
+shader = ExtResource("2_ul6ee")
+shader_parameter/opacity = 0.2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wvfpi"]
+texture = ExtResource("3_jmvqu")
+
+[sub_resource type="Theme" id="Theme_382o5"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_wvfpi")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2oc8u"]
+
+[sub_resource type="Theme" id="Theme_g3g34"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr7kg"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7i6nf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_inwgf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 3.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -373.5
+offset_right = 361.0
+offset_bottom = 373.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_382o5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2oc8u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_g3g34")
+theme_override_constants/separation = 50
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+theme = ExtResource("4_v6hul")
+theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+theme_override_icons/icon = SubResource("AtlasTexture_yr7kg")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+theme = ExtResource("4_v6hul")
+theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+text = "Restart"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+theme = ExtResource("4_v6hul")
+theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+text = "Exit Game"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

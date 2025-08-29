@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://di2t447fxve1v"]
+
+[ext_resource type="Texture2D" uid="uid://ccw65oc5l00l" path="res://assets/AssetInGame/ticket.png" id="1_whtwr"]
+
+[node name="Money" type="Node2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0598958, 0.0598959)
+texture = ExtResource("1_whtwr")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcnhjljcu261d"]
+
+[ext_resource type="Script" path="res://Scripts/Shops/shop_spawner.gd" id="1_gldvu"]
+
+[node name="SpawnerShop" type="Control"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -72.0
+offset_top = -72.0
+scale = Vector2(2, 2)
+script = ExtResource("1_gldvu")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopTexture" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = -10.0
+offset_right = 65.0
+offset_bottom = 120.0
+grow_horizontal = 2
+
+[node name="PriceLabel" type="RichTextLabel" parent="Button"]
+texture_filter = 6
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -20.0
+offset_right = 18.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
