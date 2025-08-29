@@ -1,13 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://dria7dvewpyuj"]
+[gd_scene load_steps=10 format=3 uid="uid://dria7dvewpyuj"]
 
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_ryelr"]
 [ext_resource type="Script" path="res://Scripts/UI/win.gd" id="1_ujh2o"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_5feap"]
-[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="4_2tkks"]
+[ext_resource type="Texture2D" uid="uid://bdqw7picoen0e" path="res://assets/Asset-artist/base 2  blue.png" id="4_4eyv0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1t0q3"]
 shader = ExtResource("1_ryelr")
 shader_parameter/opacity = 0.45
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65frk"]
+atlas = ExtResource("4_4eyv0")
+region = Rect2(13.5, 45.5, 484, 129)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6tpp"]
+texture = SubResource("AtlasTexture_65frk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg7ap"]
+texture = SubResource("AtlasTexture_65frk")
+modulate_color = Color(0.674815, 0.674815, 0.674814, 1)
+
+[sub_resource type="Theme" id="Theme_2wky1"]
+Button/colors/font_color = Color(0.894534, 0.88808, 0.983991, 1)
+Button/font_sizes/font_size = 45
+Button/fonts/font = ExtResource("3_5feap")
+Button/styles/hover = SubResource("StyleBoxTexture_r6tpp")
+Button/styles/normal = SubResource("StyleBoxTexture_r6tpp")
+Button/styles/pressed = SubResource("StyleBoxTexture_fg7ap")
 
 [node name="Win" type="Control"]
 layout_mode = 3
@@ -59,7 +78,7 @@ offset_right = 248.0
 offset_bottom = -561.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("4_2tkks")
+theme = SubResource("Theme_2wky1")
 text = "Back To Menu"
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]

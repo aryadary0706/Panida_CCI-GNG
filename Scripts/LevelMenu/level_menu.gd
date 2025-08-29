@@ -7,8 +7,7 @@ extends Control
 ]
 
 func _ready() -> void:
-	print_tree_pretty()
-	#MusicPlayer.play_music(preload("res://audio/MenuGame.ogg"))
+	MusicPlayer.play_music(preload("res://audio/MenuGame.ogg"))
 	#GlobalProgress.load_progress()
 	#for i in range(level_buttons.size()):
 	#	if i + 1 <= GlobalProgress.unlocked_level:

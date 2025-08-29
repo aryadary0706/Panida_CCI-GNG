@@ -16,3 +16,9 @@ func load_progress():
 		var save = FileAccess.open("user://save.dat", FileAccess.READ)
 		unlocked_level = save.get_var()
 		save.close()
+		
+func reset_progress():
+	if FileAccess.file_exists("user://save.dat"):
+		DirAccess.remove_absolute("user://save.dat")
+	unlocked_level = 1
+	save_progress()
