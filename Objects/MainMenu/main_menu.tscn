@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ctwaenq7iw1pb"]
+[gd_scene load_steps=24 format=3 uid="uid://ctwaenq7iw1pb"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
 [ext_resource type="Texture2D" uid="uid://cuykv8qwwlnx6" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
-[ext_resource type="Texture2D" uid="uid://bdqw7picoen0e" path="res://assets/Asset-artist/base 2  blue.png" id="17_7c1kw"]
+[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="17_qs8rg"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/music_slider.gd" id="18_145wc"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
 
@@ -27,25 +27,6 @@ expand_margin_left = 140.0
 expand_margin_top = 80.0
 expand_margin_right = 80.0
 expand_margin_bottom = 120.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_65frk"]
-atlas = ExtResource("17_7c1kw")
-region = Rect2(13.5, 45.5, 484, 129)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6tpp"]
-texture = SubResource("AtlasTexture_65frk")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg7ap"]
-texture = SubResource("AtlasTexture_65frk")
-modulate_color = Color(0.462291, 0.462291, 0.462291, 1)
-
-[sub_resource type="Theme" id="Theme_36ny3"]
-Button/colors/font_color = Color(0.894534, 0.88808, 0.983991, 1)
-Button/font_sizes/font_size = 45
-Button/fonts/font = ExtResource("16_mm3pr")
-Button/styles/hover = SubResource("StyleBoxTexture_r6tpp")
-Button/styles/normal = SubResource("StyleBoxTexture_r6tpp")
-Button/styles/pressed = SubResource("StyleBoxTexture_fg7ap")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_cukgr"]
 color = Color(1, 1, 1, 1)
@@ -154,7 +135,7 @@ offset_left = 397.0
 offset_top = 662.0
 offset_right = 911.0
 offset_bottom = 751.0
-theme = SubResource("Theme_36ny3")
+theme = ExtResource("17_qs8rg")
 text = "Back"
 
 [node name="Music" type="HSlider" parent="Options"]
@@ -166,8 +147,8 @@ offset_bottom = 437.5
 theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
-min_value = -40.0
-max_value = 40.0
+min_value = -20.0
+max_value = 20.0
 script = ExtResource("18_145wc")
 
 [node name="Sfx" type="HSlider" parent="Options"]
@@ -179,26 +160,26 @@ offset_bottom = 594.5
 theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
-min_value = -40.0
-max_value = 40.0
+min_value = -10.0
+max_value = 10.0
 script = ExtResource("20_p88mw")
 
-[node name="Label" type="Label" parent="Options"]
+[node name="Sfx_label" type="Label" parent="Options"]
 layout_mode = 0
-offset_left = 616.5
-offset_top = 322.5
-offset_right = 734.5
-offset_bottom = 371.5
+offset_left = 608.5
+offset_top = 481.5
+offset_right = 726.5
+offset_bottom = 530.5
 theme_override_fonts/font = ExtResource("16_mm3pr")
 theme_override_font_sizes/font_size = 50
 text = "SFX"
 
-[node name="Label2" type="Label" parent="Options"]
+[node name="Music_Label" type="Label" parent="Options"]
 layout_mode = 0
-offset_left = 581.5
-offset_top = 476.5
-offset_right = 756.5
-offset_bottom = 525.5
+offset_left = 574.5
+offset_top = 321.5
+offset_right = 749.5
+offset_bottom = 370.5
 theme_override_fonts/font = ExtResource("16_mm3pr")
 theme_override_font_sizes/font_size = 50
 text = "Music"
