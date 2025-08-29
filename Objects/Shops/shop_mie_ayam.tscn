@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://da8habsl3gcp7"]
+[gd_scene load_steps=8 format=3 uid="uid://da8habsl3gcp7"]
 
-[ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_n3oxp"]
-[ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_6qbc2"]
+[ext_resource type="Script" path="res://Scripts/Shops/shop_skill_mie_ayam.gd" id="2_ekcun"]
 [ext_resource type="Texture2D" uid="uid://bqnu1ld3wa5j6" path="res://Sprites/FoodStalls/mie ayam/19.png" id="3_nrr4r"]
 [ext_resource type="Texture2D" uid="uid://cp5idsptnpalo" path="res://Sprites/FoodStalls/mie ayam/20.png" id="4_23nqm"]
 [ext_resource type="Texture2D" uid="uid://6fvbi7ur31ct" path="res://Sprites/FoodStalls/mie ayam/21.png" id="5_fy17k"]
@@ -11,11 +10,6 @@ size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
 size = Vector2(9.66666, 59.6667)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s4tx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u0osb"]
-radius = 28.8507
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6cbo2"]
 animations = [{
@@ -34,11 +28,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="ShopSeblak" type="Node2D"]
+[node name="ShopMieAyam" type="Node2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_n3oxp")
-priceToBuy = 530
-moneyMade = 70
+script = ExtResource("2_ekcun")
 placableTileIDs = Array[int]([1])
 
 [node name="ShopBody" type="Area2D" parent="."]
@@ -60,18 +52,6 @@ shape = SubResource("RectangleShape2D_ocuq0")
 [node name="Collision2" type="CollisionShape2D" parent="ShopRange"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
-
-[node name="ShopSkill" type="Area2D" parent="."]
-material = SubResource("CanvasItemMaterial_7s4tx")
-scale = Vector2(3, 3)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("2_6qbc2")
-slowPercentage = 0.1
-
-[node name="Collision" type="CollisionShape2D" parent="ShopSkill"]
-shape = SubResource("CircleShape2D_u0osb")
-debug_color = Color(0.565282, 0.55251, 0.223068, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -6.5)
@@ -111,9 +91,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
 [connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
+[connection signal="body_exited" from="ShopBody" to="." method="_on_shop_body_body_exited"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
-[connection signal="body_entered" from="ShopSkill" to="ShopSkill" method="_on_body_entered"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]

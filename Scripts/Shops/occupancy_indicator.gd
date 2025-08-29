@@ -3,6 +3,7 @@ class_name OccupancyIndicator
 
 @export var indicator_texture: Texture2D
 var shop: Shop = null
+var active_color = Color(1,1,1)
 
 @onready var hbox := $HBoxContainer
 
@@ -31,6 +32,6 @@ func update_indicator() -> void:
 	for i in range(hbox.get_child_count()):
 		var indicator = hbox.get_child(i) as TextureRect
 		if i < inside:
-			indicator.modulate = Color(1,1,1)  # putih
+			indicator.modulate = active_color
 		else:
 			indicator.modulate = Color(0.5,0.5,0.5)  # abu abu

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/SceneProperties/global_variables.gd"
 GlobalProgress="*res://Scripts/GlobalProgress.gd"
+GlobalFunctions="*res://Scripts/SceneProperties/global_functions.gd"
 MusicPlayer="*res://audio/music_player.tscn"
 SfxPlayer="*res://audio/sfx_player.tscn"
 

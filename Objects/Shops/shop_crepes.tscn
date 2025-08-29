@@ -93,6 +93,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
 [connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
+[connection signal="body_exited" from="ShopBody" to="." method="_on_shop_body_body_exited"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

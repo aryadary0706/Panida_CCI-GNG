@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cbk08y3qkrx21"]
+[gd_scene load_steps=16 format=4 uid="uid://cbk08y3qkrx21"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_vab1m"]
 [ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="2_lnocw"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="13_17rci"]
 [ext_resource type="PackedScene" uid="uid://232bpxhfwr6a" path="res://Objects/Shops/shop_seblak.tscn" id="13_sxy38"]
 [ext_resource type="PackedScene" uid="uid://csh4tcvniyggh" path="res://Objects/Shops/shop_gado2.tscn" id="14_xmywm"]
+[ext_resource type="PackedScene" uid="uid://da8habsl3gcp7" path="res://Objects/Shops/shop_mie_ayam.tscn" id="15_ulfjj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vab1m")
@@ -72,3 +73,7 @@ shopScene = ExtResource("13_sxy38")
 [node name="SpawnerShop5" parent="." instance=ExtResource("7_cu2xl")]
 position = Vector2(1137, 104)
 shopScene = ExtResource("14_xmywm")
+
+[node name="SpawnerShop6" parent="." instance=ExtResource("7_cu2xl")]
+position = Vector2(1315, 104)
+shopScene = ExtResource("15_ulfjj")

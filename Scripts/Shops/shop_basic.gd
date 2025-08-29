@@ -30,7 +30,6 @@ func _ready() -> void:
 	occupancyIndicator = occupancyIndicator.instantiate()
 	add_child(occupancyIndicator)
 	occupancyIndicator.setup(self)
-	z_index = 1000
 	delay_timer.wait_time = delay_time
 
 func start_delay() -> void:
@@ -81,6 +80,7 @@ func checkPlacableTile() -> bool:
 	return true
 
 func _process(delta: float) -> void:
+	z_index = global_position.y + Global.ShopLayer
 	#bagian placement
 	if isDragging and not hasPlaced:
 		position = get_global_mouse_position().snapped(Vector2(snap, snap))
@@ -108,7 +108,7 @@ func spawn_coin_popup():
 	)
 
 	var coin = moneyPopup.instantiate()
-	coin.z_index = 1002
+	coin.z_index = z_index + 1
 	get_tree().current_scene.add_child(coin)
 	coin.global_position = global_position + offset  
 
@@ -135,6 +135,9 @@ func _on_shop_body_body_entered(body: Node2D) -> void:
 		occupancyIndicator.update_indicator()
 		body.visible = false
 		body.eating()
+		
+func _on_shop_body_body_exited(body: Node2D) -> void:
+	pass
 		
 
 

@@ -13,7 +13,12 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 	areaColor.visible = false
-
+	
+	
+func _process(delta: float) -> void:
+	z_index = Global.EffectLayer
+	
+	
 func _on_body_entered(body: Node) -> void:
 	if not self.get_parent().hasPlaced:
 		return
@@ -24,6 +29,7 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if body is Craver:
 		craversInArea.erase(body)
+		
 
 func _try_trigger_slow() -> void:
 	if slowOnCooldown:
@@ -34,7 +40,7 @@ func _try_trigger_slow() -> void:
 	
 	# Mulai efek slow
 	_apply_slow(craversInArea)
-	areaColor.visible = true
+	GlobalFunctions.fade_in(areaColor, 0.5)
 
 	# Jalankan timer effect
 	await get_tree().create_timer(effectTime).timeout
@@ -43,7 +49,7 @@ func _try_trigger_slow() -> void:
 	for c in affectedCravers.duplicate():
 		_restore_slow(c)
 
-	areaColor.visible = false
+	GlobalFunctions.fade_out(areaColor, 0.5)
 
 	# Masuk cooldown
 	slowOnCooldown = true

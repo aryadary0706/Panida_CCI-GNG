@@ -34,12 +34,12 @@ func _process(delta: float) -> void:
 	if maxVisit <= 0:
 		queue_free()
 	
-	if !isGoingToShop:
-		z_index = global_position.y
-	elif isGoingToShop:
-		z_index = 1
-		
-	update_animation()
+	z_index = global_position.y + Global.CraverLayer
+	
+	if moveSpeed > 0:
+		update_animation()
+	elif moveSpeed <= 0:
+		anim.stop
 	
 func _physics_process(delta: float) -> void:
 	if isGoingToShop and assignedShop != null:

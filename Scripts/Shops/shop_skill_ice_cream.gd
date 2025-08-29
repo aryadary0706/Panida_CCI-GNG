@@ -13,6 +13,10 @@ var stunOnCooldown: bool = false
 func _ready() -> void:
 	areaColor.visible = false
 
+func _process(delta: float) -> void:
+	z_index = Global.EffectLayer
+	
+
 func _on_body_entered(body: Node) -> void:
 	if not self.get_parent().hasPlaced:
 		return
@@ -48,21 +52,20 @@ func _try_trigger_stun() -> void:
 	
 	# Aktifkan cooldown
 	stunOnCooldown = true
-	areaColor.visible = true
+	GlobalFunctions.fade_in(areaColor, 0.5)
 	await get_tree().create_timer(cooldown).timeout
-	areaColor.visible = false
+	GlobalFunctions.fade_out(areaColor, 0.5)
 	stunOnCooldown = false
 
 
 func _stun_cravers(targets: Array) -> void:
-	SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg")) #Gua tambahin efek es disini hehe
+	SfxPlayer.play_music(preload("res://audio/KenaEfekEs.ogg")) # efek es
 	for c in targets:
 		if not is_instance_valid(c): 
 			continue
 		
 		var originalSpeed = c.moveSpeed
-		var craverSprite = c.get_node("Sprite2D")
-		craverSprite.stop()
+		c.direction = Vector2.ZERO
 		c.moveSpeed = 0
 		c.modulate = Color(0.3, 0.5, 1.0, 1.0)
 		stunnedCravers.append(c)
