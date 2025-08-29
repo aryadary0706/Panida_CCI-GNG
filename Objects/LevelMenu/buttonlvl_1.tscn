@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhqohi5o505yp"]
 
-[ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl1.gd" id="1_qjulp"]
+[ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl.gd" id="1_qjulp"]
 [ext_resource type="Texture2D" uid="uid://c0y2avsoaqr20" path="res://assets/bg_picture/PreviewLvL1.png" id="2_f8865"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_gyg03"]
 

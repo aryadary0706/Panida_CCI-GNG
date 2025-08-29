@@ -9,7 +9,3 @@ func _ready() -> void:
 	InGameUI.z_index = 1000
 	waveManager.z_index = InGameUI.z_index
 	
-
-func _on_level_completed():
-	GlobalProgress.unlocked_level += 1
-	GlobalProgress.save_progress()

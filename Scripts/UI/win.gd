@@ -12,3 +12,4 @@ func _on_back_pressed() -> void:
 func play_scene():
 	show()
 	MusicPlayer.play_music(preload("res://audio/LevelComplete.ogg"))
+	GlobalProgress.unlock_next_level()

@@ -31,6 +31,7 @@ func _ready() -> void:
 	occupancyIndicator.setup(self)
 	z_index = 1000
 	delay_timer.wait_time = delay_time
+	sprite.play()
 
 func start_delay() -> void:
 	if not isWaitingDelay && !hasPlaced:
@@ -166,5 +167,4 @@ func _on_button_button_up() -> void:
 		queue_free()
 	elif !hasPlaced and !isWaitingDelay:
 		start_delay()
-	if hasPlaced:
-		sprite.play()
+		

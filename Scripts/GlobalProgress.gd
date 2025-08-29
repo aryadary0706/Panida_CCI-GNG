@@ -2,10 +2,9 @@ extends Node
 
 var unlocked_level: int = 1
 
-func unlock_next_level(level):
-	if level >= unlocked_level:
-		unlocked_level = level + 1
-		save_progress()
+func unlock_next_level():
+	unlocked_level += 1
+	save_progress()
 
 func save_progress():
 	var save = FileAccess.open("user://save.dat", FileAccess.WRITE)
