@@ -1,15 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://232bpxhfwr6a"]
+[gd_scene load_steps=15 format=3 uid="uid://232bpxhfwr6a"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_5e756"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_rwheo"]
+[ext_resource type="Texture2D" uid="uid://b2ef3oqk6byaa" path="res://Sprites/FoodStalls/seblak/10.png" id="2_vvjo5"]
 [ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="3_m8kqr"]
-[ext_resource type="Texture2D" uid="uid://b8dl1ggr12v5u" path="res://Sprites/Red/RedMarket.png" id="3_x41vr"]
+[ext_resource type="Texture2D" uid="uid://bjh3n0pf21r07" path="res://Sprites/FoodStalls/seblak/11.png" id="3_p0uh5"]
+[ext_resource type="Texture2D" uid="uid://lj7h71ok6q7i" path="res://Sprites/FoodStalls/seblak/12.png" id="4_nk04q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsalt"]
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
 size = Vector2(9.66666, 59.6667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afu0n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vvjo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p0uh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nk04q")
+}],
+"loop": true,
+"name": &"SeblakStall",
+"speed": 5.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s4tx"]
 
@@ -54,13 +73,12 @@ shape = SubResource("RectangleShape2D_ocuq0")
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(4, 4)
-texture = ExtResource("3_x41vr")
-hframes = 3
-vframes = 4
-frame = 4
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -6.5)
+scale = Vector2(0.484, 0.484)
+sprite_frames = SubResource("SpriteFrames_afu0n")
+animation = &"SeblakStall"
+frame_progress = 0.76798
 
 [node name="DelayTimer" type="Timer" parent="."]
 wait_time = 2.0

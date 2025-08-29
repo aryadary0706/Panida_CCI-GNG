@@ -1,15 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxsxosmgxw1vh"]
+[gd_scene load_steps=15 format=3 uid="uid://cxsxosmgxw1vh"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_rpe4b"]
+[ext_resource type="Texture2D" uid="uid://cl16i4o4mlwje" path="res://Sprites/FoodStalls/ice cream/4.png" id="2_6r4v2"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_ice_cream.gd" id="2_wbeee"]
-[ext_resource type="Texture2D" uid="uid://6ku173atnwqb" path="res://Sprites/Cyan/CyanMarket.png" id="3_ikhv0"]
+[ext_resource type="Texture2D" uid="uid://dme6rityn7wa4" path="res://Sprites/FoodStalls/ice cream/5.png" id="3_q46cp"]
 [ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="3_yfshx"]
+[ext_resource type="Texture2D" uid="uid://d2o37j35r7ev3" path="res://Sprites/FoodStalls/ice cream/6.png" id="4_bv8wq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsalt"]
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
 size = Vector2(9.66666, 59.6667)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb0ol"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6r4v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q46cp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bv8wq")
+}],
+"loop": true,
+"name": &"IcecreamStall",
+"speed": 5.0
+}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s4tx"]
 
@@ -56,13 +75,12 @@ shape = SubResource("RectangleShape2D_ocuq0")
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(4, 4)
-texture = ExtResource("3_ikhv0")
-hframes = 3
-vframes = 4
-frame = 4
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -7.5)
+scale = Vector2(0.484, 0.484)
+sprite_frames = SubResource("SpriteFrames_gb0ol")
+animation = &"IcecreamStall"
+frame_progress = 0.400142
 
 [node name="DelayTimer" type="Timer" parent="."]
 wait_time = 2.0
