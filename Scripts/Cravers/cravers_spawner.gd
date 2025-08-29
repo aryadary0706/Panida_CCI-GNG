@@ -1,4 +1,5 @@
 extends Node2D
+class_name WaveManager
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var build_phase_timer: Timer = $BuildPhaseTimer
@@ -102,11 +103,11 @@ func spawn_enemy(enemy_type: String) -> void:
 		var enemy_scene = ENEMY_SCENES[enemy_type]
 		var enemy_instance = enemy_scene.instantiate()
 		enemy_container.add_child(enemy_instance)
-		SfxPlayer.play_music(preload("res://audio/CraverSpawn.ogg"))
+		#SfxPlayer.play_music(preload("res://audio/CraverSpawn.ogg"))
 		print("Musuh '", enemy_type, "' berhasil di-spawn.")
 	else:
 		push_warning("Tipe musuh tidak ditemukan!")
 
 func check_victory():
 	if is_game_over and enemy_container.get_child_count() == 0:
-		get_parent().get_node("WinCondition/Win").play_scene()
+		get_parent().get_node("Popup/WinCondition").play_scene()

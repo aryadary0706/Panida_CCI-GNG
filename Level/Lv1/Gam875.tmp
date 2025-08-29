@@ -17,7 +17,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vab1m")
-initialMoney = 10000
+initialMoney = 100000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -43,15 +43,15 @@ position = Vector2(-87, 581)
 offset_right = 2560.0
 offset_bottom = 1280.0
 
-[node name="Popup" type="CanvasLayer" parent="."]
+[node name="game_over" parent="." instance=ExtResource("10_sw5mb")]
 visible = false
 
-[node name="pause_menu" parent="Popup" instance=ExtResource("11_uyhk6")]
-
-[node name="game_over" parent="Popup" instance=ExtResource("10_sw5mb")]
+[node name="Pause" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="WinCondition" parent="Popup" instance=ExtResource("12_e7elg")]
+[node name="pause_menu" parent="Pause" instance=ExtResource("11_uyhk6")]
+
+[node name="WinCondition" parent="." instance=ExtResource("12_e7elg")]
 visible = false
 
 [node name="SpawnerShop" parent="." instance=ExtResource("7_cu2xl")]

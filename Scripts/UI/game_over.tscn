@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="1_polbf"]
 [ext_resource type="Script" path="res://Scripts/UI/game_over_ui.gd" id="2_hu50j"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_sxw4n"]
-[ext_resource type="Theme" uid="uid://wgf74l7ga33b" path="res://blue_button.tres" id="4_g83hp"]
+[ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="4_lxqkl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0uy1"]
 shader = ExtResource("1_polbf")
@@ -13,9 +13,7 @@ shader_parameter/opacity = 1.0
 shader = ExtResource("1_polbf")
 shader_parameter/opacity = 0.4
 
-[node name="game_over" type="CanvasLayer"]
-
-[node name="GameOverUI" type="Control" parent="."]
+[node name="GameOverUI" type="Control"]
 process_mode = 3
 material = SubResource("ShaderMaterial_k0uy1")
 layout_mode = 3
@@ -26,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_hu50j")
 
-[node name="ColorRect" type="ColorRect" parent="GameOverUI"]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_gth6v")
 layout_mode = 1
 anchors_preset = 15
@@ -36,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.105882)
 
-[node name="Label" type="Label" parent="GameOverUI"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -53,7 +51,7 @@ theme_override_fonts/font = ExtResource("3_sxw4n")
 theme_override_font_sizes/font_size = 135
 text = "Game Over!"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameOverUI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,22 +66,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 200
 
-[node name="restart" type="Button" parent="GameOverUI/HBoxContainer"]
+[node name="restart" type="Button" parent="HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("4_g83hp")
+theme = ExtResource("4_lxqkl")
 text = "Play Again"
 
-[node name="quit" type="Button" parent="GameOverUI/HBoxContainer"]
+[node name="quit" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("4_g83hp")
+theme = ExtResource("4_lxqkl")
 text = "Exit Level"
 
-[connection signal="pressed" from="GameOverUI/HBoxContainer/restart" to="GameOverUI" method="_on_restart_pressed"]
-[connection signal="pressed" from="GameOverUI/HBoxContainer/quit" to="GameOverUI" method="_on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="HBoxContainer/quit" to="." method="_on_quit_pressed"]

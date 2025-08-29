@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cihv845c2ex43"]
+[gd_scene load_steps=12 format=3 uid="uid://cihv845c2ex43"]
 
 [ext_resource type="Texture2D" uid="uid://mg4ambb2bk3o" path="res://assets/AssetInGame/SproutLand/BasicPack/Sprite-sheets/Sprite sheet for Basic Pack.png" id="1_p540b"]
 [ext_resource type="Texture2D" uid="uid://dtoc2sj71tog0" path="res://assets/AssetInGame/life.png" id="2_dxvfn"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/container_top_right.gd" id="2_ec0kd"]
 [ext_resource type="Texture2D" uid="uid://ccw65oc5l00l" path="res://assets/AssetInGame/ticket.png" id="3_0htlx"]
 [ext_resource type="Texture2D" uid="uid://2og5d3l5amxs" path="res://assets/AssetInGame/flag.png" id="4_iggqd"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/container_top_left.gd" id="5_a4fgg"]
 [ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="5_prc08"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3c2i"]
@@ -56,6 +58,7 @@ grow_horizontal = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+script = ExtResource("2_ec0kd")
 
 [node name="MarginContainer" type="MarginContainer" parent="ContainerTopRight"]
 layout_mode = 2
@@ -78,20 +81,10 @@ layout_mode = 2
 texture = ExtResource("4_iggqd")
 expand_mode = 3
 
-[node name="Rounds Ongoing" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+[node name="Rounds_Ongoing" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "10"
-
-[node name="Slash" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "/"
-
-[node name="Round MAx" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "40"
 
 [node name="Timer" type="HBoxContainer" parent="ContainerTopRight/MarginContainer/WaveInfo"]
 layout_mode = 2
@@ -119,6 +112,7 @@ offset_bottom = 180.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+script = ExtResource("5_a4fgg")
 
 [node name="MarginContainer" type="MarginContainer" parent="ContainerTopLeft"]
 layout_mode = 2

@@ -39,8 +39,8 @@ func game_over() -> void:
 #
 	#canvas_layer.add_child(color_rect)
 	#get_tree().root.add_child(canvas_layer)
-	$"../game_over".get_node("GameOverUI").show()
-	MusicPlayer.play_music(preload("res://audio/LevelFailed.ogg"))
+	get_parent().get_node("Popup/game_over").show()
+	#MusicPlayer.play_music(preload("res://audio/LevelFailed.ogg"))
 	
 
 	print("GAME OVER")
