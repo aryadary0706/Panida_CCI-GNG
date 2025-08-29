@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtc3cs1bnm8w2"]
+[gd_scene load_steps=10 format=3 uid="uid://dtc3cs1bnm8w2"]
 
 [ext_resource type="Script" path="res://Scripts/LevelMenu/level_menu.gd" id="1_6t4q6"]
 [ext_resource type="PackedScene" uid="uid://dhqohi5o505yp" path="res://Objects/LevelMenu/buttonlvl_1.tscn" id="1_qahjb"]
 [ext_resource type="PackedScene" uid="uid://cclw1qxh5oknq" path="res://Objects/LevelMenu/buttonlvl_2.tscn" id="2_77fkg"]
+[ext_resource type="Texture2D" uid="uid://rbgtm2ogwlhh" path="res://assets/Asset-artist/bg.png" id="2_nrgqi"]
 [ext_resource type="PackedScene" uid="uid://cw3qf30hpdifx" path="res://Objects/LevelMenu/buttonlvl_3.tscn" id="3_gqkrx"]
 [ext_resource type="Script" path="res://Scripts/LevelMenu/back_button.gd" id="4_rivnm"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="5_6ii1e"]
 [ext_resource type="Theme" uid="uid://dr0anxf7ebsw2" path="res://blue_button_najwa.tres" id="5_ta5og"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3elx"]
+texture = ExtResource("2_nrgqi")
+modulate_color = Color(0.544974, 0.544974, 0.544974, 1)
 
 [node name="Level Menu" type="Control"]
 layout_mode = 3
@@ -24,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c3elx")
 
 [node name="Buttonlvl_1" parent="." instance=ExtResource("1_qahjb")]
 layout_mode = 0

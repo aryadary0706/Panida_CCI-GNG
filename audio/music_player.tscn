@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf5o6ly2shi01"]
 
-[ext_resource type="Script" path="res://Scripts/UI/music_player.gd" id="1_24nsj"]
+[ext_resource type="Script" path="res://Scripts/audio/music_player.gd" id="1_24nsj"]
 
 [node name="MusicPlayer" type="Node"]
 script = ExtResource("1_24nsj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-autoplay = true
+volume_db = -15.0
 bus = &"Music"

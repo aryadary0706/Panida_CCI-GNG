@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cbk08y3qkrx21"]
+[gd_scene load_steps=15 format=4 uid="uid://cbk08y3qkrx21"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_vab1m"]
 [ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="2_lnocw"]
@@ -14,11 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="13_17rci"]
 [ext_resource type="PackedScene" uid="uid://232bpxhfwr6a" path="res://Objects/Shops/shop_seblak.tscn" id="13_sxy38"]
 [ext_resource type="PackedScene" uid="uid://csh4tcvniyggh" path="res://Objects/Shops/shop_gado2.tscn" id="14_xmywm"]
-[ext_resource type="PackedScene" uid="uid://da8habsl3gcp7" path="res://Objects/Shops/shop_mie_ayam.tscn" id="15_ulfjj"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vab1m")
-initialMoney = 10000
+initialMoney = 100000
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -31,7 +30,7 @@ tile_map_data = PackedByteArray("AAApABUABgAHAAQAAAApABQABgAHAAMAAAApABMABgAHAAM
 position = Vector2(2631, 695)
 
 [node name="WaveManager" parent="." instance=ExtResource("5_a3s86")]
-build_phase_wait_time = 5.0
+build_phase_wait_time = 15.0
 spawn_timer_wait_time = 1.0
 
 [node name="WaveData" type="Node" parent="WaveManager"]
@@ -44,15 +43,15 @@ position = Vector2(-87, 581)
 offset_right = 2560.0
 offset_bottom = 1280.0
 
-[node name="Popup" type="CanvasLayer" parent="."]
+[node name="game_over" parent="." instance=ExtResource("10_sw5mb")]
 visible = false
 
-[node name="pause_menu" parent="Popup" instance=ExtResource("11_uyhk6")]
-
-[node name="game_over" parent="Popup" instance=ExtResource("10_sw5mb")]
+[node name="Pause" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="WinCondition" parent="Popup" instance=ExtResource("12_e7elg")]
+[node name="pause_menu" parent="Pause" instance=ExtResource("11_uyhk6")]
+
+[node name="WinCondition" parent="." instance=ExtResource("12_e7elg")]
 visible = false
 
 [node name="SpawnerShop" parent="." instance=ExtResource("7_cu2xl")]
@@ -73,7 +72,3 @@ shopScene = ExtResource("13_sxy38")
 [node name="SpawnerShop5" parent="." instance=ExtResource("7_cu2xl")]
 position = Vector2(1137, 104)
 shopScene = ExtResource("14_xmywm")
-
-[node name="SpawnerShop6" parent="." instance=ExtResource("7_cu2xl")]
-position = Vector2(1315, 104)
-shopScene = ExtResource("15_ulfjj")

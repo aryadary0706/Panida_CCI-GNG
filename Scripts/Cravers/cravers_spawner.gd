@@ -1,4 +1,5 @@
 extends Node2D
+class_name WaveManager
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var build_phase_timer: Timer = $BuildPhaseTimer
@@ -7,8 +8,8 @@ extends Node2D
 @onready var win_condition: CanvasLayer = $"../WinCondition"
 
 #Signal untuk 
-signal wave_started
-signal wave_ended
+signal build_started
+signal build_ended
 
 @export var build_phase_wait_time: float = 10.0
 @export var spawn_timer_wait_time: float = 0.5
@@ -35,6 +36,8 @@ var spawn_queue : Array = []
 
 func _process(delta: float) -> void:
 	check_victory()
+	if is_wave_active:
+		check_wave_end()
 
 func _ready():
 	randomize()
@@ -47,7 +50,7 @@ func start_build_phase():
 	is_wave_active = false
 	print("Fase Build dimulai. berlangsung selama ", build_phase_timer.wait_time, " s")
 	build_phase_timer.start()
-	wave_started.emit()
+	build_started.emit()
 
 func start_wave() -> void:
 	var wave = wave_data.get_wave_data(current_wave)
@@ -72,19 +75,10 @@ func start_wave() -> void:
 
 # --- CALLBACKS ---
 func _on_spawn_timer_timeout() -> void:
-	if not is_wave_active:
-		return
-
 	if spawn_queue.is_empty():
-		# wave selesai
-		is_wave_active = false
-		spawn_timer.stop()
-		print("Wave %d selesai!" % current_wave)
-		start_build_phase()
+		spawn_timer.stop() # Stop the timer when no more enemies to spawn
 		return
 
-	# Ambil musuh dari queue
-	#current_wave += 1
 	var enemy_type = spawn_queue.pop_front()
 	spawn_enemy(enemy_type)
 
@@ -92,7 +86,7 @@ func _on_spawn_timer_timeout() -> void:
 func _on_build_phase_timer_timeout() -> void:
 	is_wave_active = true
 	print("Build Phase selesai, wave %d dimulai!" % (current_wave + 1))
-	wave_ended.emit()
+	build_ended.emit()
 	start_wave()
 
 #--Spawn Enemy--
@@ -107,6 +101,13 @@ func spawn_enemy(enemy_type: String) -> void:
 	else:
 		push_warning("Tipe musuh tidak ditemukan!")
 
+func check_wave_end():
+	# Periksa jika spawn_queue kosong DAN jumlah musuh di layar kurang dari 2
+	if spawn_queue.is_empty() and enemy_container.get_child_count() <= 4:
+		is_wave_active = false
+		print("Wave %d selesai! Memulai fase build" % current_wave)
+		start_build_phase()
+
 func check_victory():
 	if is_game_over and enemy_container.get_child_count() == 0:
-		get_parent().get_node("WinCondition/Win").play_scene()
+		get_parent().get_node("Popup/WinCondition").play_scene()
