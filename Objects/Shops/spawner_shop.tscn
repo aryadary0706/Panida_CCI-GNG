@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dh2iy4n52hgu8" path="res://Sprites/test/Taverns.png" id="1_07auv"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_spawner.gd" id="1_x2lfn"]
-[ext_resource type="PackedScene" uid="uid://c7w8eyqrn35hr" path="res://Objects/Shops/shop_dimsum.tscn" id="2_pdcyj"]
+[ext_resource type="PackedScene" uid="uid://2xx4qneud13t" path="res://Objects/Shops/shop_dimsum.tscn" id="2_pdcyj"]
 [ext_resource type="Texture2D" uid="uid://ckxgrqrva051r" path="res://icon.svg" id="3_hhdif"]
 
 [node name="SpawnerShop" type="Node2D"]

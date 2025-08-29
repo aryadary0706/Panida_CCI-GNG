@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://lailulq5ak0e" path="res://assets/MainMenuAsset/exit/exit dark.png" id="12_unej6"]
 [ext_resource type="Texture2D" uid="uid://c7o25yey7hb5d" path="res://assets/MainMenuAsset/exit/exit bright.png" id="13_pn01k"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
-[ext_resource type="Texture2D" uid="uid://dwh5j812p2btf" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
+[ext_resource type="Texture2D" uid="uid://cuykv8qwwlnx6" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
-[ext_resource type="Texture2D" uid="uid://bgii4mdcmywdt" path="res://assets/Asset-artist/base 2  blue.png" id="17_7c1kw"]
+[ext_resource type="Texture2D" uid="uid://bdqw7picoen0e" path="res://assets/Asset-artist/base 2  blue.png" id="17_7c1kw"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/music_slider.gd" id="18_145wc"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
 

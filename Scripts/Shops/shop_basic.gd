@@ -13,7 +13,7 @@ const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 @onready var tilemap_layer: TileMapLayer = get_tree().current_scene.find_child("PathAndObstacle", true, false)
 @onready var shopArea: CollisionShape2D = $ShopBody/Collision
 @onready var delay_timer: Timer = $DelayTimer  
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var occupancyIndicator = preload("res://Objects/Miscellaneous/occupancy_indicator.tscn")
 var cravers: Array = []
 var craverInside = 0
@@ -144,7 +144,7 @@ func _on_shop_body_area_entered(area: Area2D) -> void:
 	if otherShop is not Shop:
 		return
 
-	var otherShopSprite = otherShop.get_node("Sprite2D")
+	var otherShopSprite = otherShop.get_node("AnimatedSprite2D")
 	if area.name == "ShopBody" && area != self:
 		isOverlapping = true
 		if !otherShop.hasPlaced:

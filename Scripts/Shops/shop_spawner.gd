@@ -10,8 +10,6 @@ func _ready() -> void:
 	z_index = 1008
 	if shopScene != null:
 		var tempShop = shopScene.instantiate()
-		var tempSprite = tempShop.get_node("Sprite2D")
-		sprite.texture = tempSprite.texture
 		priceLabel.text = "[fill]" + str(tempShop.priceToBuy) + "[/fill]"
 		priceLabel.bbcode_enabled = true
 		tempShop.queue_free()

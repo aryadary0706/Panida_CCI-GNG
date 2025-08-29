@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data.gd" id="5_k4m7j"]
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Objects/Shops/spawner_shop.tscn" id="7_cu2xl"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="10_sw5mb"]
-[ext_resource type="PackedScene" uid="uid://b2v47lcvx2hse" path="res://Objects/Shops/shop_gorengan.tscn" id="11_eso88"]
+[ext_resource type="PackedScene" uid="uid://dyo4gepkxm4ha" path="res://Objects/Shops/shop_gorengan.tscn" id="11_eso88"]
 [ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="11_uyhk6"]
 [ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_e7elg"]
 [ext_resource type="PackedScene" uid="uid://cxsxosmgxw1vh" path="res://Objects/Shops/shop_ice_cream.tscn" id="12_it1lp"]
