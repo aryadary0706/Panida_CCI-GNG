@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctwaenq7iw1pb"]
+[gd_scene load_steps=28 format=3 uid="uid://ctwaenq7iw1pb"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
@@ -14,6 +14,46 @@
 [ext_resource type="Texture2D" uid="uid://bn5f0vo2h7lec" path="res://assets/MainMenuAsset/Play/play.png" id="9_w1w0c"]
 [ext_resource type="Texture2D" uid="uid://lailulq5ak0e" path="res://assets/MainMenuAsset/exit/exit dark.png" id="12_unej6"]
 [ext_resource type="Texture2D" uid="uid://c7o25yey7hb5d" path="res://assets/MainMenuAsset/exit/exit bright.png" id="13_pn01k"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
+[ext_resource type="Texture2D" uid="uid://dwh5j812p2btf" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
+[ext_resource type="Texture2D" uid="uid://bgii4mdcmywdt" path="res://assets/Asset-artist/base 2  blue.png" id="17_7c1kw"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/music_slider.gd" id="18_145wc"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukgkf"]
+texture = ExtResource("15_rf8wp")
+expand_margin_left = 140.0
+expand_margin_top = 80.0
+expand_margin_right = 80.0
+expand_margin_bottom = 120.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65frk"]
+atlas = ExtResource("17_7c1kw")
+region = Rect2(13.5, 45.5, 484, 129)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6tpp"]
+texture = SubResource("AtlasTexture_65frk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fg7ap"]
+texture = SubResource("AtlasTexture_65frk")
+modulate_color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[sub_resource type="Theme" id="Theme_36ny3"]
+Button/colors/font_color = Color(0.894534, 0.88808, 0.983991, 1)
+Button/font_sizes/font_size = 45
+Button/fonts/font = ExtResource("16_mm3pr")
+Button/styles/hover = SubResource("StyleBoxTexture_r6tpp")
+Button/styles/normal = SubResource("StyleBoxTexture_r6tpp")
+Button/styles/pressed = SubResource("StyleBoxTexture_fg7ap")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cukgr"]
+color = Color(1, 1, 1, 1)
+thickness = 7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qapsd"]
+color = Color(0.390937, 0.226617, 9.62615e-08, 1)
+thickness = 7
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -84,6 +124,88 @@ texture_pressed = ExtResource("12_unej6")
 texture_hover = ExtResource("13_pn01k")
 script = ExtResource("4_f1d45")
 
-[connection signal="pressed" from="SignPost/PlayButton" to="SignPost/PlayButton" method="_on_pressed"]
+[node name="Options" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -644.5
+offset_top = -434.5
+offset_right = 644.5
+offset_bottom = 434.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_f64yl")
+
+[node name="Panel" type="Panel" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ukgkf")
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 397.0
+offset_top = 662.0
+offset_right = 911.0
+offset_bottom = 751.0
+theme = SubResource("Theme_36ny3")
+text = "Back"
+
+[node name="Music" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 295.5
+offset_top = 359.5
+offset_right = 1001.5
+offset_bottom = 437.5
+theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
+min_value = -40.0
+max_value = 40.0
+script = ExtResource("18_145wc")
+
+[node name="Sfx" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 294.5
+offset_top = 516.5
+offset_right = 1000.5
+offset_bottom = 594.5
+theme_override_styles/slider = SubResource("StyleBoxLine_cukgr")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qapsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_qapsd")
+min_value = -40.0
+max_value = 40.0
+script = ExtResource("20_p88mw")
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 616.5
+offset_top = 322.5
+offset_right = 734.5
+offset_bottom = 371.5
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "SFX"
+
+[node name="Label2" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 581.5
+offset_top = 476.5
+offset_right = 756.5
+offset_bottom = 525.5
+theme_override_fonts/font = ExtResource("16_mm3pr")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[connection signal="pressed" from="SignPost/PlayButton" to="." method="_on_pressed"]
 [connection signal="pressed" from="SignPost/OptionButton" to="SignPost/OptionButton" method="_on_pressed"]
 [connection signal="pressed" from="SignPost/ExitButton" to="SignPost/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/Music" to="Options/Music" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/Sfx" to="Options/Sfx" method="_on_value_changed"]

@@ -1862,9 +1862,12 @@ offset_right = 2560.0
 offset_bottom = 1280.0
 
 [node name="game_over" parent="." instance=ExtResource("11_lmmmt")]
+visible = false
 
 [node name="Pause" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="pause_menu" parent="Pause" instance=ExtResource("11_undqs")]
 
 [node name="WinCondition" parent="." instance=ExtResource("12_3havt")]
+visible = false

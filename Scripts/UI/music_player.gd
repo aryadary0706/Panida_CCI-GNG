@@ -1,4 +1,5 @@
 extends Node
+
 @onready var music_audio: AudioStreamPlayer = $AudioStreamPlayer
 
 func play_music(stream: AudioStream):
