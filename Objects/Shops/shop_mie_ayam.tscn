@@ -9,7 +9,7 @@
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
-size = Vector2(9.66666, 59.6667)
+size = Vector2(9.667, 46.542)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6cbo2"]
 animations = [{
@@ -32,9 +32,9 @@ animations = [{
 scale = Vector2(3, 3)
 script = ExtResource("2_8ciiq")
 maxCraver = 5
-priceToBuy = 500
-refund = 210
-moneyMade = 30
+priceToBuy = 1200
+moneyMade = 35
+delay_time = 9.0
 placableTileIDs = Array[int]([1])
 
 [node name="ShopBody" type="Area2D" parent="."]

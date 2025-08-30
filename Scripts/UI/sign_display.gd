@@ -12,6 +12,7 @@ func _ready() -> void:
 	if wave_manager:
 		wave_manager.build_started.connect(on_wave_started)
 		wave_manager.build_ended.connect(on_wave_ended)
+		wave_manager.game_over.connect(on_game_over)
 
 func _process(delta: float) -> void:
 	if is_building_phase:
@@ -23,3 +24,6 @@ func on_wave_started():
 func on_wave_ended():
 	is_building_phase = false
 	label.text = "Wave Phase: Pengunjung sudah mulai datang!"
+
+func on_game_over():
+	label.text = "Game telah berakhir (Menang)"
