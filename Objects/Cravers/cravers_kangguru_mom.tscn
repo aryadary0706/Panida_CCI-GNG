@@ -102,8 +102,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0gxad")
 eatingDuration = 5.0
-healthLoss = 20
-moveSpeed = 130.0
+healthLoss = 30
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, -4.5)

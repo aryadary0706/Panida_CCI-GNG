@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var effectTime: float = 3.0
-@export var slowPercentage: float = 2   # 0.7 = 70% slow
+@export var slowPercentage: float = 0.7   # 0.7 = 70% slow
 @export var cooldown: float = 5.0
 @onready var areaColor = $AreaColor
 

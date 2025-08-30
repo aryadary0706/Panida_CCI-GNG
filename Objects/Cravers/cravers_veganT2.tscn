@@ -137,7 +137,7 @@ craverType = "Vegan"
 tier = 2
 eatingDuration = 5.5
 maxVisit = 2
-healthLoss = 18
+healthLoss = 13
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.98023e-08, -4)

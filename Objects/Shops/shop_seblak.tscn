@@ -31,7 +31,7 @@ metadata/_snap_count = 9
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
-size = Vector2(9.667, 46.542)
+size = Vector2(9.66666, 59.6667)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afu0n"]
 animations = [{
@@ -53,10 +53,9 @@ animations = [{
 [node name="ShopSeblak" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_5e756")
-maxCraver = 2
-priceToBuy = 650
-moneyMade = 30
-delay_time = 7.0
+priceToBuy = 120
+refund = 55
+moneyMade = 25
 placableTileIDs = Array[int]([1])
 
 [node name="ShopSkill" type="Area2D" parent="."]

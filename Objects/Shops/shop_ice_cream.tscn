@@ -31,7 +31,7 @@ metadata/_snap_count = 9
 size = Vector2(15, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
-size = Vector2(9.667, 46.542)
+size = Vector2(9.66666, 59.6667)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gb0ol"]
 animations = [{
@@ -55,9 +55,9 @@ scale = Vector2(3, 3)
 script = ExtResource("1_rpe4b")
 craverType = "All"
 maxCraver = 1
-priceToBuy = 650
+priceToBuy = 200
+refund = 70
 moneyMade = 40
-delay_time = 7.0
 placableTileIDs = Array[int]([1])
 
 [node name="ShopSkill" type="Area2D" parent="."]

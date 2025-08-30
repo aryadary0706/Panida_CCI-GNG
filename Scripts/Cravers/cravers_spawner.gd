@@ -10,7 +10,6 @@ class_name WaveManager
 #Signal untuk 
 signal build_started
 signal build_ended
-signal game_over
 
 @export var build_phase_wait_time: float = 10.0
 @export var spawn_timer_wait_time: float = 0.5
@@ -22,9 +21,7 @@ const ENEMY_SCENES := {
 	"GLT": preload("res://Objects/Cravers/cravers_glutton.tscn"),
 	"KGR": preload("res://Objects/Cravers/cravers_kangguru_mom.tscn"),
 	"NT2": preload("res://Objects/Cravers/cravers_normalT2.tscn"),
-	"VT2": preload("res://Objects/Cravers/cravers_veganT2.tscn"),
-	"NRU": preload("res://Objects/Cravers/cravers_normal_runner.tscn"),
-	"VRU": preload("res://Objects/Cravers/cravers_vegan_runner.tscn")
+	"VT2": preload("res://Objects/Cravers/cravers_veganT2.tscn")
 }
 
 # --- STATE ---
@@ -104,12 +101,11 @@ func spawn_enemy(enemy_type: String) -> void:
 
 func check_wave_end():
 	# Periksa jika spawn_queue kosong DAN jumlah musuh di layar kurang dari 2
-	if spawn_queue.is_empty() and enemy_container.get_child_count() < 2:
+	if spawn_queue.is_empty() and enemy_container.get_child_count() <= 4:
 		is_wave_active = false
 		print("Wave %d selesai! Memulai fase build" % current_wave)
 		start_build_phase()
 
 func check_victory():
 	if is_game_over and enemy_container.get_child_count() == 0:
-		game_over.emit()
 		get_parent().get_node("Popup/WinCondition").play_scene()

@@ -151,16 +151,15 @@ collision_mask = 3
 script = ExtResource("1_mw1r1")
 craverType = "Vegan"
 eatingDuration = 4.0
-healthLoss = 15
-moveSpeed = 180.0
+moveSpeed = 150.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.777753, 0.785287, 7.70092e-07, 1)
 position = Vector2(-2.98023e-08, -4)
 scale = Vector2(0.0703704, 0.0703704)
 sprite_frames = SubResource("SpriteFrames_i3wvc")
-animation = &"front"
-frame_progress = 0.879065
+animation = &"back"
+frame = 5
+frame_progress = 0.708331
 
 [node name="Navigation" type="NavigationAgent2D" parent="."]
 path_desired_distance = 15.0
