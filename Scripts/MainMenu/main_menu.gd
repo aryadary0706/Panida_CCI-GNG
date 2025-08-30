@@ -13,7 +13,3 @@ func _ready() -> void:
 func _on_back_pressed() -> void:
 	SfxPlayer.play_music(preload("res://audio/click.ogg"))
 	_ready()
-
-
-func _on_pressed() -> void:
-	pass # Replace with function body.
