@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtc3cs1bnm8w2"]
+[gd_scene load_steps=15 format=3 uid="uid://dtc3cs1bnm8w2"]
 
 [ext_resource type="Script" path="res://Scripts/LevelMenu/level_menu.gd" id="1_6t4q6"]
 [ext_resource type="PackedScene" uid="uid://dhqohi5o505yp" path="res://Objects/LevelMenu/buttonlvl_1.tscn" id="1_qahjb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cw3qf30hpdifx" path="res://Objects/LevelMenu/buttonlvl_3.tscn" id="3_gqkrx"]
 [ext_resource type="Script" path="res://Scripts/LevelMenu/back_button.gd" id="4_rivnm"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="5_6ii1e"]
+[ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl.gd" id="5_mwxog"]
 [ext_resource type="Texture2D" uid="uid://bdqw7picoen0e" path="res://assets/Asset-artist/base 2  blue.png" id="8_ysu3s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3elx"]
@@ -50,6 +51,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_c3elx")
 
+[node name="Buttonlvl_1" parent="." instance=ExtResource("1_qahjb")]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 438.0
+offset_right = 807.0
+offset_bottom = 817.0
+text = ""
+
+[node name="Buttonlvl_2" parent="." instance=ExtResource("2_77fkg")]
+layout_mode = 0
+offset_left = 963.0
+offset_top = 438.0
+offset_right = 1594.0
+offset_bottom = 817.0
+script = ExtResource("5_mwxog")
+
+[node name="Buttonlvl_3" parent="." instance=ExtResource("3_gqkrx")]
+layout_mode = 0
+offset_left = 1754.0
+offset_top = 438.0
+offset_right = 2385.0
+offset_bottom = 817.0
+script = ExtResource("5_mwxog")
+
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 39.0
@@ -61,50 +86,5 @@ theme_override_fonts/font = ExtResource("5_6ii1e")
 theme_override_font_sizes/font_size = 50
 text = "Back"
 script = ExtResource("4_rivnm")
-
-[node name="Buttonlvl_1" parent="." instance=ExtResource("1_qahjb")]
-custom_minimum_size = Vector2(550, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -880.0
-offset_top = -200.0
-offset_right = -330.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Buttonlvl_2" parent="." instance=ExtResource("2_77fkg")]
-custom_minimum_size = Vector2(550, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -200.0
-offset_right = 275.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Buttonlvl_3" parent="." instance=ExtResource("3_gqkrx")]
-custom_minimum_size = Vector2(550, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 330.0
-offset_top = -200.0
-offset_right = 880.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="BackButton" to="BackButton" method="_on_pressed"]

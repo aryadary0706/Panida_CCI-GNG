@@ -1,0 +1,416 @@
+[gd_scene load_steps=12 format=3 uid="uid://c80aqimvaiwey"]
+
+[ext_resource type="Texture2D" uid="uid://mg4ambb2bk3o" path="res://assets/AssetInGame/SproutLand/BasicPack/Sprite-sheets/Sprite sheet for Basic Pack.png" id="1_p540b"]
+[ext_resource type="Texture2D" uid="uid://dtoc2sj71tog0" path="res://assets/AssetInGame/life.png" id="2_dxvfn"]
+[ext_resource type="Texture2D" uid="uid://ccw65oc5l00l" path="res://assets/AssetInGame/ticket.png" id="3_0htlx"]
+[ext_resource type="Texture2D" uid="uid://2og5d3l5amxs" path="res://assets/AssetInGame/flag.png" id="4_iggqd"]
+[ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="5_prc08"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/popup_menu_hakim.gd" id="6_2ba8w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3c2i"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_p540b")
+region_rect = Rect2(568, 195, 35, 41)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkphi"]
+texture_margin_left = 2.0
+texture_margin_top = 1.0
+texture_margin_right = 2.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(626, 294, 12, 4)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nplw6"]
+texture = ExtResource("1_p540b")
+region_rect = Rect2(742, 37, 18, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_otear"]
+texture = ExtResource("1_p540b")
+region_rect = Rect2(711, 37, 18, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekg0g"]
+texture = ExtResource("1_p540b")
+texture_margin_left = 4.0
+texture_margin_top = 1.0
+texture_margin_right = 5.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(359, 20, 18, 8)
+
+[node name="InGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 2560.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="Health And Currency" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Health And Currency"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Health And Currency/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_dxvfn")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_0htlx")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/Health And Currency/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="Rounds And Timer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Rounds And Timer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Rounds And Timer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_iggqd")
+expand_mode = 3
+
+[node name="Rounds Ongoing" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="Slash" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "/"
+
+[node name="Round MAx" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "40"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_prc08")
+expand_mode = 3
+
+[node name="TimeRemaining(Seconds)" type="Label" parent="MarginContainer/Rounds And Timer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "180"
+
+[node name="popupMenu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_2ba8w")
+
+[node name="baseMenu" type="HBoxContainer" parent="popupMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
+[node name="basemenu" type="MarginContainer" parent="popupMenu/baseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="toggleMenu" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer"]
+custom_minimum_size = Vector2(8, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_pkphi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pkphi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pkphi")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="popupMenu/baseMenu/basemenu/HBoxContainer"]
+custom_minimum_size = Vector2(260, 580)
+layout_mode = 2
+texture = ExtResource("1_p540b")
+region_rect = Rect2(59, 59, 26, 26)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="buttonContainer" type="VBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Dimsum" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="Crepes" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="MarginContainer" type="MarginContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 91
+
+[node name="Label" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="Label2" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="gorengan" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="jamur crispy" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="MarginContainer2" type="MarginContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 91
+
+[node name="Label" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="Label2" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="seblak" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="mi ayam" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="MarginContainer3" type="MarginContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 91
+
+[node name="lebel" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="lebel2" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer3/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="iceCream" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="Gado2" type="Button" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nplw6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_otear")
+
+[node name="MarginContainer4" type="MarginContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 91
+
+[node name="Label" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer4/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="Label2" type="Label" parent="popupMenu/baseMenu/basemenu/HBoxContainer/NinePatchRect/MarginContainer/buttonContainer/MarginContainer4/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ekg0g")
+text = "100"
+
+[node name="SpasiKontener" type="Control" parent="popupMenu/baseMenu"]
+layout_mode = 2
+
+[node name="BaseMenuOpenButton" type="HBoxContainer" parent="popupMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="toggleMenu" type="Button" parent="popupMenu/BaseMenuOpenButton"]
+custom_minimum_size = Vector2(8, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxTexture_pkphi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pkphi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pkphi")
+
+[node name="SpasiKontener" type="Control" parent="popupMenu/BaseMenuOpenButton"]
+layout_mode = 2
+
+[connection signal="pressed" from="popupMenu/baseMenu/basemenu/HBoxContainer/toggleMenu" to="popupMenu" method="_on_toggle_menu_pressed"]
+[connection signal="pressed" from="popupMenu/BaseMenuOpenButton/toggleMenu" to="popupMenu" method="_on_toggle_menu_pressed"]

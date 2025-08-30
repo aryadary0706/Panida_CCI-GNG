@@ -54,6 +54,7 @@ animations = [{
 scale = Vector2(3, 3)
 script = ExtResource("1_5e756")
 priceToBuy = 120
+refund = 55
 moneyMade = 25
 placableTileIDs = Array[int]([1])
 
@@ -66,7 +67,6 @@ script = ExtResource("2_rwheo")
 slowPercentage = 0.1
 
 [node name="Collision" type="CollisionShape2D" parent="ShopSkill"]
-visible = false
 shape = SubResource("CircleShape2D_u0osb")
 debug_color = Color(0.565282, 0.55251, 0.223068, 0.42)
 
@@ -140,3 +140,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
+[connection signal="gui_input" from="Control/Button" to="." method="_on_button_gui_input"]

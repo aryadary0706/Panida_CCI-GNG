@@ -33,6 +33,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_cd4es")
 maxCraver = 2
 priceToBuy = 60
+refund = 30
 moneyMade = 35
 placableTileIDs = Array[int]([1])
 
@@ -100,3 +101,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]
 [connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
+[connection signal="gui_input" from="Control/Button" to="." method="_on_button_gui_input"]

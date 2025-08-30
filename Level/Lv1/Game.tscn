@@ -1,18 +1,18 @@
 [gd_scene load_steps=10 format=4 uid="uid://cbk08y3qkrx21"]
 
 [ext_resource type="Script" path="res://Scripts/SceneProperties/stage_variables.gd" id="1_vab1m"]
-[ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://scenes/path_and_obstacle.tscn" id="2_lnocw"]
+[ext_resource type="PackedScene" uid="uid://75yhw2g4tfhb" path="res://Scenes/path_and_obstacle.tscn" id="2_lnocw"]
 [ext_resource type="PackedScene" uid="uid://bryf1t5o4kjo" path="res://Objects/EndGoal.tscn" id="4_ayj3m"]
 [ext_resource type="PackedScene" uid="uid://cjy166e8ibfiu" path="res://Objects/Miscellaneous/wave_manager.tscn" id="5_a3s86"]
 [ext_resource type="Script" path="res://Scripts/Cravers/cravers_wave_data.gd" id="5_k4m7j"]
 [ext_resource type="PackedScene" uid="uid://c4juj3eefbujs" path="res://Scripts/UI/game_over.tscn" id="10_sw5mb"]
-[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://scenes/pause_menu.tscn" id="11_uyhk6"]
-[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://scenes/win_condition.tscn" id="12_e7elg"]
-[ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://scenes/in_game_ui.tscn" id="13_17rci"]
+[ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="11_uyhk6"]
+[ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_e7elg"]
+[ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="13_17rci"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_vab1m")
-initialMoney = 10000
+initialMoney = 150
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

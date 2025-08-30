@@ -18,7 +18,7 @@ offset_top = 139.0
 offset_right = 591.0
 offset_bottom = 347.0
 focus_mode = 0
-text = "asdasd"
+text = "Level belum terbuka!"
 script = ExtResource("1_qjulp")
 
 [node name="TextureRect" type="TextureRect" parent="."]

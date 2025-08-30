@@ -2,10 +2,13 @@ extends Node2D
 class_name Shop
 signal shop_placed
 const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
+const refundUI = preload("res://Objects/Miscellaneous/refund.tscn")
+
 
 @export_enum("Vegan", "Normal", "All") var craverType = "Normal"
 @export var maxCraver = 3
 @export var priceToBuy = 400
+@export var refund = 100
 @export var moneyMade = 100
 @export var delay_time: float 
 @export var placableTileIDs: Array[int] = []
@@ -29,7 +32,6 @@ func _ready() -> void:
 	occupancyIndicator = occupancyIndicator.instantiate()
 	add_child(occupancyIndicator)
 	occupancyIndicator.setup(self)
-	z_index = 1000
 	delay_timer.wait_time = delay_time
 	sprite.play()
 
@@ -82,10 +84,13 @@ func checkPlacableTile() -> bool:
 
 func _process(delta: float) -> void:
 	
-	z_index = global_position.y 
+	
 	#bagian placement
 	if isDragging and not hasPlaced:
 		position = get_global_mouse_position().snapped(Vector2(snap, snap))
+		z_index = 1001 
+	elif not isDragging and hasPlaced:
+		z_index = global_position.y 
 	
 	canPlace = checkPlacableTile()
 	if !isDragging and !isOverlapping and canPlace:
@@ -157,9 +162,17 @@ func _on_shop_body_area_entered(area: Area2D) -> void:
 func _on_shop_body_area_exited(area: Area2D) -> void:
 	isOverlapping = false
 	
-func _on_button_button_down() -> void:
-	if !hasPlaced:
-		isDragging = true
+func _on_button_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("Left click")
+			if !hasPlaced:
+				isDragging = true
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			print("Right click")
+			if hasPlaced:
+				show_refund_ui()
+			
 
 func _on_button_button_up() -> void:
 	isDragging = false
@@ -168,3 +181,8 @@ func _on_button_button_up() -> void:
 	elif !hasPlaced and !isWaitingDelay:
 		start_delay()
 		
+		
+func show_refund_ui():
+	var refundTab = refundUI.instantiate()
+	add_child(refundTab)
+	refundTab.set_refund_value(refund)
