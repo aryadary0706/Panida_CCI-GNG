@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cihv845c2ex43"]
+[gd_scene load_steps=21 format=3 uid="uid://cihv845c2ex43"]
 
 [ext_resource type="Texture2D" uid="uid://mg4ambb2bk3o" path="res://assets/AssetInGame/SproutLand/BasicPack/Sprite-sheets/Sprite sheet for Basic Pack.png" id="1_p540b"]
 [ext_resource type="Texture2D" uid="uid://dtoc2sj71tog0" path="res://assets/AssetInGame/life.png" id="2_dxvfn"]
@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="5_prc08"]
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Scenes/spawner_shop.tscn" id="8_c3sej"]
 [ext_resource type="Script" path="res://Scripts/UI_Ingame/shop_spawners_popup.gd" id="8_y1u8y"]
+[ext_resource type="Texture2D" uid="uid://u685d04u0jka" path="res://assets/AssetInGame/MediavelFree.png/MediavelFree.png" id="9_cqkb3"]
 [ext_resource type="PackedScene" uid="uid://dtw8hk2svqupo" path="res://Objects/Shops/shop_crepes.tscn" id="9_m22kp"]
 [ext_resource type="PackedScene" uid="uid://2xx4qneud13t" path="res://Objects/Shops/shop_dimsum.tscn" id="10_22ibl"]
 [ext_resource type="PackedScene" uid="uid://dyo4gepkxm4ha" path="res://Objects/Shops/shop_gorengan.tscn" id="11_ilf7c"]
 [ext_resource type="PackedScene" uid="uid://5nsjcydue5k7" path="res://Objects/Shops/shop_jamur_crispy.tscn" id="12_fbaxg"]
-[ext_resource type="PackedScene" uid="uid://232bpxhfwr6a" path="res://Objects/Shops/shop_seblak.tscn" id="13_dmuho"]
+[ext_resource type="PackedScene" uid="uid://c0mygcih1v7pc" path="res://Objects/Shops/shop_seblak.tscn" id="13_dmuho"]
 [ext_resource type="PackedScene" uid="uid://cxsxosmgxw1vh" path="res://Objects/Shops/shop_ice_cream.tscn" id="14_0rwnm"]
 [ext_resource type="PackedScene" uid="uid://csh4tcvniyggh" path="res://Objects/Shops/shop_gado2.tscn" id="15_xo6rx"]
 [ext_resource type="PackedScene" uid="uid://da8habsl3gcp7" path="res://Objects/Shops/shop_mie_ayam.tscn" id="16_ojo7i"]
@@ -27,12 +28,12 @@ texture = ExtResource("1_p540b")
 region_rect = Rect2(568, 195, 35, 41)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dud1f"]
-texture = ExtResource("1_p540b")
-texture_margin_left = 2.0
+texture = ExtResource("9_cqkb3")
+texture_margin_left = 8.0
 texture_margin_top = 1.0
 texture_margin_right = 2.0
 texture_margin_bottom = 1.0
-region_rect = Rect2(626, 294, 12, 4)
+region_rect = Rect2(4.0234, 97.6529, 59.3812, 12.8909)
 
 [node name="InGameUI" type="Control"]
 custom_minimum_size = Vector2(2560, 1280)
@@ -182,7 +183,7 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 10
 
 [node name="toggleMenu" type="Button" parent="ShopSpawners/HBoxContainer"]
-custom_minimum_size = Vector2(8, 100)
+custom_minimum_size = Vector2(30, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

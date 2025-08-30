@@ -54,7 +54,7 @@ metadata/_snap_count = 9
 scale = Vector2(3, 3)
 script = ExtResource("1_iqpep")
 craverType = "Vegan"
-priceToBuy = 240
+priceToBuy = 320
 moneyMade = 17
 placableTileIDs = Array[int]([1])
 

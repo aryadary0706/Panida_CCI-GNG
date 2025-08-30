@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhqohi5o505yp"]
 
 [ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl.gd" id="1_qjulp"]
-[ext_resource type="Texture2D" uid="uid://c0y2avsoaqr20" path="res://assets/bg_picture/PreviewLvL1.png" id="2_f8865"]
+[ext_resource type="Texture2D" uid="uid://bfnwsq1owrcmt" path="res://assets/bg_picture/Preview1.png" id="2_88evo"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_gyg03"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr0bx"]
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_f8865")
+texture = ExtResource("2_88evo")
 expand_mode = 1
 stretch_mode = 6
 

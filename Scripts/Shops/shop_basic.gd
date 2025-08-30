@@ -140,6 +140,7 @@ func _on_shop_body_body_entered(body: Node2D) -> void:
 		GlobalFunctions.fade_out(body, 2)
 		body.eating()
 		
+		
 func _on_shop_body_body_exited(body: Node2D) -> void:
 	if body is Craver && hasPlaced:
 		craverInside -= body.occupancy

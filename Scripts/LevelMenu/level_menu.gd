@@ -12,5 +12,7 @@ func _ready() -> void:
 	for i in range(level_buttons.size()):
 		if level_buttons[i].level_index <= GlobalProgress.unlocked_level:
 			level_buttons[i].disabled = false
+			level_buttons[i].modulate = Color(1, 1, 1, 1)
 		else:
 			level_buttons[i].disabled = true
+			level_buttons[i].modulate = Color(1, 1, 1, 0.7)

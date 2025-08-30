@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://232bpxhfwr6a"]
+[gd_scene load_steps=15 format=3 uid="uid://c0mygcih1v7pc"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_basic.gd" id="1_5e756"]
 [ext_resource type="Script" path="res://Scripts/Shops/shop_skill_seblak.gd" id="2_rwheo"]
@@ -10,19 +10,19 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s4tx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0osb"]
-radius = 28.8507
+radius = 23.8339
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lfhk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33xky"]
 shader = ExtResource("3_m8kqr")
 shader_parameter/radius = 0.48
-shader_parameter/outline_thickness = 0.008
-shader_parameter/inside_alpha = 0.2
+shader_parameter/outline_thickness = 0.02
+shader_parameter/inside_alpha = 0.1
 
-[sub_resource type="Gradient" id="Gradient_pymhg"]
-offsets = PackedFloat32Array(0, 0.012987)
+[sub_resource type="Gradient" id="Gradient_34xxt"]
+offsets = PackedFloat32Array(0, 0.025974)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m2m4l"]
-gradient = SubResource("Gradient_pymhg")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_psmoo"]
+gradient = SubResource("Gradient_34xxt")
 fill_from = Vector2(0, 1)
 metadata/_snap_enabled = true
 metadata/_snap_count = 9
@@ -33,7 +33,7 @@ size = Vector2(15, 15.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocuq0"]
 size = Vector2(9.66666, 59.6667)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_afu0n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb0ol"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -53,9 +53,10 @@ animations = [{
 [node name="ShopSeblak" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_5e756")
-priceToBuy = 120
-refund = 55
-moneyMade = 25
+craverType = "All"
+priceToBuy = 320
+refund = 80
+moneyMade = 40
 placableTileIDs = Array[int]([1])
 
 [node name="ShopSkill" type="Area2D" parent="."]
@@ -64,17 +65,17 @@ scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_rwheo")
-slowPercentage = 0.1
 
 [node name="Collision" type="CollisionShape2D" parent="ShopSkill"]
+visible = false
 shape = SubResource("CircleShape2D_u0osb")
 debug_color = Color(0.565282, 0.55251, 0.223068, 0.42)
 
 [node name="AreaColor" type="Sprite2D" parent="ShopSkill"]
-self_modulate = Color(0.941176, 0.0588235, 0, 1)
-material = SubResource("ShaderMaterial_1lfhk")
-scale = Vector2(0.90625, 0.90625)
-texture = SubResource("GradientTexture2D_m2m4l")
+self_modulate = Color(0.836095, 0.303213, 0.185693, 1)
+material = SubResource("ShaderMaterial_33xky")
+scale = Vector2(0.75, 0.75)
+texture = SubResource("GradientTexture2D_psmoo")
 
 [node name="ShopBody" type="Area2D" parent="."]
 position = Vector2(-32, -32)
@@ -97,11 +98,10 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_ocuq0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -6.5)
+position = Vector2(0.5, -7.5)
 scale = Vector2(0.484, 0.484)
-sprite_frames = SubResource("SpriteFrames_afu0n")
+sprite_frames = SubResource("SpriteFrames_gb0ol")
 animation = &"SeblakStall"
-frame_progress = 0.76798
 
 [node name="DelayTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -132,9 +132,11 @@ button_mask = 7
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="ShopSkill" to="ShopSkill" method="_on_body_entered"]
+[connection signal="body_exited" from="ShopSkill" to="ShopSkill" method="_on_body_exited"]
 [connection signal="area_entered" from="ShopBody" to="." method="_on_shop_body_area_entered"]
 [connection signal="area_exited" from="ShopBody" to="." method="_on_shop_body_area_exited"]
 [connection signal="body_entered" from="ShopBody" to="." method="_on_shop_body_body_entered"]
+[connection signal="body_exited" from="ShopBody" to="." method="_on_shop_body_body_exited"]
 [connection signal="body_entered" from="ShopRange" to="." method="_on_shop_range_body_entered"]
 [connection signal="body_exited" from="ShopRange" to="." method="_on_shop_range_body_exited"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

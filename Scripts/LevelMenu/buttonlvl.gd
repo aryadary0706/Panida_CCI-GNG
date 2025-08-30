@@ -5,10 +5,7 @@ class_name LevelButton
 @onready var level_image: TextureRect = $TextureRect
 
 func _ready() -> void:
-	if disabled:
-		modulate = Color(0.5, 0.5, 0.5, 1)
-	else:
-		modulate = Color(1, 1, 1, 1)
+	pass
 
 func _on_pressed() -> void:
 	if not disabled:
