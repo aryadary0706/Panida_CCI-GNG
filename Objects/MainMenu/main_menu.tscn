@@ -18,8 +18,8 @@
 [ext_resource type="Script" path="res://Scripts/MainMenu/options.gd" id="15_f64yl"]
 [ext_resource type="Texture2D" uid="uid://cuykv8qwwlnx6" path="res://assets/Asset-artist/panel_option-removebg-preview.png" id="15_rf8wp"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="16_mm3pr"]
-[ext_resource type="Theme" uid="uid://drsda1cgfrw27" path="res://blue_button_najwa.tres" id="17_qs8rg"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/music_slider.gd" id="18_145wc"]
+[ext_resource type="Theme" uid="uid://chg4jkopjhca0" path="res://wood_button.tres" id="19_lmjx6"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
 [ext_resource type="Script" path="res://Scripts/LevelMenu/ResetProgress.gd" id="22_5aea4"]
 
@@ -157,7 +157,7 @@ offset_left = 397.0
 offset_top = 662.0
 offset_right = 911.0
 offset_bottom = 751.0
-theme = ExtResource("17_qs8rg")
+theme = ExtResource("19_lmjx6")
 text = "Back"
 
 [node name="ResetProgress" type="Button" parent="Options"]
@@ -173,7 +173,7 @@ offset_right = 267.5
 offset_bottom = 181.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("17_qs8rg")
+theme = ExtResource("19_lmjx6")
 theme_override_font_sizes/font_size = 50
 text = "Reset Progress"
 script = ExtResource("22_5aea4")

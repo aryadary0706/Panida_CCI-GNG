@@ -1,26 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cclw1qxh5oknq"]
+[gd_scene load_steps=5 format=3 uid="uid://cf3gx6der7hwh"]
 
-[ext_resource type="Texture2D" uid="uid://dn15vs68c0nx0" path="res://assets/bg_picture/PreviewLvL2.png" id="2_3w7qt"]
+[ext_resource type="Script" path="res://Scripts/LevelMenu/buttonlvl.gd" id="1_2irqc"]
+[ext_resource type="Texture2D" uid="uid://cxtbllx4fn2l1" path="res://assets/bg_picture/Preview2.png" id="2_xxlsy"]
 [ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="3_ym3gw"]
-
-[sub_resource type="GDScript" id="GDScript_nupjr"]
-script/source = "extends Button
-
-@export var level_index: int = 2
-@onready var level_buttons = get_parent().get_children().filter(func(c): return c is Button)
-
-func _on_pressed() -> void:
-	GlobalProgress.load_progress()
-	for i in range(level_buttons.size()):
-		if i + 1 <= GlobalProgress.unlocked_level:
-			level_buttons[i].disabled = false
-		else:
-				level_buttons[i].disabled = true
-		if not self.disabled:
-			SfxPlayer.play_music(preload(\"res://audio/click.ogg\"))
-			MusicPlayer.stop_music()
-			get_tree().change_scene_to_file(\"res://Level/Lv%d/Game.tscn\" % level_index)
-"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr0bx"]
 draw_center = false
@@ -36,7 +18,8 @@ offset_top = 139.0
 offset_right = 591.0
 offset_bottom = 347.0
 focus_mode = 0
-script = SubResource("GDScript_nupjr")
+script = ExtResource("1_2irqc")
+level_index = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -45,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3w7qt")
+texture = ExtResource("2_xxlsy")
 expand_mode = 1
 stretch_mode = 6
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyhxm5d5ton31"]
+[gd_scene load_steps=13 format=3 uid="uid://cyhxm5d5ton31"]
 
 [ext_resource type="Script" path="res://Scripts/UI/pause_menu.gd" id="1_7i6nf"]
 [ext_resource type="Shader" path="res://Scripts/UI/pause_menu.gdshader" id="2_ul6ee"]
 [ext_resource type="Texture2D" uid="uid://cifxaaiigcp0y" path="res://Sprites/DEMO-vector-rpg-overworld-tileset/tree_2.png" id="3_jmvqu"]
-[ext_resource type="Theme" uid="uid://wgf74l7ga33b" path="res://blue_button.tres" id="4_v6hul"]
+[ext_resource type="Texture2D" uid="uid://bi30hjowwgnvp" path="res://assets/Asset-artist/base pause.png" id="4_vlt58"]
+[ext_resource type="Theme" uid="uid://dqsfdk86qsiym" path="res://green_button_najwa.tres" id="5_5kjih"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_inwgf"]
 shader = ExtResource("2_ul6ee")
@@ -15,7 +16,12 @@ texture = ExtResource("3_jmvqu")
 [sub_resource type="Theme" id="Theme_382o5"]
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_wvfpi")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2oc8u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_82x53"]
+atlas = ExtResource("4_vlt58")
+region = Rect2(61.4921, 76.4974, 372.984, 497.313)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1i1b"]
+texture = SubResource("AtlasTexture_82x53")
 
 [sub_resource type="Theme" id="Theme_g3g34"]
 
@@ -60,7 +66,7 @@ offset_bottom = 373.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_382o5")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2oc8u")
+theme_override_styles/panel = SubResource("StyleBoxTexture_m1i1b")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -73,7 +79,7 @@ theme_override_constants/separation = 50
 texture_filter = 1
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
-theme = ExtResource("4_v6hul")
+theme = ExtResource("5_5kjih")
 theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 theme_override_icons/icon = SubResource("AtlasTexture_yr7kg")
 text = "Resume"
@@ -81,14 +87,14 @@ text = "Resume"
 [node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
-theme = ExtResource("4_v6hul")
+theme = ExtResource("5_5kjih")
 theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 text = "Restart"
 
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(450, 150)
 layout_mode = 2
-theme = ExtResource("4_v6hul")
+theme = ExtResource("5_5kjih")
 theme_override_colors/icon_normal_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 text = "Exit Game"
 

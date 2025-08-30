@@ -11,7 +11,7 @@ class_name Craver
 @onready var navAgent = $Navigation
 @onready var anim = $Sprite2D
 
-var availableShops: Array[Shop] = []  # List shop yang available
+var availableShops: Array[Shop] = []
 var assignedShop: Shop = null
 var visitedShops: Array[Shop] = []
 var target: Vector2
