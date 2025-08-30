@@ -25,12 +25,10 @@ var wave_data = [
 	{
 		"max_spawn": 10,
 		"enemies": [
-			{ "type": "NT1", "count": 2 },
-			{ "type": "VT1", "count": 2 },
+			{ "type": "NT1", "count": 3 },
+			{ "type": "VT1", "count": 3 },
 			{ "type": "GLT", "count": 2 },
 			{ "type": "VT2", "count": 2 },
-			{ "type": "NRU", "count": 1 },
-			{ "type": "VRU", "count": 1 },
 		]
 	},
 	#Wave 4
@@ -75,22 +73,18 @@ var wave_data = [
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "NT1", "count": 5 },
-			{ "type": "VT1", "count": 4 },
+			{ "type": "NT1", "count": 7 },
+			{ "type": "VT1", "count": 5 },
 			{ "type": "NT2", "count": 2 },
 			{ "type": "VT2", "count": 2 },
-			{ "type": "NRU", "count": 2 },
-			{ "type": "VRU", "count": 1 },
 			{ "type": "GLT", "count": 2 },
 		]
 	},
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "NT1", "count": 5 },
-			{ "type": "VT1", "count": 5 },
-			{ "type": "VRU", "count": 3 },
-			{ "type": "NRU", "count": 3 },
+			{ "type": "NT1", "count": 8 },
+			{ "type": "VT1", "count": 8 },
 			{ "type": "KGR", "count": 1 },
 			{ "type": "GLT", "count": 3 },
 		]
@@ -98,12 +92,10 @@ var wave_data = [
 	{
 		"max_spawn": 20,
 		"enemies": [
-			{ "type": "NT1", "count": 3 },
-			{ "type": "VT1", "count": 3 },
+			{ "type": "NT1", "count": 6 },
+			{ "type": "VT1", "count": 6 },
 			{ "type": "NT2", "count": 2 },
 			{ "type": "VT2", "count": 2 },
-			{ "type": "VRU", "count": 3 },
-			{ "type": "NRU", "count": 3 },
 			{ "type": "KGR", "count": 1 },
 			{ "type": "GLT", "count": 3 },
 		]
