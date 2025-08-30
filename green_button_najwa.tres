@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dqsfdk86qsiym"]
+
+[ext_resource type="FontFile" uid="uid://c301v52sr56t5" path="res://assets/AssetInGame/Fibberish v1.0/Fibberish v1.0/fibberish.ttf" id="1_j77mj"]
+[ext_resource type="Texture2D" uid="uid://c7navlgo6chry" path="res://assets/Asset-artist/button.png" id="2_hq3hk"]
+[ext_resource type="Texture2D" uid="uid://dkogscvlien2a" path="res://assets/Asset-artist/clicked button.png" id="3_31u2a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50m85"]
+atlas = ExtResource("2_hq3hk")
+region = Rect2(20.8314, 29.9399, 184.675, 71.3255)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2rt5"]
+texture = SubResource("AtlasTexture_50m85")
+modulate_color = Color(0.834614, 0.834614, 0.834614, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_833xq"]
+texture = SubResource("AtlasTexture_50m85")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ik5w"]
+atlas = ExtResource("3_31u2a")
+region = Rect2(17.5838, 22.5299, 188.145, 74.0243)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4eqs"]
+texture = SubResource("AtlasTexture_2ik5w")
+
+[resource]
+Button/font_sizes/font_size = 65
+Button/fonts/font = ExtResource("1_j77mj")
+Button/styles/hover = SubResource("StyleBoxTexture_c2rt5")
+Button/styles/normal = SubResource("StyleBoxTexture_833xq")
+Button/styles/pressed = SubResource("StyleBoxTexture_p4eqs")

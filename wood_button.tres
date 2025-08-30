@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://chg4jkopjhca0"]
+
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="1_7o5lq"]
+[ext_resource type="Texture2D" uid="uid://cg0nexmcryp1i" path="res://assets/Asset-artist/base 2 chocolate.png" id="2_m6rtq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj1tb"]
+atlas = ExtResource("2_m6rtq")
+region = Rect2(23.4998, 53.5, 482, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83rpa"]
+atlas = SubResource("AtlasTexture_dj1tb")
+region = Rect2(-129, -110, 720, 336)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lnwux"]
+texture = SubResource("AtlasTexture_83rpa")
+modulate_color = Color(0.791999, 0.791999, 0.791999, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfv5s"]
+atlas = ExtResource("2_m6rtq")
+region = Rect2(22.4998, 48.4999, 485, 132)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8yhx"]
+texture = SubResource("AtlasTexture_cfv5s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3w5vy"]
+texture = SubResource("AtlasTexture_cfv5s")
+modulate_color = Color(0.361977, 0.570028, 0.28269, 1)
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_7o5lq")
+Button/styles/hover = SubResource("StyleBoxTexture_lnwux")
+Button/styles/normal = SubResource("StyleBoxTexture_i8yhx")
+Button/styles/pressed = SubResource("StyleBoxTexture_3w5vy")

@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bakgjcihu4rff"]
+
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="1_ldtk0"]
+[ext_resource type="Texture2D" uid="uid://qcnjryh3bj0l" path="res://assets/Asset-artist/base 2 red.png" id="2_47jay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03hsn"]
+atlas = ExtResource("2_47jay")
+region = Rect2(9.00006, 50, 483, 126)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wc14l"]
+texture = SubResource("AtlasTexture_03hsn")
+modulate_color = Color(0.653802, 0.764049, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wonml"]
+texture = SubResource("AtlasTexture_03hsn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y015t"]
+texture = SubResource("AtlasTexture_03hsn")
+modulate_color = Color(0.525101, 0.525101, 0.525101, 1)
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_ldtk0")
+Button/styles/hover = SubResource("StyleBoxTexture_wc14l")
+Button/styles/normal = SubResource("StyleBoxTexture_wonml")
+Button/styles/pressed = SubResource("StyleBoxTexture_y015t")
