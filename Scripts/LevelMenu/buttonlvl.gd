@@ -6,9 +6,9 @@ class_name LevelButton
 
 func _ready() -> void:
 	if disabled:
-		level_image.visible = false
+		modulate = Color(0.5, 0.5, 0.5, 1)
 	else:
-		level_image.visible = true
+		modulate = Color(1, 1, 1, 1)
 
 func _on_pressed() -> void:
 	if not disabled:
