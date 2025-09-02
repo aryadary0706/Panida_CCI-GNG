@@ -10,11 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Tryout"
+config/name="Culinary Fest TD"
 run/main_scene="res://Objects/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/fullsize=false
-config/icon="res://icon.svg"
+config/icon="res://assets/Asset-artist/icon game(1).png"
 
 [autoload]
 

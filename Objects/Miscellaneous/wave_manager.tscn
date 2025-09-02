@@ -24,6 +24,7 @@ script = ExtResource("2_npfb3")
 [node name="Label" type="Label" parent="Sign"]
 offset_right = 129.0
 offset_bottom = 77.0
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_uh7et")
 theme_override_font_sizes/font_size = 45
 text = "Test"

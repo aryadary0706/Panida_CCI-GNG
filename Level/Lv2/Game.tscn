@@ -12,7 +12,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_gcldk")
-initialMoney = 300
+initialMoney = 500
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -36,6 +36,8 @@ offset_bottom = 1280.0
 
 [node name="WaveManager" parent="." instance=ExtResource("5_7kh6d")]
 position = Vector2(300, 50)
+build_phase_wait_time = 10.0
+spawn_timer_wait_time = 1.8
 
 [node name="WaveData" type="Node" parent="WaveManager"]
 script = ExtResource("7_bjxhf")
