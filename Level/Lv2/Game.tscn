@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="12_8fqjr"]
 [ext_resource type="PackedScene" uid="uid://cihv845c2ex43" path="res://Scenes/in_game_ui.tscn" id="12_mpixe"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_gcldk")
 initialMoney = 500
 
@@ -31,6 +33,7 @@ position = Vector2(2631, 696)
 position = Vector2(1793, -68)
 
 [node name="InGameUI" parent="." instance=ExtResource("12_mpixe")]
+layout_mode = 1
 offset_right = 2560.0
 offset_bottom = 1280.0
 

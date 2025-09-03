@@ -19,7 +19,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if not self.get_parent().hasPlaced:
 		return
-	if body is Craver and body not in craversInArea:
+	if body is Craver and body not in craversInArea and body.moveSpeed > 0:
 		craversInArea.append(body)
 
 

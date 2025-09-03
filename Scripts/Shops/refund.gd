@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 class_name RefundUI
 
 signal refund_confirmed
@@ -8,6 +8,9 @@ signal refund_cancelled
 @onready var refund_button: Button = $Panel/HBoxContainer2/RefundButton
 @onready var cancel_button: Button = $Panel/HBoxContainer2/CancelButton
 
+func _ready() -> void:
+	global_position = get_parent().global_position
+	z_index = 20
 
 var refund_value: int = 0
 

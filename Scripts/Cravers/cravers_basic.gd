@@ -53,7 +53,6 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(direction * moveSpeed, acceleration * delta)
 		move_and_slide()
 
-# Fungsi untuk menambah shop ke available list (dipanggil oleh Shop)
 func add_available_shop(shop: Shop):
 	if maxVisit <= 0:
 		return
@@ -113,9 +112,9 @@ func update_animation() -> void:
 	else:
 		if direction.y > 0:
 			anim.play("front")
-			if isGoingToShop:
+			if isGoingToShop and assignedShop != null:
 				z_index = assignedShop.global_position.y - 1
 		else:
 			anim.play("back")
-			if isGoingToShop:
+			if isGoingToShop and assignedShop != null:
 				z_index = assignedShop.global_position.y + 1

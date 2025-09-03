@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cyhxm5d5ton31" path="res://Scenes/pause_menu.tscn" id="11_undqs"]
 [ext_resource type="PackedScene" uid="uid://dria7dvewpyuj" path="res://Scenes/win_condition.tscn" id="12_3havt"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_nk3w1")
 initialMoney = 500
 
@@ -38,6 +40,7 @@ spawn_timer_wait_time = 1.8
 script = ExtResource("5_k6shk")
 
 [node name="InGameUI" parent="." instance=ExtResource("10_wjmd7")]
+layout_mode = 1
 offset_right = 2560.0
 offset_bottom = 1280.0
 
