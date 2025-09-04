@@ -19,9 +19,12 @@ var direction: Vector2
 var endPos: Vector2
 var acceleration = 7
 var isGoingToShop: bool = false
+var isEating: bool
+
+var isSpeedModified = false
 
 func _ready() -> void:
-	add_to_group(craverType)	
+	add_to_group(craverType)
 	var end_goal = get_tree().root.get_node("Game/EndGoal")
 	if end_goal:
 		var randOfX = randf_range(-15, 15)
@@ -33,43 +36,53 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if maxVisit <= 0:
 		queue_free()
-	
+
 	if !isGoingToShop:
 		z_index = global_position.y
-		
+
+	if isGoingToShop and assignedShop != null and !isEating:
+		if !is_shop_still_valid(assignedShop):
+			if assignedShop:
+				assignedShop.reservedSlots = max(0, assignedShop.reservedSlots - occupancy)
+			isGoingToShop = false
+			assignedShop = null
+			if availableShops.size() > 0:
+				assign_shop()
+
 	update_animation()
-	
+
 func _physics_process(delta: float) -> void:
 	if isGoingToShop and assignedShop != null:
 		direction = (assignedShop.global_position - global_position).normalized()
 	else:
-		# Pergi ke tujuan akhir
 		navAgent.target_position = endPos
 		if !navAgent.is_navigation_finished():
 			direction = (navAgent.get_next_path_position() - global_position).normalized()
-	
-	# Apply movement
 	if direction:
 		velocity = velocity.lerp(direction * moveSpeed, acceleration * delta)
 		move_and_slide()
 
+func is_shop_still_valid(shop: Shop) -> bool:
+	if shop == null:
+		return false
+	if !shop.hasPlaced:
+		return false
+	if !(shop.craverType == craverType or shop.craverType == "All"):
+		return false
+	if shop.craverInside + shop.reservedSlots > shop.maxCraver:
+		return false
+	return true
+
+
 func add_available_shop(shop: Shop):
 	if maxVisit <= 0:
 		return
-	
-	if (shop.hasPlaced and 
-		(shop.craverType == craverType or shop.craverType == "All") and 
-		shop not in visitedShops and
-		shop not in availableShops and
-		shop.craverInside + occupancy <= shop.maxCraver):
-		
+	# >>> Gunakan logika shop.can_accept (sudah termasuk reserved) <<<
+	if shop not in visitedShops and shop not in availableShops and shop.can_accept(self):
 		availableShops.append(shop)
-		if availableShops.size() >=1:
+		if availableShops.size() >= 1:
 			assign_shop()
-		else:
-			return
-		
-		
+
 func assign_shop():
 	availableShops.sort_custom(func(a: Shop, b: Shop) -> bool:
 		var dist_a = global_position.distance_to(a.global_position)
@@ -78,32 +91,33 @@ func assign_shop():
 			return a.craverInside < b.craverInside
 		return dist_a < dist_b
 	)
-	
 	assignedShop = availableShops[0]
 	isGoingToShop = true
 	target = assignedShop.global_position
 	availableShops.erase(assignedShop)
-	
+	# >>> RESERVASI SLOT saat assign <<<
+	if assignedShop != null:
+		assignedShop.reservedSlots += occupancy
+
 func eating():
+	isEating = true
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	visitedShops.append(assignedShop)
 	await get_tree().create_timer(eatingDuration).timeout
+	isEating = false
+	isGoingToShop = false
 	visible = true
-	if assignedShop:
+	if assignedShop != null:
 		Global.Money += assignedShop.moneyMade
 		assignedShop.spawn_coin_popup()
-		isGoingToShop = false
-		assignedShop = null
 		maxVisit -= 1
-		availableShops.clear()
-	
+
 
 func update_animation() -> void:
 	if direction == Vector2.ZERO:
 		anim.stop()
 		return
-
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
 			anim.play("right")
@@ -118,3 +132,30 @@ func update_animation() -> void:
 			anim.play("back")
 			if isGoingToShop and assignedShop != null:
 				z_index = assignedShop.global_position.y + 1
+
+#####EFFECT SLOW DAN STUN BERUBAH DISINI AJA
+func effect_slow(time: float, amount: float):
+	if isSpeedModified:
+		return
+	isSpeedModified = true
+	var temp = moveSpeed
+	moveSpeed = (1 - amount) * moveSpeed
+	modulate = Color(1.5, 0.5, 0.5, 1)
+	print("SLOW ACTIVE")
+	await get_tree().create_timer(time).timeout
+	modulate = Color(1.5, 1, 1, 1)
+	moveSpeed = temp
+	isSpeedModified = false
+
+func effect_stun(time: float):
+	if isSpeedModified:
+		return
+	isSpeedModified = true
+	var temp = moveSpeed
+	moveSpeed = 0
+	modulate = Color(0.5, 0.5, 1.5, 1)
+	print("STUN ACTIVE")
+	await get_tree().create_timer(time).timeout
+	modulate = Color(1, 1, 1, 1)
+	moveSpeed = temp
+	isSpeedModified = false

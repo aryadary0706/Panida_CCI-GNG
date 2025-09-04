@@ -4,26 +4,27 @@ signal shop_placed
 const moneyPopup = preload("res://Objects/Miscellaneous/money.tscn")
 const refundUI = preload("res://Objects/Miscellaneous/refund.tscn")
 
-
 @export_enum("Vegan", "Normal", "All") var craverType = "Normal"
 @export var maxCraver = 3
 @export var priceToBuy = 400
 @export var refund = 100
 @export var moneyMade = 100
-@export var delay_time: float 
+@export var delay_time: float
 @export var placableTileIDs: Array[int] = []
 @onready var tilemap_layer: TileMapLayer = get_tree().current_scene.find_child("PathAndObstacle", true, false)
 @onready var shopArea: CollisionShape2D = $ShopBody/Collision
-@onready var delay_timer: Timer = $DelayTimer  
+@onready var delay_timer: Timer = $DelayTimer
 @onready var sprite = $AnimatedSprite2D
 @onready var occupancyIndicator = preload("res://Objects/Miscellaneous/occupancy_indicator.tscn")
+
 var cravers: Array = []
-var craverInside = 0
+var craverInside: int
+var reservedSlots: int = 0   # <<< ganti nama & inisialisasi dengan benar
 var isDragging = false
 var isOverlapping = false
 var canPlace = false
 var hasPlaced = false
-var isWaitingDelay = false 
+var isWaitingDelay = false
 
 var snap = 64
 
@@ -43,7 +44,6 @@ func start_delay() -> void:
 			print("Not enough money, cannot build shop.")
 			queue_free()
 			return
-
 		isWaitingDelay = true
 		delay_timer.start()
 		sprite.modulate = Color(1, 1, 0.5, 0.7)
@@ -61,7 +61,6 @@ func _on_delay_timer_timeout() -> void:
 func checkPlacableTile() -> bool:
 	if !tilemap_layer or !shopArea:
 		return false
-	
 	var rect_shape: RectangleShape2D = shopArea.shape
 	var extents: Vector2 = rect_shape.extents
 	var offsets = [
@@ -71,61 +70,49 @@ func checkPlacableTile() -> bool:
 		Vector2(-extents.x, extents.y),
 		Vector2(extents.x, extents.y)
 	]
-	
 	for offset in offsets:
 		var world_pos = shopArea.global_position + offset
 		var tile_pos = tilemap_layer.local_to_map(tilemap_layer.to_local(world_pos))
 		var source_id = tilemap_layer.get_cell_source_id(tile_pos)
-		
 		if not (source_id in placableTileIDs):
 			return false
-	
 	return true
 
 func _process(delta: float) -> void:
-	
-	
-	#bagian placement
+	# placement
 	if isDragging and not hasPlaced:
 		position = get_global_mouse_position().snapped(Vector2(snap, snap))
-		z_index = 1001 
+		z_index = 1001
 	elif not isDragging and hasPlaced:
-		z_index = global_position.y 
-	
+		z_index = global_position.y
+
 	canPlace = checkPlacableTile()
 	if !isDragging and !isOverlapping and canPlace:
 		if not isWaitingDelay and not hasPlaced:
-			sprite.modulate = Color(1, 1, 1, 1) 
+			sprite.modulate = Color(1, 1, 1, 1)
 	elif isDragging and canPlace and !isOverlapping:
 		sprite.modulate = Color(0.5, 1, 0.5, 0.5)
 	elif !canPlace:
 		sprite.modulate = Color(1, 0.5, 0.5, 0.5)
-		
 
 func spawn_coin_popup():
 	SfxPlayer.play_music(preload("res://audio/coin.ogg"))
-	
 	var rect_shape: RectangleShape2D = shopArea.shape
 	var size: Vector2 = rect_shape.extents * 2.0
-	
 	var offset = Vector2(
 		randf_range(0, 2 * size.x),
 		randf_range(-size.y, size.y)
 	)
-
 	var coin = moneyPopup.instantiate()
 	coin.z_index = 1002
 	get_tree().current_scene.add_child(coin)
-	coin.global_position = global_position + offset  
-
+	coin.global_position = global_position + offset
 	var tween = get_tree().create_tween()
 	tween.tween_property(coin, "position", coin.position + Vector2(0, -50), 0.8)
 	tween.parallel().tween_property(coin, "modulate:a", 0.0, 0.8)
 	tween.tween_callback(coin.queue_free)
 
-
-
-#ini bagian collision dengan craver
+# ==== Interaksi dengan Craver ====
 func _on_shop_range_body_entered(body: Node2D) -> void:
 	if body is Craver && body.assignedShop == null:
 		body.add_available_shop(self)
@@ -135,25 +122,33 @@ func _on_shop_range_body_exited(body: Node2D) -> void:
 
 func _on_shop_body_body_entered(body: Node2D) -> void:
 	if body is Craver && hasPlaced:
+		# Craver benar-benar masuk: pindahkan dari reserved -> inside
+		reservedSlots = max(0, reservedSlots - body.occupancy)
 		craverInside += body.occupancy
 		occupancyIndicator.update_indicator()
 		GlobalFunctions.fade_out(body, 2)
 		body.eating()
-		
-		
+
 func _on_shop_body_body_exited(body: Node2D) -> void:
 	if body is Craver && hasPlaced:
 		craverInside -= body.occupancy
 		occupancyIndicator.update_indicator()
 		GlobalFunctions.fade_in(body, 0.3)
-		
+		body.isGoingToShop = false
+		body.assignedShop = null
 
-#ini bagian untuk collision antar shop biar ga numpuk
+func can_accept(craver: Craver) -> bool:
+	return hasPlaced \
+		and (craverType == craver.craverType or craverType == "All") \
+		and craver not in craver.visitedShops \
+		# >>> batasi dengan inside + reserved <<<
+		and (craverInside + reservedSlots + craver.occupancy) <= maxCraver
+
+# ==== Anti tumpuk antar Shop ====
 func _on_shop_body_area_entered(area: Area2D) -> void:
 	var otherShop = area.get_parent()
 	if otherShop is not Shop:
 		return
-
 	var otherShopSprite = otherShop.get_node("AnimatedSprite2D")
 	if area.name == "ShopBody" && area != self:
 		isOverlapping = true
@@ -162,18 +157,15 @@ func _on_shop_body_area_entered(area: Area2D) -> void:
 
 func _on_shop_body_area_exited(area: Area2D) -> void:
 	isOverlapping = false
-	
+
 func _on_button_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("Left click")
 			if !hasPlaced:
 				isDragging = true
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			print("Right click")
 			if hasPlaced:
 				show_refund_ui()
-			
 
 func _on_button_button_up() -> void:
 	isDragging = false
@@ -181,8 +173,7 @@ func _on_button_button_up() -> void:
 		queue_free()
 	elif !hasPlaced and !isWaitingDelay:
 		start_delay()
-		
-		
+
 func show_refund_ui():
 	var refundTab = refundUI.instantiate()
 	add_child(refundTab)

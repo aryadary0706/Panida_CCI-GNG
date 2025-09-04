@@ -53,7 +53,6 @@ animations = [{
 [node name="ShopSeblak" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_5e756")
-craverType = "All"
 priceToBuy = 320
 refund = 80
 moneyMade = 40
@@ -65,9 +64,10 @@ scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("2_rwheo")
+effectTime = 4.0
+effectAmount = 0.5
 
 [node name="Collision" type="CollisionShape2D" parent="ShopSkill"]
-visible = false
 shape = SubResource("CircleShape2D_u0osb")
 debug_color = Color(0.565282, 0.55251, 0.223068, 0.42)
 
