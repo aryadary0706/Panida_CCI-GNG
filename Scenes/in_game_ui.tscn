@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cihv845c2ex43"]
+[gd_scene load_steps=18 format=3 uid="uid://cihv845c2ex43"]
 
 [ext_resource type="Texture2D" uid="uid://mg4ambb2bk3o" path="res://assets/AssetInGame/SproutLand/BasicPack/Sprite-sheets/Sprite sheet for Basic Pack.png" id="1_p540b"]
 [ext_resource type="Texture2D" uid="uid://dtoc2sj71tog0" path="res://assets/AssetInGame/life.png" id="2_dxvfn"]
@@ -8,8 +8,6 @@
 [ext_resource type="Script" path="res://Scripts/UI_Ingame/container_top_left.gd" id="5_a4fgg"]
 [ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="5_prc08"]
 [ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Scenes/spawner_shop.tscn" id="8_c3sej"]
-[ext_resource type="Script" path="res://Scripts/UI_Ingame/shop_spawners_popup.gd" id="8_y1u8y"]
-[ext_resource type="Texture2D" uid="uid://u685d04u0jka" path="res://assets/AssetInGame/MediavelFree.png/MediavelFree.png" id="9_cqkb3"]
 [ext_resource type="PackedScene" uid="uid://dtw8hk2svqupo" path="res://Objects/Shops/shop_crepes.tscn" id="9_m22kp"]
 [ext_resource type="PackedScene" uid="uid://2xx4qneud13t" path="res://Objects/Shops/shop_dimsum.tscn" id="10_22ibl"]
 [ext_resource type="PackedScene" uid="uid://dyo4gepkxm4ha" path="res://Objects/Shops/shop_gorengan.tscn" id="11_ilf7c"]
@@ -26,14 +24,6 @@ content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("1_p540b")
 region_rect = Rect2(568, 195, 35, 41)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dud1f"]
-texture = ExtResource("9_cqkb3")
-texture_margin_left = 8.0
-texture_margin_top = 1.0
-texture_margin_right = 2.0
-texture_margin_bottom = 1.0
-region_rect = Rect2(4.0234, 97.6529, 59.3812, 12.8909)
 
 [node name="InGameUI" type="Control"]
 custom_minimum_size = Vector2(2560, 1280)
@@ -174,22 +164,12 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("8_y1u8y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopSpawners"]
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 10
-
-[node name="toggleMenu" type="Button" parent="ShopSpawners/HBoxContainer"]
-custom_minimum_size = Vector2(30, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/hover = SubResource("StyleBoxTexture_dud1f")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_dud1f")
-theme_override_styles/normal = SubResource("StyleBoxTexture_dud1f")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ShopSpawners/HBoxContainer"]
 custom_minimum_size = Vector2(260, 580)
@@ -273,5 +253,3 @@ shopScene = ExtResource("15_xo6rx")
 custom_minimum_size = Vector2(115, 72)
 layout_mode = 2
 shopScene = ExtResource("16_ojo7i")
-
-[connection signal="mouse_entered" from="ShopSpawners/HBoxContainer/toggleMenu" to="ShopSpawners" method="_on_toggle_menu_mouse_entered"]

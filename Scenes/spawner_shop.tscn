@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcnhjljcu261d"]
+[gd_scene load_steps=3 format=3 uid="uid://dcnhjljcu261d"]
 
 [ext_resource type="Script" path="res://Scripts/Shops/shop_spawner.gd" id="1_gldvu"]
+[ext_resource type="FontFile" uid="uid://bn73yp1numlln" path="res://Sprites/kemas-nitip/BALDER.ttf" id="2_d2k57"]
 
 [node name="SpawnerShop" type="Control"]
 custom_minimum_size = Vector2(72, 72)
@@ -38,21 +39,25 @@ offset_right = 65.0
 offset_bottom = 120.0
 grow_horizontal = 2
 
-[node name="PriceLabel" type="RichTextLabel" parent="Button"]
-texture_filter = 6
+[node name="PriceLabel" type="Label" parent="Button"]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -20.0
-offset_right = 18.0
+offset_left = -33.0
+offset_top = -18.0
+offset_right = 33.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_d2k57")
+theme_override_font_sizes/font_size = 20
+text = "800"
+horizontal_alignment = 1
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -4,12 +4,14 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MusicPlayer.play_loop_music(preload("res://audio/MenuGame.ogg"))
+	AudioPlayer.play_music(preload("res://audio/MenuGame.ogg"), true)
 	sign_post.visible = true
 	options.visible = false
 
 
 
 func _on_back_pressed() -> void:
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
-	_ready()
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
+	sign_post.visible = true
+	options.visible = false
+	

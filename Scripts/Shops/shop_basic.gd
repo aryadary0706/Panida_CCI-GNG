@@ -55,7 +55,7 @@ func _on_delay_timer_timeout() -> void:
 	sprite.modulate = Color(1, 1, 1, 1)
 	print("Shop placed successfully after delay.")
 	get_node("DelayTimer").queue_free()
-	SfxPlayer.play_music(preload("res://audio/PlaceBuilding.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/PlaceBuilding.ogg"))
 	emit_signal("shop_placed")
 
 func checkPlacableTile() -> bool:
@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 		sprite.modulate = Color(1, 0.5, 0.5, 0.5)
 
 func spawn_coin_popup():
-	SfxPlayer.play_music(preload("res://audio/coin.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/coin.ogg"))
 	var rect_shape: RectangleShape2D = shopArea.shape
 	var size: Vector2 = rect_shape.extents * 2.0
 	var offset = Vector2(

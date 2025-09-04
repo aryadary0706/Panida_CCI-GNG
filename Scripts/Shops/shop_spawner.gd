@@ -2,7 +2,7 @@ extends Control
 
 @export var shopScene: PackedScene
 var spawnedShop: Shop = null
-@onready var priceLabel: RichTextLabel = $Button/PriceLabel
+@onready var priceLabel: Label = $Button/PriceLabel
 @onready var texture: TextureRect = $Button/ShopTexture
 
 func _ready() -> void:
@@ -12,8 +12,7 @@ func _ready() -> void:
 		var tempShop = shopScene.instantiate()
 		
 		# Set price label
-		priceLabel.text = "[fill]" + str(tempShop.priceToBuy) + "[/fill]"
-		priceLabel.bbcode_enabled = true
+		priceLabel.text = str(tempShop.priceToBuy)
 		
 		# Ambil texture dari frame pertama AnimatedSprite2D
 		var animated_sprite = tempShop.find_child("AnimatedSprite2D") as AnimatedSprite2D
@@ -49,5 +48,5 @@ func spawnShop():
 func _on_button_button_down() -> void:
 	var price = get_shop_price(shopScene)
 	if Global.Money >= price:
-		SfxPlayer.play_music(preload("res://audio/click.ogg"))
+		AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 		spawnShop()

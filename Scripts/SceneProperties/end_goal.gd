@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		SfxPlayer.play_music(preload("res://audio/CraverLolos.ogg"))
+		AudioPlayer.play_sfx(preload("res://audio/Damage.ogg"))
 		body.queue_free()
 		Global.Health -= body.healthLoss
 		print("You have ", Global.Health, " health left")
@@ -17,30 +17,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func game_over() -> void:
 	Engine.time_scale = 0.0  
-	#var canvas_layer = CanvasLayer.new()
-	#var color_rect = ColorRect.new()
-	#color_rect.color = Color(0, 0, 0, 0.5)
-	#color_rect.size = get_viewport_rect().size
-#
-	#var shader = Shader.new()
-	#shader.code = """
-	#shader_type canvas_item;
-#
-	#void fragment() {
-		#vec4 tex = texture(SCREEN_TEXTURE, SCREEN_UV);
-		#float gray = dot(tex.rgb, vec3(0.299, 0.587, 0.114));
-		#COLOR = vec4(vec3(gray), tex.a);
-	#}
-	#"""
-#
-	#var shader_material = ShaderMaterial.new()
-	#shader_material.shader = shader
-	#color_rect.material = shader_material
-#
-	#canvas_layer.add_child(color_rect)
-	#get_tree().root.add_child(canvas_layer)
 	get_parent().get_node("Popup/game_over").show()
-	#MusicPlayer.play_music(preload("res://audio/LevelFailed.ogg"))
-	
-
+	AudioPlayer.play_sfx(preload("res://audio/LevelFailed.ogg"))
 	print("GAME OVER")

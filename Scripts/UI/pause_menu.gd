@@ -16,11 +16,11 @@ func _unhandled_input(event):
 func pause_game():
 	show()
 	get_tree().paused = true
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 
 func resume_game():
 	get_tree().paused = false
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 	hide()
 
 # --- Tombol ---
@@ -33,4 +33,4 @@ func _on_restart_pressed():
 
 func _on_exit_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Objects/LevelMenu/level_menu.tscn")
+	get_tree().change_scene_to_file("res://Objects/MainMenu/main_menu.tscn")

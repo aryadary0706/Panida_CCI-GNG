@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ctwaenq7iw1pb"]
+[gd_scene load_steps=28 format=3 uid="uid://ctwaenq7iw1pb"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/main_menu.gd" id="1_46yfs"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/PlayButton.gd" id="2_6ds7t"]
@@ -22,6 +22,7 @@
 [ext_resource type="Theme" uid="uid://chg4jkopjhca0" path="res://wood_button.tres" id="19_lmjx6"]
 [ext_resource type="Script" path="res://Scripts/MainMenu/sfx_slider.gd" id="20_p88mw"]
 [ext_resource type="Script" path="res://Scripts/LevelMenu/ResetProgress.gd" id="22_5aea4"]
+[ext_resource type="PackedScene" uid="uid://dtc3cs1bnm8w2" path="res://Objects/LevelMenu/level_menu.tscn" id="23_xjjmj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5e8i"]
 texture = ExtResource("2_k0vp4")
@@ -226,6 +227,10 @@ offset_bottom = 314.5
 theme_override_fonts/font = ExtResource("16_mm3pr")
 theme_override_font_sizes/font_size = 50
 text = "Music"
+
+[node name="LevelMenu" parent="." instance=ExtResource("23_xjjmj")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="SignPost/PlayButton" to="SignPost/PlayButton" method="_on_pressed"]
 [connection signal="pressed" from="SignPost/OptionButton" to="SignPost/OptionButton" method="_on_pressed"]

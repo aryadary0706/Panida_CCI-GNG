@@ -3,7 +3,6 @@ extends Control
 @onready var level_buttons: Array = get_children().filter(func(c): return c is LevelButton)
 
 func _ready() -> void:
-	MusicPlayer.play_loop_music(preload("res://audio/MenuGame.ogg"))
 	GlobalProgress.load_progress()
 	level_buttons.sort_custom(func(a: LevelButton, b: LevelButton) -> bool:
 		return a.level_index < b.level_index

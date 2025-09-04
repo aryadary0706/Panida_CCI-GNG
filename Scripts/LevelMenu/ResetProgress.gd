@@ -9,12 +9,12 @@ func _ready():
 
 func _on_reset_button_pressed():
 	# Munculin popup konfirmasi
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 	confirm_dialog.dialog_text = "Apakah kamu yakin ingin mereset progress?\nTindakan ini tidak bisa dibatalkan."
 	confirm_dialog.popup_centered()
 
 func _on_confirm_reset_confirmed():
 	# Kalau user klik "OK" baru reset progress
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 	GlobalProgress.reset_progress()
 	print("Progress direset.")

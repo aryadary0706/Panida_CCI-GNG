@@ -15,6 +15,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_gcldk")
 initialMoney = 500
+initialHealth = 80
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -46,7 +47,6 @@ spawn_timer_wait_time = 1.8
 script = ExtResource("7_bjxhf")
 
 [node name="Popup" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="WinCondition" parent="Popup" instance=ExtResource("12_8e21f")]
 

@@ -1,0 +1,213 @@
+[gd_scene load_steps=19 format=3 uid="uid://krl8rp5qu63n"]
+
+[ext_resource type="Texture2D" uid="uid://mg4ambb2bk3o" path="res://assets/AssetInGame/SproutLand/BasicPack/Sprite-sheets/Sprite sheet for Basic Pack.png" id="1_4a367"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/container_top_right.gd" id="2_jluv1"]
+[ext_resource type="Texture2D" uid="uid://2og5d3l5amxs" path="res://assets/AssetInGame/flag.png" id="3_hnamq"]
+[ext_resource type="Texture2D" uid="uid://dyvhjsckh7ngy" path="res://assets/AssetInGame/stopwatch.png" id="4_nfjns"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/container_top_left.gd" id="5_do01r"]
+[ext_resource type="Texture2D" uid="uid://dtoc2sj71tog0" path="res://assets/AssetInGame/life.png" id="6_6eufi"]
+[ext_resource type="Texture2D" uid="uid://ccw65oc5l00l" path="res://assets/AssetInGame/ticket.png" id="7_l8uoh"]
+[ext_resource type="Script" path="res://Scripts/UI_Ingame/shop_spawners_popup.gd" id="8_4uodg"]
+[ext_resource type="PackedScene" uid="uid://dcnhjljcu261d" path="res://Scenes/spawner_shop.tscn" id="10_wfnh8"]
+[ext_resource type="PackedScene" uid="uid://dtw8hk2svqupo" path="res://Objects/Shops/shop_crepes.tscn" id="11_7ltpu"]
+[ext_resource type="PackedScene" uid="uid://2xx4qneud13t" path="res://Objects/Shops/shop_dimsum.tscn" id="12_lkd42"]
+[ext_resource type="PackedScene" uid="uid://dyo4gepkxm4ha" path="res://Objects/Shops/shop_gorengan.tscn" id="13_v5bmw"]
+[ext_resource type="PackedScene" uid="uid://5nsjcydue5k7" path="res://Objects/Shops/shop_jamur_crispy.tscn" id="14_plnnm"]
+[ext_resource type="PackedScene" uid="uid://c0mygcih1v7pc" path="res://Objects/Shops/shop_seblak.tscn" id="15_mbskf"]
+[ext_resource type="PackedScene" uid="uid://cxsxosmgxw1vh" path="res://Objects/Shops/shop_ice_cream.tscn" id="16_eph6h"]
+[ext_resource type="PackedScene" uid="uid://csh4tcvniyggh" path="res://Objects/Shops/shop_gado2.tscn" id="17_ug37m"]
+[ext_resource type="PackedScene" uid="uid://da8habsl3gcp7" path="res://Objects/Shops/shop_mie_ayam.tscn" id="18_t8tac"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3c2i"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_4a367")
+region_rect = Rect2(568, 195, 35, 41)
+
+[node name="InGameUI" type="Control"]
+custom_minimum_size = Vector2(2560, 1280)
+layout_direction = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContainerTopRight" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = 180.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+script = ExtResource("2_jluv1")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContainerTopRight"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="WaveInfo" type="VBoxContainer" parent="ContainerTopRight/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Wave" type="HBoxContainer" parent="ContainerTopRight/MarginContainer/WaveInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("3_hnamq")
+expand_mode = 3
+
+[node name="Rounds_Ongoing" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Wave"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="Timer" type="HBoxContainer" parent="ContainerTopRight/MarginContainer/WaveInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopRight/MarginContainer/WaveInfo/Timer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_nfjns")
+expand_mode = 3
+
+[node name="Time" type="Label" parent="ContainerTopRight/MarginContainer/WaveInfo/Timer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "180"
+
+[node name="ContainerTopLeft" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 230.0
+offset_bottom = 180.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3c2i")
+script = ExtResource("5_do01r")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContainerTopLeft"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+
+[node name="HealthMoneyInfo" type="VBoxContainer" parent="ContainerTopLeft/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Healthbox" type="HBoxContainer" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Healthbox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_6eufi")
+expand_mode = 3
+
+[node name="Health" type="Label" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Healthbox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="Moneybox" type="HBoxContainer" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Moneybox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_l8uoh")
+expand_mode = 3
+
+[node name="Money" type="Label" parent="ContainerTopLeft/MarginContainer/HealthMoneyInfo/Moneybox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="ShopSpawners" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(100, 64)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -148.0
+offset_right = 472.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_4uodg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopSpawners"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ShopSpawners/VBoxContainer"]
+layout_mode = 2
+
+[node name="Crepes" parent="ShopSpawners/VBoxContainer/HBoxContainer" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("11_7ltpu")
+
+[node name="Jamur" parent="ShopSpawners/VBoxContainer/HBoxContainer" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("14_plnnm")
+
+[node name="Seblak" parent="ShopSpawners/VBoxContainer/HBoxContainer" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("15_mbskf")
+
+[node name="Mie" parent="ShopSpawners/VBoxContainer/HBoxContainer" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("18_t8tac")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ShopSpawners/VBoxContainer"]
+layout_mode = 2
+
+[node name="Dimsum" parent="ShopSpawners/VBoxContainer/HBoxContainer2" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("12_lkd42")
+
+[node name="Gorengan" parent="ShopSpawners/VBoxContainer/HBoxContainer2" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("13_v5bmw")
+
+[node name="Ice" parent="ShopSpawners/VBoxContainer/HBoxContainer2" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("16_eph6h")
+
+[node name="Gado2" parent="ShopSpawners/VBoxContainer/HBoxContainer2" instance=ExtResource("10_wfnh8")]
+custom_minimum_size = Vector2(115, 72)
+layout_mode = 2
+shopScene = ExtResource("17_ug37m")

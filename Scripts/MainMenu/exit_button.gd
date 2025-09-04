@@ -1,5 +1,5 @@
 extends TextureButton
 
 func _on_pressed() -> void:
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
 	get_tree().quit()

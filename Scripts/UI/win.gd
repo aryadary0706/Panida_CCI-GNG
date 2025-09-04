@@ -7,10 +7,10 @@ func _ready() -> void:
 	get_tree().paused = false
 
 func _on_back_pressed() -> void:
-	SfxPlayer.play_music(preload("res://audio/click.ogg"))
-	get_tree().call_deferred("change_scene_to_file", "res://Objects/LevelMenu/level_menu.tscn")
+	AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
+	get_tree().call_deferred("change_scene_to_file", "res://Objects/MainMenu/main_menu.tscn")
 
 func play_scene():
 	show()
-	MusicPlayer.play_music(preload("res://audio/LevelComplete.ogg"))
+	AudioPlayer.play_music(preload("res://audio/LevelComplete.ogg"), false)
 	GlobalProgress.unlock_next_level()

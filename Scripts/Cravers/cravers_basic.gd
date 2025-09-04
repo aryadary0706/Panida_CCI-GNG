@@ -95,11 +95,11 @@ func assign_shop():
 	isGoingToShop = true
 	target = assignedShop.global_position
 	availableShops.erase(assignedShop)
-	# >>> RESERVASI SLOT saat assign <<<
 	if assignedShop != null:
 		assignedShop.reservedSlots += occupancy
 
 func eating():
+	AudioPlayer.play_sfx(preload("res://audio/Pop.ogg"))
 	isEating = true
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
@@ -142,8 +142,9 @@ func effect_slow(time: float, amount: float):
 	moveSpeed = (1 - amount) * moveSpeed
 	modulate = Color(1.5, 0.5, 0.5, 1)
 	print("SLOW ACTIVE")
+	AudioPlayer.play_sfx(preload("res://audio/Slowed.ogg"))
 	await get_tree().create_timer(time).timeout
-	modulate = Color(1.5, 1, 1, 1)
+	modulate = Color(1, 1, 1, 1)
 	moveSpeed = temp
 	isSpeedModified = false
 
@@ -155,6 +156,7 @@ func effect_stun(time: float):
 	moveSpeed = 0
 	modulate = Color(0.5, 0.5, 1.5, 1)
 	print("STUN ACTIVE")
+	AudioPlayer.play_sfx(preload("res://audio/Stunned.ogg"))
 	await get_tree().create_timer(time).timeout
 	modulate = Color(1, 1, 1, 1)
 	moveSpeed = temp

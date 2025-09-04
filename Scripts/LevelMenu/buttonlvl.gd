@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	if not disabled:
-		SfxPlayer.play_music(preload("res://audio/click.ogg"))
-		MusicPlayer.stop_music()
+		AudioPlayer.play_sfx(preload("res://audio/click.ogg"))
+		AudioPlayer.stop_music()
 		var level_path = "res://Level/Lv%d/Game.tscn" % level_index
 		get_tree().call_deferred("change_scene_to_file", level_path)
